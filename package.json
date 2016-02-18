@@ -1,0 +1,51 @@
+{
+  "name": "moviematch",
+  "version": "0.0.1",
+  "description": "An app to help you and your friends choose a movie to watch",
+  "main": "/server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rubiginouschanticleer/rubiginouschanticleer.git"
+  },
+  "keywords": [
+    "mobile",
+    "movie",
+    "friends",
+    "choosing",
+    "app",
+    "node",
+    "angular",
+    "express",
+    "sockets.io"
+  ],
+  "author": "Rubiginous Chanticleer",
+  "contributors": [
+    {
+      "name": "Steffen Baumgarten"
+    },
+    {
+      "name": "Kathy Ems"
+    },
+    {
+      "name": "Jing Lu"
+    },
+    {
+      "name": "Jake Shasteen"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rubiginouschanticleer/rubiginouschanticleer/issues"
+  },
+  "homepage": "https://github.com/rubiginouschanticleer/rubiginouschanticleer#readme",
+  "dependencies": {
+    "bower": "^1.7.7",
+    "express": "^4.13.4",
+    "sequelize": "^3.19.3",
+    "sockets": "^0.4.2",
+    "sqlite3": "^3.1.1"
+  }
+}

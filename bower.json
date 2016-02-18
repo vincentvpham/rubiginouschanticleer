@@ -1,0 +1,41 @@
+{
+  "name": "moviematch",
+  "description": "An app to help you and your friends choose a movie to watch",
+  "main": "/server/server.js",
+  "authors": [
+    "Steffen Baumgarten",
+    "Kathy Ems",
+    "Jing Lu",
+    "Jake Shasteen"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "mobile",
+    "movie",
+    "friends",
+    "choosing",
+    "app",
+    "node",
+    "angular",
+    "express",
+    "sockets.io"
+  ],
+  "homepage": "https://github.com/jake-shasteen/rubiginouschanticleer",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "client/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-bootstrap": "^1.1.2",
+    "angular-route": "^1.5.0",
+    "angular": "^1.5.0",
+    "bootstrap": "^3.3.6",
+    "underscore": "^1.8.3"
+  }
+}
