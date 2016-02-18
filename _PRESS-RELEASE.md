@@ -1,4 +1,4 @@
-# Ready For Adventure #
+# Movie Match / FilmPop #
 
 <!--
 > This material was originally posted [here](http://www.quora.com/What-is-Amazons-approach-to-product-development-and-product-management). It is reproduced here for posterities sake.
@@ -16,30 +16,38 @@ Oh, and I also like to write press-releases in what I call "Oprah-speak" for mai
 Once the project moves into development, the press release can be used as a touchstone; a guiding light. The product team can ask themselves, "Are we building what is in the press release?" If they find they're spending time building things that aren't in the press release (overbuilding), they need to ask themselves why. This keeps product development focused on achieving the customer benefits and not building extraneous stuff that takes longer to build, takes resources to maintain, and doesn't provide real customer benefit (at least not enough to warrant inclusion in the press release).
  -->
 
-## Be Prepared For The Elements On your Next Adventure ##
+## FilmPop / Movie Match ##
   > Name the product in a way the reader (i.e. your target customers) will understand.
 
-## For adventure loving folks who wish there was an app that told them what to wear for it ##
+## Movie Night: Find _the_ movie to watch with your friends ##
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
 
 ## Summary ##
+Based on your group's preferences easily find a movie for movie night. Movie Match / Film Pop proposes movies based on the preferences you enter. Swipe left to skip or right to approve just like Tinder. When your friends all approve a film, the app will declare a match. It includes filters based on genre and whether you want to see the movie in the theater or at home.
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
 
-
 ## Problem ##
+Personal preferences regarding movies can make the discussion and deciding process long and tedious.
   > Describe the problem your product solves.
 
 ## Solution ##
+The movies the app proposes takes into account all friend's preferences. Going from "let's watch a movie" to actually watching the movie takes less time - it only needs a few swipes and one match. Within minutes everyone is happy with the choice.
   > Describe how your product elegantly solves the problem.
 
 ## Quote from You ##
+ "This app will revolutionize the "get together"-part of movie night" - Steffen _product owner of Movie Match / FilmPop_
   > A quote from a spokesperson in your company.
 
 ## How to Get Started ##
+The app will ask a few questions about your preferences and then you are on your way to swiping left or right to the perfect movie night with your pals.
   > Describe how easy it is to get started.
 
 ## Customer Quote ##
+ "Thursday, it was movie night again. My girls and I love movies but there are always so many opinions flying around. This time we simply opened the app and all matched on _Fifty Shades of Grey_ in minutes - just when the popcorn was ready"- Pamela _user of Movie Match / Film Pop_
   > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
 
 ## Closing and Call to Action ##
+If you like long and tedious discussions about preferences and potential movies then go on with your life...
+
+If you don't - use  Movie Match / Film Pop!
   > Wrap it up and give pointers where the reader should go next.
