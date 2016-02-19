@@ -2,6 +2,8 @@ var Prefs = require( './prefs' );
 
 module.exports = {
 
-  /*insert methods here*/
+  getPrefs: function() {},
+
+  addPrefs: function() {}
 
 };
