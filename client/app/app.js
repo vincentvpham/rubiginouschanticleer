@@ -21,6 +21,14 @@ angular.module( 'moviematch', [
       templateUrl: 'app/match/match.html',
       controller: 'MatchController'
     })
+    .when( '/sessions', {
+      templateUrl: 'app/sessions/joinsessions.html',
+      controller: 'SessionsController'
+    })
+    .when( '/lobby', {
+      templateUrl: 'app/sessions/sessionlobby.html',
+      controller: 'SessionsController'
+    })
     .otherwise({
       redirectTo: '/signin'
     });

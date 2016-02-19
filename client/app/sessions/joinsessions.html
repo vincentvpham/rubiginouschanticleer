@@ -1,0 +1,30 @@
+<!-- this is the page that a user can create a new group for their freinds to join
+or the user can join a group that their friend has already created -->
+
+<div id="match" class="container">
+  <div class="header center row">
+    <!-- visible-xs and -sm denote that the element is visible on a small screen -->
+    <h2 class="col-xs-12 visible-xs visible-sm">
+      <div class="app-title large">Movie Match</div>
+      <div class="session-name large">Join a room</div>
+    </h2>
+    <!-- hidden-xs and hidden-sm denote that the element is invisible on a small screen -->
+    <h2 class="col-xs-12 hidden-xs hidden-sm">
+      <span class="app-title">Movie Match</span> <span class="session-name">( Join or create a event )</span>
+    </h2>
+  </div>
+  <p class="center">
+    <span class="bold">One last step, {{ user.name }}!</span>
+    Create a new Movie Match group for your friends to join or join your friend’s group.
+  </p>
+  <div class="new-session-cnt">
+    <label class="filterlabel control-label" for="new-session">Create a new group:</label>
+    <input id="new-session" class="new-session"/>
+    <button class="col-xs-5 pull-right btn-mobile visible-xs visible-sm" ng-click="createSession()">Create Group</button>
+    <button class="col-xs-5 pull-right btn-laptop hidden-xs hidden-sm" ng-click="createSession()">Create Group</button>
+</div>
+<hr>
+<div class="join-group-cnt block-center" ng-repeat="session in sessions">
+  <button class="col-xs-12 btn-mobile visible-xs visible-sm" ng-click="joinSession(index)">Join {{session.name}}</button>
+  <button class="col-xs-12 btn-laptop hidden-xs hidden-sm" ng-click="joinSession(index)">Join {{session.name}}</button>
+</div>

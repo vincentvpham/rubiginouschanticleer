@@ -20,6 +20,10 @@
   text-align: center;
 }
 
+.join-group-cnt {
+  style="max-width:400px;
+}
+
 .buttons {
   width: 100%;
   position: fixed;
@@ -27,12 +31,12 @@
   margin: 5px;
 }
 
-.btn_laptop {
+.btn-laptop {
   font-size: 2em;
   border-radius: 5px;
 }
 
-.btn_mobile {
+.btn-mobile {
   height: 250px;
   width: 250px;
   font-size: 4em;
