@@ -422,3 +422,13 @@ if( condition ) {
     <!-- bad -->
     <script src="a.js" type="text/javascript"></script>
     ```
+
+* Prefer dashes instead of underscores in HTML and CSS class definitions
+
+    ```html
+    <!-- good -->
+    <img class="big-poster" src="a.png">
+
+    <!-- bad -->
+    <img class="big_poster" src="a.png">
+    ```
