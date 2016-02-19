@@ -1,10 +1,10 @@
 // require controllers here
-var auth = require('../users/users.js');
-var auth = require('../genres/genres.js');
-var auth = require('../movies/movies.js');
-var auth = require('../prefs/prefs.js');
-var auth = require('../sessions/sessions.js');
-var auth = require('../votes/votes.js');
+var usersController = require('../users/usersController.js');
+var genresController = require('../genres/genresController.js');
+var moviesController = require('../movies/moviesController.js');
+var prefsController = require('../prefs/prefsController.js');
+var sessionsController = require('../sessions/sessionsController.js');
+var votesController = require('../votes/votesController.js');
 var helpers = require('./helpers.js'); // our custom middleware
 
 
@@ -18,7 +18,7 @@ module.exports = function ( app, express ) {
   /* GENRES */
   app.get('/api/genres', genresController.getAllGenres);
   app.get('/api/genres/:genre', genresController.getGenre);
-  
+
   /* MOVIES */
   app.get('/api/movies', moviesController.getAllMovies);
   app.get('/api/movies/:movie', moviesController.getMovie);
