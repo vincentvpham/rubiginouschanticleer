@@ -42,8 +42,10 @@
   },
   "homepage": "https://github.com/rubiginouschanticleer/rubiginouschanticleer#readme",
   "dependencies": {
+    "body-parser": "^1.15.0",
     "bower": "^1.7.7",
     "express": "^4.13.4",
+    "morgan": "^1.6.1",
     "sequelize": "^3.19.3",
     "sockets": "^0.4.2",
     "sqlite3": "^3.1.1"
