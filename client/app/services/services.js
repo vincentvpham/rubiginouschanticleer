@@ -4,4 +4,22 @@ angular.module( 'moviematch.services', [] )
 
 .factory( 'Session', function( ) {} )
 
-.factory( 'Match', function( ) {} );
+.factory( 'Match', function( $http ) {
+  return {
+    sendVote: function( sessionID, userID, movieID, vote ) {
+      return $http.post( // returns a promise; if you want to make use of a callback simply use .then on the return value.
+        '/api/votes', // expect this endpoint to take a json object
+                                      // with sessionID and userID
+                                      // OR sessionuserID
+                                      // AND movieID
+                                      // AND vote (boolean true/false where true is yes and false is no)
+        { sessionID: sessionID, userID: userID, movieID: movieID, vote: vote })
+      .then( function( response ) { // if the promise is resolved
+        return response;
+      },
+      function( err ) { // if the promise is rejected
+        console.error( err );
+      } );
+    }
+  }
+} );

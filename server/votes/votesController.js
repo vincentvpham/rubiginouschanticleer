@@ -4,6 +4,9 @@ module.exports = {
 
   getAllVotes: function() {},
 
-  addVote: function() {}
+  addVote: function( req, res, next ) {
+    console.log( 'TESTING: addVote', req.body );
+    res.send( 'TESTING: vote added' );
+  }
   
 };
