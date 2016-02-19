@@ -1,0 +1,44 @@
+.bold {
+  font-weight: bold;
+}
+
+.poster {
+  max-width: 70%;
+  float: left;
+}
+
+.bigview {
+  max-width: 30%;
+  float: left;
+}
+
+.large {
+  font-size: 2em;
+}
+
+.center {
+  text-align: center;
+}
+
+.buttons {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  margin: 5px;
+}
+
+.btn_laptop {
+  font-size: 2em;
+  border-radius: 5px;
+}
+
+.btn_mobile {
+  height: 250px;
+  width: 250px;
+  font-size: 4em;
+  border-radius: 50%;
+}
+
+#match {
+  margin-bottom: 100px;
+}

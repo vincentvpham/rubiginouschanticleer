@@ -17,6 +17,10 @@ angular.module( 'moviematch', [
       templateUrl: 'app/auth/signup.html',
       controller: 'AuthController'
     })
+    .when( '/match', {
+      templateUrl: 'app/match/match.html',
+      controller: 'MatchController'
+    })
     .otherwise({
       redirectTo: '/signin'
     });
