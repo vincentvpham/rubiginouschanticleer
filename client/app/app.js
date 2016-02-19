@@ -29,6 +29,9 @@ angular.module( 'moviematch', [
     .when( '/lobby', {
       templateUrl: 'app/sessions/sessionlobby.html',
       controller: 'SessionsController'
+    .when( '/showmatch', {
+      templateUrl: 'app/showmatch/showmatch.html',
+      controller: 'ShowmatchController'
     })
     .when( '/showmatch', {
       templateUrl: 'app/showmatch/showmatch.html',
