@@ -12,8 +12,8 @@ module.exports = function ( app, express ) {
   /* USERS */
   app.get('/api/users', usersController.getAllUsers);
   app.post('/api/users/signin', usersController.signin);
-  app.post('/api/users/signup', userController.signup);
-  app.post('/api/users/signout', userController.signout);
+  app.post('/api/users/signup', usersController.signup);
+  app.post('/api/users/signout', usersController.signout);
 
   /* GENRES */
   app.get('/api/genres', genresController.getAllGenres);
