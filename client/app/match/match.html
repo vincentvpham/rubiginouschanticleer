@@ -4,12 +4,12 @@
   <div class="header center row">
     <!-- visible-xs and -sm denote that the element is visible on a small screen -->
     <h2 class="col-xs-12 visible-xs visible-sm">
-      <div class="app_title large">Movie Match</div>
-      <div class="session_name large">( {{ session.name }} )</div>
+      <div class="app-title large">Movie Match</div>
+      <div class="session-name large">( {{ session.name }} )</div>
     </h2>
     <!-- hidden-xs and hidden-sm denote that the element is invisible on a small screen -->
     <h2 class="col-xs-12 hidden-xs hidden-sm">
-      <span class="app_title">Movie Match</span> <span class="session_name">( {{ session.name }} )</span>
+      <span class="app-title">Movie Match</span> <span class="session-name">( {{ session.name }} )</span>
     </h2>
   </div>
   <p class="center"><span class="bold">{{ user.name }}</span>, would you like to see this movie with your friends today?</p>
@@ -34,6 +34,6 @@
   </div>
 </div>
 <div class="buttons row">
-  <button class="col-xs-5 pull-left btn_mobile visible-xs visible-sm" ng-click="no()">No Thanks</button><button class="col-xs-5 pull-right btn_mobile visible-xs visible-sm" ng-click="yes()">Yes Please</button>
-  <button class="col-xs-5 pull-left btn_laptop hidden-xs hidden-sm" ng-click="no()">No Thanks</button><button class="col-xs-5 pull-right btn_laptop hidden-xs hidden-sm" ng-click="yes()">Yes Please</button>
+  <button class="col-xs-5 pull-left btn-mobile visible-xs visible-sm" ng-click="no()">No Thanks</button><button class="col-xs-5 pull-right btn-mobile visible-xs visible-sm" ng-click="yes()">Yes Please</button>
+  <button class="col-xs-5 pull-left btn-laptop hidden-xs hidden-sm" ng-click="no()">No Thanks</button><button class="col-xs-5 pull-right btn-laptop hidden-xs hidden-sm" ng-click="yes()">Yes Please</button>
 </div>
