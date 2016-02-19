@@ -5,6 +5,7 @@ var moviesController = require('../movies/moviesController.js');
 var prefsController = require('../prefs/prefsController.js');
 var sessionsController = require('../sessions/sessionsController.js');
 var votesController = require('../votes/votesController.js');
+var sessions_usersController = require('../sessions_users/sessions_usersController.js');
 var helpers = require('./helpers.js'); // our custom middleware
 
 
@@ -34,6 +35,10 @@ module.exports = function ( app, express ) {
   /* VOTES */
   app.get('/api/votes', votesController.getAllVotes);
   app.post('/api/votes', votesController.addVote);
+
+  /* SESSIONS_USERS */
+  app.get('/api/sessions_users', sessions_usersController.getUsersInOneSession);
+  app.post('/api/sessions_users', sessions_usersController.addOneUser);
 
 
   // If a request is sent somewhere other than the routes above,
