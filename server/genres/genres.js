@@ -5,6 +5,11 @@ var Genre = db.define( 'genres',  {
 	genreName : Sequelize.STRING
 } );
 
-Genre.sync();
+Genre.sync().then( function() {
+  console.log( "genres table created" );
+} )
+.catch( function( err ) {
+  console.error( err );
+} );
 
 module.exports = Genre;
