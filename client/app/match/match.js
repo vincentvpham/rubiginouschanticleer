@@ -22,6 +22,6 @@ angular.module( 'moviematch.match', [] )
     cast: "Clark Cable, Vivian Leigh, Thomas Mitchell"
   }
 
-  $scope.yes = Match.sendVote( $scope.session.id, $scope.user.id, $scope.movie.id, true );
-  $scope.no = Match.sendVote( $scope.session.id, $scope.user.id, $scope.movie.id, false );
+  $scope.yes = function() { Match.sendVote( $scope.session.id, $scope.user.id, $scope.movie.id, true ); }
+  $scope.no = function() { Match.sendVote( $scope.session.id, $scope.user.id, $scope.movie.id, false ); }
 } );
