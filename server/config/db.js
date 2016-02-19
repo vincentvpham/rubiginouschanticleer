@@ -6,7 +6,7 @@ var db = new Sequelize( 'moviematch', null, null, {
     underscored: true
   },
 
-  storage: './moviematch.sqlite'
+  storage: './server/config/moviematch.sqlite'
 });
 
 module.exports = db;
