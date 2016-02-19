@@ -44,6 +44,7 @@ bower install
 ```
 
 ### File Hierarchy
+```js
 ROOT
  |__SERVER__
  |   |- server.js                 // listens for incoming connections
@@ -118,10 +119,11 @@ ROOT
      |   | ... etc ...
      |
      |__ASSETS__
-     |   | // art assets go here
+     |   |                        // art assets go here
      |
      |__STYLES__
-         | // style sheets go here
+         |- styles.css            //  other style sheets go here
+```
 
 ### Roadmap
 
