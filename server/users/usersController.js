@@ -2,7 +2,12 @@ var User = require( './users' );
 var jwt = require( 'jwt-simple' );
 
 module.exports = {
+  getAllUsers: function() {},
 
-	/*insert methods here*/
+  signin: function() {},
+
+  signup: function() {},
+
+  signout: function() {}
 
 };
