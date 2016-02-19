@@ -20,10 +20,6 @@
   text-align: center;
 }
 
-.join-group-cnt {
-  style="max-width:400px;
-}
-
 .buttons {
   width: 100%;
   position: fixed;
@@ -45,4 +41,17 @@
 
 #match {
   margin-bottom: 100px;
+}
+
+hr {
+  -moz-border-bottom-colors: none;
+-moz-border-image: none;
+-moz-border-left-colors: none;
+-moz-border-right-colors: none;
+-moz-border-top-colors: none;
+border-color: #EEEEEE -moz-use-text-color #FFFFFF;
+border-style: solid none;
+border-width: 1px 0;
+margin: 100px 0 50px 0;
+
 }

@@ -1,13 +1,11 @@
 angular.module( 'moviematch.sessions', [] )
 
 .controller( 'SessionsController', function( $scope ) {
-  $scope.movie = {};
-  $scope.session = {};
+  // TODO: these two will need to be removed and created in a different controller
   $scope.user = {};
-
   $scope.user.name = "Julie";
 
-
+  // TODO: this will need to be pulled from the api
   $scope.sessions = [
     {
       id: 1,
@@ -23,10 +21,12 @@ angular.module( 'moviematch.sessions', [] )
     },
     {
       id: 4,
-      name: "Comedy Clubbin'"
+      name: "Comedy Clubb'n"
     }
 
   ];
 
+  // TODO: Create functions to make buttons work
   $scope.createSession = function () {};
+  $scope.joinSession = function () {};
 } );
