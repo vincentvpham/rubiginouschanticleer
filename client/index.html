@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app='moviematch'>
+  <head>
+    <meta charset="utf-8" />
+    <title>MovieMatch | No More Bickering</title>
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+  </head>
+  <body>
+    <h1>MovieMatch | No More Bickering</h1>
+
+    <!-- the ng-view directive is where our templates will be loaded into when naviagted to -->
+    <div ng-view></div>
+
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+    <!-- add controllers here when they are implemented -->
+    <script src="app/auth/auth.js"></script>
+    <script src="app/match/match.js"></script>
+    <script src="app/prefs/prefs.js"></script>
+    <script src="app/sessions/sessions.js"></script>
+    <script src="app/services/services.js"></script>
+    <script src="app/app.js"></script>
+  </body>
+</html>
