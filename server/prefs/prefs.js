@@ -9,7 +9,12 @@ var Pref = db.define( 'prefs', {
 	prefs : Sequelize.INTEGER
 } );
 
-Pref.sync();
+Pref.sync().then( function() {
+  console.log( "prefs table created" );
+} )
+.catch( function( err ) {
+  console.error( err );
+} );
 
 Pref.belongsTo( User, {foreignKey: 'user_id'} );
 Pref.belongsTo( Genre, {foreignKey: 'genre_id'} );
