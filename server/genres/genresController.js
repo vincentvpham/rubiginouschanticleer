@@ -1,4 +1,4 @@
-var Genre = require('./genres');
+var Genre = require( './genres' );
 
 module.exports = {
 
