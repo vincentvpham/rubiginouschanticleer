@@ -1,6 +1,6 @@
 angular.module( 'moviematch.match', [] )
 
-.controller( 'MatchController', function( $scope ) {
+.controller( 'MatchController', function( $scope, Match ) {
   $scope.movie = {};
   $scope.session = {};
   $scope.user = {};
@@ -21,4 +21,7 @@ angular.module( 'moviematch.match', [] )
     director: "Victor Fleming",
     cast: "Clark Cable, Vivian Leigh, Thomas Mitchell"
   }
+
+  $scope.yes = Match.sendVote( $scope.session.id, $scope.user.id, $scope.movie.id, true );
+  $scope.no = Match.sendVote( $scope.session.id, $scope.user.id, $scope.movie.id, false );
 } );
