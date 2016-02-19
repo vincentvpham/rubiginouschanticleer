@@ -8,7 +8,7 @@ angular.module( 'moviematch.services', [] )
   return {
     sendVote: function( sessionID, userID, movieID, vote ) {
       return $http.post( // returns a promise; if you want to make use of a callback simply use .then on the return value.
-        '/api/votes/recordvote', // expect this endpoint to take a json object
+        '/api/votes', // expect this endpoint to take a json object
                                       // with sessionID and userID
                                       // OR sessionuserID
                                       // AND movieID
