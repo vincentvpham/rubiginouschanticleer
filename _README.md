@@ -100,13 +100,12 @@ ROOT
      |   |   |- joinsession.html  // list of available sessions to join
      |   |   |- sessionlobby.html // the lobby for a given session
      |   |
-     |   |__SHOWMOVIE__
-     |   |   |- showmovie.js      // movie swiping / picking screen angular controller
-     |   |   |- showmovie.html    // displays info about a movie, asks for yes/no input
+     |   |__SHOWMATCH__
+     |   |   |- showmatch.html    // displays information about the movie your group matched on
      |   |
      |   |__MATCH__
      |   |   |- match.js          // match angular controller
-     |   |   |- match.html        // displays information about the movie your group matched on
+     |   |   |- match.html        // displays info about a movie, asks for yes/no input
      |   |
      |   |__PREFERENCES__
      |       |- preferences.js    // angular controller for user preferences
