@@ -27,12 +27,12 @@
   margin: 5px;
 }
 
-.btn_laptop {
+.btn-laptop {
   font-size: 2em;
   border-radius: 5px;
 }
 
-.btn_mobile {
+.btn-mobile {
   height: 250px;
   width: 250px;
   font-size: 4em;
@@ -41,4 +41,16 @@
 
 #match {
   margin-bottom: 100px;
+}
+
+hr {
+  -moz-border-bottom-colors: none;
+  -moz-border-image: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  border-color: #EEEEEE -moz-use-text-color #FFFFFF;
+  border-style: solid none;
+  border-width: 1px 0;
+  margin: 100px 0 50px 0;
 }
