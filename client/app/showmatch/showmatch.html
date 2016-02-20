@@ -1,0 +1,31 @@
+<!-- This is the page which shows the moviematch -->
+<!-- The user should see the movie on which the group matched on -->
+<!-- for now only optimized for mobile -->
+<div id="showmatch" class="container">
+  <div class="header center row">
+    <h1 class="col-xs-12">
+      <div class="app-title large">It's a Match!</div>
+      <div class="session-name large">( {{ session.name }} )</div>
+    </h1>
+  </div>
+  <p class="center"><span class="bold">{{ user.name }}</span>, you guys have a MovieMatch!</p>
+  <div class="movie">
+    <h2 class="center">{{ movie.name }} ({{ movie.year }})</h2>
+    <h6 class="center">{{ movie.rating }} | {{ movie.runtime }} | <span ng-repeat="genre in movie.genres">{{ genre }} </span> | ({{ movie.country }})</h6>
+    <div class="row">
+      <!-- We want to size the poster appropriately so we can
+      see the buttons at the bottom -->
+      <img class="poster col-xs-6" alt="{{ movie.name }} poster" src="{{ movie.poster_path }}">
+      <div class="summary col-xs-6">
+        <h4>Movie Summary</h4>
+        <p>{{ movie.summary }}</p>
+      </div>
+    </div>
+    <div class="crew">
+      <p><span class="bold">Director: </span>{{ movie.director }}</p>
+    </div>
+    <div class="cast">
+      <p><span class="bold">Starring: </span>{{ movie.cast }}</p>
+    </div>
+  </div>
+</div>
