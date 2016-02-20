@@ -2,6 +2,8 @@ module.exports = {
 
   getAllMovies: function() {},
 
-  getMovie: function() {}
-
+  getMovie: function() {
+  // expects req.params.movie_id
+  }
+  
 };
