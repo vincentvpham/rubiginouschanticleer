@@ -37,6 +37,10 @@ angular.module( 'moviematch', [
       templateUrl: 'app/showmatch/showmatch.html',
       controller: 'ShowmatchController'
     })
+    .when( '/showmatch', {
+      templateUrl: 'app/showmatch/showmatch.html',
+      controller: 'ShowmatchController'
+    })
     .otherwise({
       redirectTo: '/signin'
     });
