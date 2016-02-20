@@ -4,6 +4,7 @@ angular.module( 'moviematch', [
   'moviematch.prefs',
   'moviematch.sessions',
   'moviematch.services',
+  'moviematch.showmatch',
   'ngRoute'
   ])
 
@@ -28,6 +29,10 @@ angular.module( 'moviematch', [
     .when( '/lobby', {
       templateUrl: 'app/sessions/sessionlobby.html',
       controller: 'SessionsController'
+    })
+    .when( '/showmatch', {
+      templateUrl: 'app/showmatch/showmatch.html',
+      controller: 'ShowmatchController'
     })
     .otherwise({
       redirectTo: '/signin'

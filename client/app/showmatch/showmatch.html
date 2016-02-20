@@ -1,0 +1,35 @@
+<!-- This is the page which shows the moviematch -->
+<!-- The user should see the movie on which the group matched on -->
+<!-- for now only optimized for mobile -->
+<div id="showmatch" class="container">
+  <div class="header center row">
+    <h1 class="col-xs-12">
+      <div class="app_title large">This is your Match</div>
+      <div class="session_name large">( {{ session.name }} )</div>
+    </h1>
+  </div>
+  <p class="center"><span class="bold">{{ user.name }}</span>, would you like to see this movie with your friends today?</p>
+  <div class="movie">
+    <h2 class="center">{{ movie.name }} ({{ movie.year }})</h2>
+    <h6 class="center">{{ movie.rating }} | {{ movie.runtime }} | <span ng-repeat="genre in movie.genres">{{ genre }} </span> | ({{ movie.country }})</h6>
+    <div class="row">
+      <!-- We want to size the poster appropriately so we can
+      see the buttons at the bottom -->
+      <img class="poster col-xs-6" alt="{{ movie.name }} poster" src="{{ movie.poster_path }}">
+      <div class="summary col-xs-6">
+        <h4>Movie Summary</h4>
+        <p>{{ movie.summary }}</p>
+      </div>
+    </div>
+    <div class="crew">
+      <p><span class="bold">Director: </span>{{ movie.director }}</p>
+    </div>
+    <div class="cast">
+      <p><span class="bold">Starring: </span>{{ movie.cast }}</p>
+    </div>
+  </div>
+</div>
+<div class="buttons row">
+  <button class="col-xs-5 pull-left btn_mobile visible-xs visible-sm" ng-click="no()">No Thanks</button><button class="col-xs-5 pull-right btn_mobile visible-xs visible-sm" ng-click="yes()">Yes Please</button>
+  <button class="col-xs-5 pull-left btn_laptop hidden-xs hidden-sm" ng-click="no()">No Thanks</button><button class="col-xs-5 pull-right btn_laptop hidden-xs hidden-sm" ng-click="yes()">Yes Please</button>
+</div>
