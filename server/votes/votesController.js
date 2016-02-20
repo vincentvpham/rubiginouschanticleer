@@ -19,7 +19,15 @@ var getSessMovieVotes = function( req, res, next ) {
   // res.json an array of vote objects,
   // Where each object represents a row in the
   // Votes table
-  res.send( [{vote: true}, {vote: false}] ); // some test data
+  /* STUB FOR TESTING, REMOVE WHEN THIS FUNCTION IS IMPLEMENTED */
+  if( req.params.movie_id == 2 ) {
+    res.json( [{vote: true}, {vote: false}] ); // some test data
+  } else if ( req.params.movie_id == 1 ) {
+    res.json( [{vote: true}, {vote: true}] );
+  } else {
+    res.json( null );
+  }
+  /* END STUB */
 };
 
 var checkMatch = function( req, res, next ) {
@@ -31,9 +39,9 @@ var checkMatch = function( req, res, next ) {
   var sessionID = req.params.session_id;
   var movieID = req.params.movie_id;
   // get number of users in session
-  suController.countUsersInOneSession( req, { send: function( userCount ) { // assume this function expects req.params.session_id
+  suController.countUsersInOneSession( req, { json: function( userCount ) { // assume this function expects req.params.session_id
     // get votedata
-    getSessMovieVotes( req, { send: function( voteData ) { // assume this function expects req.params.session_id & req.params.movie_id
+    getSessMovieVotes( req, { json: function( voteData ) { // assume this function expects req.params.session_id & req.params.movie_id
       // check if votedata is an array
       if( Array.isArray( voteData ) ) {
         // if so, compare # of users to array.length. If they are the same,
@@ -50,15 +58,15 @@ var checkMatch = function( req, res, next ) {
             // get movie object for the movie id
             // return movie object
             mController.getMovie( req, res ); // pass response object to mController so it can res.send movie data
-          } else {
+          } else { // did not match
             res.json( false );
-          }
-        } else {
+          } // end if ( matched )
+        } else { // voteData.length !== userCount
           res.json( false );
-        }
-      } else {
+        } // end if ( voteData.length === userCount )
+      } else { // voteData is not an array
         res.json( false );
-      }
+      } // end if ( isArray )
     } } );
   } } );
   

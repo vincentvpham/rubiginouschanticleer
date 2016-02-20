@@ -6,7 +6,14 @@ module.exports = {
 
   countUsersInOneSession: function( req, res, next ) {
     // expects req.params.session_id
-    res.send( 2 ); // This should be number of users when properly implemented.
+
+    /* STUB FOR TESTING, REMOVE WHEN THIS FUNCTION IS IMPLEMENTED */
+    if( req.params.session_id == 1 ) {
+      res.json( 2 );
+    } else {
+      res.json( 0 );
+    }
+    /* END STUB */
   },
 
   addOneUser: function() {}
