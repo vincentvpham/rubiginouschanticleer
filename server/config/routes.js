@@ -37,8 +37,8 @@ module.exports = function ( app, express ) {
   app.post('/api/votes', votesController.addVote);
 
   /* SESSIONS_USERS */
-  app.get('/api/sessions_users', sessions_usersController.getUsersInOneSession);
-  app.post('/api/sessions_users', sessions_usersController.addOneUser);
+  app.get('/api/sessions/:session_id', sessions_usersController.getUsersInOneSession);
+  app.post('/api/sessions/users', sessions_usersController.addOneUser);
 
 
   // If a request is sent somewhere other than the routes above,
