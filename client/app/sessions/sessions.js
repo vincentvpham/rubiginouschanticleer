@@ -1,6 +1,6 @@
 angular.module( 'moviematch.sessions', [] )
 
-.controller( 'SessionsController', function( $scope ) {
+.controller( 'SessionsController', function( $scope, Session ) {
   // TODO: these two will need to be removed and created in a different controller
   $scope.user = {};
   $scope.user.name = "Julie";
@@ -27,6 +27,6 @@ angular.module( 'moviematch.sessions', [] )
   ];
 
   // TODO: Create functions to make buttons work
-  $scope.createSession = function () {};
+  $scope.createSession = Session.createSession;
   $scope.joinSession = function ($index) {};
 } );
