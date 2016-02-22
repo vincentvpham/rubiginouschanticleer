@@ -10,7 +10,7 @@ module.exports = {
     Session.create( {
       sessionName: sessionName
     } ).then( function() {
-      response.status = 200;
+      response.status = 201;
       response.end();
     } )
   }
