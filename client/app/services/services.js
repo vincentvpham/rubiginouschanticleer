@@ -1,6 +1,35 @@
 angular.module( 'moviematch.services', [] )
 
-.factory( 'Auth', function( ) {} )
+.factory( 'Auth', function( $http ) {
+  return {
+    signin : function( user ) {
+      return $http.post( '/api/users/signin', user )
+      .then(function ( resp ) {
+        return resp.data.token;
+      });
+    },
+
+    signup : function( user ) {
+      return $http.post( '/api/users/signup', user )
+      .then(function( resp ) {
+        console.log("resp", resp.data.token);
+        return resp.data.token;
+      })
+      .catch(function( err ) {
+        console.log(err);
+      });
+    },
+
+    isAuth : function() {
+      return !!$window.localStorage.getItem( 'com.moviematch' );
+    },
+
+    signout : function() {
+      $window.localStorage.removeItem( 'com.moviematch' );
+      $location.path( '/signin' );
+    }
+  } 
+} )
 
 .factory( 'Session', function( $http ) {
   return {
