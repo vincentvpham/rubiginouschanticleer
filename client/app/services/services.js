@@ -2,7 +2,18 @@ angular.module( 'moviematch.services', [] )
 
 .factory( 'Auth', function( ) {} )
 
-.factory( 'Session', function( ) {} )
+.factory( 'Session', function( $http ) {
+  return {
+    createSession: function( sessionName ) {
+      return $http.post( '/api/sessions', { sessionName: sessionName } )
+      .then( function( response ) {
+        return response;
+      }, function( err ) {
+        console.error( err );
+      } );
+    }
+  }
+} )
 
 .factory( 'Match', function( $http ) {
   return {
