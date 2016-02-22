@@ -45,7 +45,6 @@ angular.module( 'moviematch.services', [] )
     fetchSessions: function() {
       return $http.get ( '/api/sessions' )
       .then( function( response ) {
-        console.log(response);
         return response.data;
       }, function( err ) {
         console.error( err );
