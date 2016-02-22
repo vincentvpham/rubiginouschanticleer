@@ -34,11 +34,16 @@ module.exports = function ( app, express ) {
 
   /* VOTES */
   app.get('/api/votes', votesController.getAllVotes);
+  app.get('/api/votes/:session_id/:movie_id', votesController.getSessMovieVotes ); // get votes for a particular session and movie
   app.post('/api/votes', votesController.addVote);
 
   /* SESSIONS_USERS */
   app.get('/api/sessions/:session_id', sessions_usersController.getUsersInOneSession);
   app.post('/api/sessions/users', sessions_usersController.addOneUser);
+
+  /* MATCHING */
+  // This endpoint answers the question, 'For session <id>, do we currently have a match on movie <id>?'
+  app.get('/api/sessions/:session_id/match/:movie_id', votesController.checkMatch );
 
 
   // If a request is sent somewhere other than the routes above,
