@@ -80,9 +80,9 @@ var checkMatch = function( req, res, next ) {
   // get number of users in session
   // We are overriding the json method on the response object that our suController receives so that we have 
   // access to the object it gives us in this scope.
-  suController.countUsersInOneSession( req, { json: function( userCount ) { // assume this function expects req.params.session_id
+  Session_User.countUsersInOneSession( sessionID ).then( function( userCount ) {
     // get votedata
-    getSessMovieVotes( sessionID, movieID )
+    Vote.getSessMovieVotes( sessionID, movieID )
     .then( function( voteData ) {
       // check if votedata is an array
       if( Array.isArray( voteData ) ) {
@@ -110,7 +110,7 @@ var checkMatch = function( req, res, next ) {
         res.json( false );
       } // end if ( isArray )
     } );
-  } } );
+  } );
   
 
 }
