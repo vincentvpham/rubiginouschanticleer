@@ -39,6 +39,15 @@
   border-radius: 50%;
 }
 
+.error {
+  border: 1px solid red;
+  border-radius: 5%;
+}
+
+.error-msg {
+  color: red;
+}
+
 #match {
   margin-bottom: 100px;
 }

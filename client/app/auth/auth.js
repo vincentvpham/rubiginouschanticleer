@@ -2,6 +2,9 @@ angular.module( 'moviematch.auth', [] )
 
 .controller( 'AuthController', function( $scope, Auth, $window, $location ) {
   $scope.user = {};
+  $scope.error = {}
+  $scope.error.userInput = "Please enter a username.";
+  $scope.error.pwdInput = "Please enter a password.";
 
   $scope.signin = function () {
     Auth.signin( $scope.user )

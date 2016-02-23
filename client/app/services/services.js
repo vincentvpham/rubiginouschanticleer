@@ -68,7 +68,6 @@ angular.module( 'moviematch.services', [] )
       }, function( err ) {
         console.error( err );
       } );
-<<<<<<< HEAD
     },
 
     setSession: function( sessionName ) {
@@ -77,8 +76,6 @@ angular.module( 'moviematch.services', [] )
 
     getSession: function() {
       return $window.localStorage.getItem( 'sessionName' );
-=======
->>>>>>> 04f570dd80099e4d1785808ae5bef0f27722f07d
     }
 
   }
