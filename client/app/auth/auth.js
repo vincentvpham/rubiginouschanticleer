@@ -2,6 +2,9 @@ angular.module( 'moviematch.auth', [] )
 
 .controller( 'AuthController', function( $scope, Auth, $window, $location, $timeout ) {
   $scope.user = {};
+  $scope.error = {}
+  $scope.error.userInput = "Please enter a username.";
+  $scope.error.pwdInput = "Please enter a password.";
 
   if( $location.path() === '/signout' ) {
     console.log( 'You are signed out. Redirecting in 2s.' );
