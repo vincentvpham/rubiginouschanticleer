@@ -1,6 +1,6 @@
 var helpers = require( '../config/helpers' );
 var Vote = require( './votes' );
-var suController = require( '../sessions_users/sessions_usersController' );
+var Session_User = require( '../sessions_users/sessions_users' );
 var mController = require( '../movies/moviesController' );
 
 var getAllVotes = function() {};
