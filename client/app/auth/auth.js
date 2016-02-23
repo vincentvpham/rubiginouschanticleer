@@ -18,10 +18,12 @@ angular.module( 'moviematch.auth', [] )
   $scope.signin = function () {
     Auth.signin( $scope.user )
       .then( function ( token ) {
+        $scope.setUserName();
         $window.localStorage.setItem( 'com.moviematch', token );
         $location.path( '/sessions' );
       } )
       .catch( function ( error ) {
+        $scope.error.signinError = "There was an error logging in. Please double check your username and password.";
         console.error( error );
       } );
   };
@@ -29,11 +31,12 @@ angular.module( 'moviematch.auth', [] )
   $scope.signup = function () {
     Auth.signup( $scope.user )
       .then( function ( token ) {
-        console.log($location);
+        $scope.setUserName();
         $window.localStorage.setItem( 'com.moviematch', token );
         $location.path( '/sessions' );
       })
       .catch( function ( error ) {
+        $scope.error.signupError = "There was an error signing up. It's possible that username already exists.";
         console.error( error );
       });
   };

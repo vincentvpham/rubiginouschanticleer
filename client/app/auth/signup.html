@@ -9,7 +9,8 @@
       <span class="col-md-6 error-msg" ng-show="signupForm.userInput.$invalid && signupForm.$dirty">{{ error.userInput }}</span>
       <span class="col-md-6 error-msg" ng-show="signupForm.pwdInput.$invalid && signupForm.$dirty">{{ error.pwdInput }}</span>
     </div>
-		<button ng-disabled="signupForm.$invalid">Sign Up</button>
+    <div class="error-msg" ng-show="error.signupError">{{ error.signupError }}</div>
+    <button ng-disabled="signupForm.$invalid">Sign Up</button>
 	</form>
 	<a href='#/signin'>Already a user? <strong>Sign In</strong> </a>
 </div>
