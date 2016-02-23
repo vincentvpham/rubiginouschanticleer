@@ -20,6 +20,10 @@ angular.module( 'moviematch', [
       templateUrl: 'app/auth/signup.html',
       controller: 'AuthController'
     })
+    .when( '/signout', {
+      templateUrl: 'app/auth/signout.html',
+      controller: 'AuthController'
+    })
     .when( '/match', {
       templateUrl: 'app/match/match.html',
       controller: 'MatchController'
