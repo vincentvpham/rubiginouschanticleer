@@ -5,7 +5,7 @@ var mController = require( '../movies/moviesController' );
 
 var getAllVotes = function() {};
 
-var addVote = function( req, res, next ) {
+var addVote = function( req, res ) {
   // if req.body contains a session_user_id,
   // use that.
   var session_user = parseInt( req.body.session_user_id );
@@ -25,13 +25,14 @@ var addVote = function( req, res, next ) {
           // Could not find the given user in the given session
           res.status( 404 );
           res.send();
+          return;
         }
       });
     }
-  }
-  if( !movie ) {
+  } else if( !movie ) {
     res.status( 400 );
     res.send( 'No movie ID provided' );
+    return;
   }
   Vote.addVote( session_user, movie, vote )
   .then( function( data ) {
@@ -59,7 +60,12 @@ var getSessMovieVotes = function( req, res, next ) {
   /* STUB FOR TESTING, REMOVE WHEN THIS FUNCTION IS IMPLEMENTED */
   var sessionId = req.params.session_id;
   var movieId = req.params.movie_id;
-  res.json( Vote.getSessMovieVotes( sessionId, movieId ) );
+  Vote.getSessMovieVotes( sessionId, movieId )
+  .then( function( voteData ) {
+    res.json( voteData );
+  }, function( err ) {
+    helpers.errorHandler( err );
+  })
   /* END STUB */
 };
 
@@ -76,7 +82,8 @@ var checkMatch = function( req, res, next ) {
   // access to the object it gives us in this scope.
   suController.countUsersInOneSession( req, { json: function( userCount ) { // assume this function expects req.params.session_id
     // get votedata
-    getSessMovieVotes( req, { json: function( voteData ) { // assume this function expects req.params.session_id & req.params.movie_id
+    getSessMovieVotes( sessionID, movieID )
+    .then( function( voteData ) {
       // check if votedata is an array
       if( Array.isArray( voteData ) ) {
         // if so, compare # of users to array.length. If they are the same,
@@ -102,7 +109,7 @@ var checkMatch = function( req, res, next ) {
       } else { // voteData is not an array
         res.json( false );
       } // end if ( isArray )
-    } } );
+    } );
   } } );
   
 

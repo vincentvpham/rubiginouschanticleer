@@ -23,14 +23,19 @@ Vote.addVote = function( sessionUser, movie, vote ) {
 };
 
 Vote.getSessMovieVotes = function( sessionId, movieId ) {
+  // expect this function to return a promise
   // Some test data
-  if( movieId == 2 ) {
-    return [{vote: true}, {vote: false}]; 
-  } else if ( movieId == 1 ) {
-    return [{vote: true}, {vote: true}];
-  } else {
-    return null;
-  }
+  return {
+    then: function( resolve ) {
+      if( movieId == 2 ) {
+        resolve( [{vote: true}, {vote: false}] ); 
+      } else if ( movieId == 1 ) {
+        resolve( [{vote: true}, {vote: true}] );
+      } else {
+        resolve( null );
+      }
+    }
+  };
   // end test data
 }
 
