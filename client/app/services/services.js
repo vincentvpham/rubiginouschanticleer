@@ -40,6 +40,15 @@ angular.module( 'moviematch.services', [] )
       }, function( err ) {
         console.error( err );
       } );
+    },
+
+    fetchSessions: function() {
+      return $http.get ( '/api/sessions' )
+      .then( function( response ) {
+        return response.data;
+      }, function( err ) {
+        console.error( err );
+      } ) 
     }
   }
 } )
