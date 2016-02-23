@@ -14,7 +14,7 @@ or the user can join a group that their friend has already created -->
     </h2>
   </div>
   <p class="center">
-    <span class="bold">One last step, {{ user.name }}!</span>
+    <span class="bold">One last step, {{ username }}!</span>
     Create a new Movie Match group or join an existing one.
   </p>
   <div class="new-session-cnt">
@@ -28,6 +28,6 @@ or the user can join a group that their friend has already created -->
   <hr>
 </div>
 <div class="join-group-cnt block-center" ng-repeat="session in sessions">
-  <button class="col-xs-12 btn-mobile visible-xs visible-sm" ng-click="joinSession($index)">Join <span class="bold">{{session.sessionName}}</span></button>
-  <button class="col-xs-12 btn-laptop hidden-xs hidden-sm" ng-click="joinSession($index)">Join <span class="bold">{{session.sessionName}}</span></button>
+  <button class="col-xs-12 btn-mobile visible-xs visible-sm" ng-click="joinSession(session.sessionName, username)">Join <span class="bold">{{session.sessionName}}</span></button>
+  <button class="col-xs-12 btn-laptop hidden-xs hidden-sm" ng-click="joinSession(session.sessionName, username)">Join <span class="bold">{{session.sessionName}}</span></button>
 </div>

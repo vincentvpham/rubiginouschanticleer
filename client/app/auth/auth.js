@@ -26,4 +26,8 @@ angular.module( 'moviematch.auth', [] )
       });
   };
 
+  $scope.setUserName = function () {
+    Auth.setUserName( $scope.user );
+  };
+
 } );
