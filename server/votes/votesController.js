@@ -57,13 +57,9 @@ var getSessMovieVotes = function( req, res, next ) {
   // Where each object represents a row in the
   // Votes table
   /* STUB FOR TESTING, REMOVE WHEN THIS FUNCTION IS IMPLEMENTED */
-  if( req.params.movie_id == 2 ) {
-    res.json( [{vote: true}, {vote: false}] ); // some test data
-  } else if ( req.params.movie_id == 1 ) {
-    res.json( [{vote: true}, {vote: true}] );
-  } else {
-    res.json( null );
-  }
+  var sessionId = req.params.session_id;
+  var movieId = req.params.movie_id;
+  res.json( Vote.getSessMovieVotes( sessionId, movieId ) );
   /* END STUB */
 };
 
