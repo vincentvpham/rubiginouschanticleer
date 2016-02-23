@@ -6,8 +6,10 @@ angular.module( 'moviematch.match', [] )
   $scope.user = {};
 
   $scope.user.name = "Julie";
+  $scope.user.id = 1;
 
   $scope.session.name = "Girls Night Out";
+  $scope.session.id = 1;
 
   $scope.movie = {
     name: "Gone With The Wind",
@@ -19,7 +21,8 @@ angular.module( 'moviematch.match', [] )
     poster_path: "https://www.movieposter.com/posters/archive/main/30/MPW-15446",
     summary: "A manipulative southern belle carries on a turbulent affair with a blockade runner during the American Civil War.",
     director: "Victor Fleming",
-    cast: "Clark Cable, Vivian Leigh, Thomas Mitchell"
+    cast: "Clark Cable, Vivian Leigh, Thomas Mitchell",
+    id: 1
   }
 
   $scope.yes = function() { Match.sendVote( $scope.session.id, $scope.user.id, $scope.movie.id, true ); }

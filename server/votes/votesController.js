@@ -10,7 +10,7 @@ var addVote = function( req, res ) {
   // use that.
   var session_user = parseInt( req.body.session_user_id );
   var movie = parseInt( req.body.movie_id );
-  var vote = req.body.vote == 'true';
+  var vote = req.body.vote;
   if( !session_user ) {
     // Otherwise, if req.body contains user_id AND session_id,
     // look up the session_user_id from those
@@ -28,8 +28,13 @@ var addVote = function( req, res ) {
           return;
         }
       });
+    } else {
+      res.status( 400 );
+      res.send( 'No session, user, or session_user id provided' );
+      return;
     }
-  } else if( !movie ) {
+  }
+  if( !movie ) {
     res.status( 400 );
     res.send( 'No movie ID provided' );
     return;
@@ -42,7 +47,7 @@ var addVote = function( req, res ) {
     res.status( 201 );
     res.json( data );
   }, function( err ) {
-    helpers.errorHandler( err );
+    helpers.errorHandler( err, req, res );
   })
 };
 
