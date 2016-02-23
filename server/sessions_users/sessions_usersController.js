@@ -4,7 +4,23 @@ var Session = require( '../sessions/sessions' );
 var User = require( '../users/users' )
 module.exports = {
 
-  getUsersInOneSession: function() {},
+  getUsersInOneSession: function( req, res, next ) {
+    var sessionName = req.params.sessionName.slice(1);
+    Session.findOne( {where: {sessionName: sessionName}} )
+    .then( function(session) {
+      Session_User.findAll( {where: {session_id: session.id}} )
+      .then( function(sessions_users) {
+        var users = [];
+        for(var i = 0; i < sessions_users.length; i++){
+          users.push(sessions_users[i].dataValues.user_id);
+        }
+        User.findAll( {where: {id: {$in: users}}} )
+        .then( function(users) {
+          res.send(users);
+        } )
+      } )
+    } )
+  },
 
   countUsersInOneSession: function( req, res, next ) {
     // expects req.params.session_id
@@ -42,7 +58,7 @@ module.exports = {
           user_id: user.id,
           session_id: session.id
         } ).then( function( session_user ) {
-          //console.log(session_user);
+          res.send(session_user);
         });
       });
    });
