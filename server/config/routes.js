@@ -39,6 +39,7 @@ module.exports = function ( app, express ) {
 
   /* SESSIONS_USERS */
   app.get('/api/sessions/:session_id', sessions_usersController.getUsersInOneSession);
+  app.get('/api/sessions/:session_id/:user_id', sessions_usersController.getSessionUserBySessionAndUser);
   app.post('/api/sessions/users', sessions_usersController.addOneUser);
 
   /* MATCHING */

@@ -62,7 +62,7 @@ angular.module( 'moviematch.services', [] )
                                       // OR sessionuserID
                                       // AND movieID
                                       // AND vote (boolean true/false where true is yes and false is no)
-        { sessionID: sessionID, userID: userID, movieID: movieID, vote: vote })
+        { session_id: sessionID, user_id: userID, movie_id: movieID, vote: vote })
       .then( function( response ) { // if the promise is resolved
         return response;
       },
