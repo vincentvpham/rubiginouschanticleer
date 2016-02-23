@@ -1,6 +1,7 @@
 var helpers = require( '../config/helpers' );
 var Session_User = require( './sessions_users' );
-
+var Session = require( '../sessions/sessions' );
+var User = require( '../users/users' )
 module.exports = {
 
   getUsersInOneSession: function() {},
@@ -28,4 +29,22 @@ module.exports = {
     /* END STUB */
   },
 
+  addOneUser: function(req, res, next) {
+    var username = req.body.username;
+    var sessionName = req.body.sessionName;
+    console.log(sessionName);
+
+    User.findOne( {where: {username : username}} )
+    .then( function( user ) {
+      Session.findOne( {where: {sessionName : sessionName}} )
+      .then( function( session ) {
+        Session_User.create( {
+          user_id: user.id,
+          session_id: session.id
+        } ).then( function( session_user ) {
+          //console.log(session_user);
+        });
+      });
+   });
+  }
 };

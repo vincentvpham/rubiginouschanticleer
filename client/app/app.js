@@ -5,6 +5,7 @@ angular.module( 'moviematch', [
   'moviematch.sessions',
   'moviematch.services',
   'moviematch.showmatch',
+  'moviematch.lobby',
   'ngRoute'
   ])
 
@@ -27,8 +28,8 @@ angular.module( 'moviematch', [
       controller: 'SessionsController'
     })
     .when( '/lobby', {
-      templateUrl: 'app/sessions/sessionlobby.html',
-      controller: 'SessionsController'
+      templateUrl: 'app/lobby/lobby.html',
+      controller: 'LobbyController'
     })
     .when( '/showmatch', {
       templateUrl: 'app/showmatch/showmatch.html',

@@ -1,6 +1,7 @@
 angular.module( 'moviematch.services', [] )
 
-.factory( 'Auth', function( $http ) {
+.factory( 'Auth', function( $http, $location, $window ) {
+  var username = '';
   return {
     signin : function( user ) {
       return $http.post( '/api/users/signin', user )
@@ -27,11 +28,19 @@ angular.module( 'moviematch.services', [] )
     signout : function() {
       $window.localStorage.removeItem( 'com.moviematch' );
       $location.path( '/signin' );
+    }, 
+
+    setUserName : function( user ) {
+      $window.localStorage.setItem( 'username', user.username );
+    },
+
+    getUserName : function () {
+      return $window.localStorage.getItem( 'username' );
     }
   } 
 } )
 
-.factory( 'Session', function( $http ) {
+.factory( 'Session', function( $http, $window ) {
   return {
     createSession: function( sessionName ) {
       return $http.post( '/api/sessions', { sessionName: sessionName } )
@@ -48,8 +57,30 @@ angular.module( 'moviematch.services', [] )
         return response.data;
       }, function( err ) {
         console.error( err );
-      } ) 
+      } ); 
+    }, 
+
+    joinSession: function( sessionName, username ) {
+      console.log(sessionName);
+      return $http.post( '/api/sessions/users', { sessionName: sessionName, username: username } )
+      .then( function(resonse) {
+        return response;
+      }, function( err ) {
+        console.error( err );
+      } );
+<<<<<<< HEAD
+    },
+
+    setSession: function( sessionName ) {
+      $window.localStorage.setItem( 'sessionName', sessionName );
+    }, 
+
+    getSession: function() {
+      return $window.localStorage.getItem( 'sessionName' );
+=======
+>>>>>>> 04f570dd80099e4d1785808ae5bef0f27722f07d
     }
+
   }
 } )
 
@@ -71,4 +102,20 @@ angular.module( 'moviematch.services', [] )
       } );
     }
   }
-} );
+} )
+
+.factory( 'Lobby', function( $http ) {
+  return {
+    getUsersInOneSession: function( sessionName ) {
+      return $http.get('/api/sessions/:' + sessionName)
+      .then( function(  res ) {
+        return res;
+      } , 
+      function( err ) {
+        console.error( err );
+      } );
+    }
+  }
+})
+
+;

@@ -6,6 +6,7 @@ var prefsController = require('../prefs/prefsController.js');
 var sessionsController = require('../sessions/sessionsController.js');
 var votesController = require('../votes/votesController.js');
 var sessions_usersController = require('../sessions_users/sessions_usersController.js');
+
 var helpers = require('./helpers.js'); // our custom middleware
 
 
@@ -38,8 +39,8 @@ module.exports = function ( app, express ) {
   app.post('/api/votes', votesController.addVote);
 
   /* SESSIONS_USERS */
-  app.get('/api/sessions/:session_id', sessions_usersController.getUsersInOneSession);
   app.get('/api/sessions/:session_id/:user_id', sessions_usersController.getSessionUserBySessionAndUser);
+  app.get('/api/sessions/:sessionName', sessions_usersController.getUsersInOneSession);
   app.post('/api/sessions/users', sessions_usersController.addOneUser);
 
   /* MATCHING */
