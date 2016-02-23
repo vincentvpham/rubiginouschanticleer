@@ -19,5 +19,7 @@ angular.module( 'moviematch.sessions', [] )
 
   // TODO: Create functions to make buttons work
   $scope.createSession = Session.createSession;
-  $scope.joinSession = Session.joinSession;
+  $scope.joinSession = function() {
+    Session.joinSession;
+  }
 } );

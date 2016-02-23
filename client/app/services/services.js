@@ -34,13 +34,13 @@ angular.module( 'moviematch.services', [] )
       $window.localStorage.setItem( 'username', user.username );
     },
 
-    getUserName : function () {
+    getUserName : function() {
       return $window.localStorage.getItem( 'username' );
     }
   } 
 } )
 
-.factory( 'Session', function( $http ) {
+.factory( 'Session', function( $http, $window ) {
   return {
     createSession: function( sessionName ) {
       return $http.post( '/api/sessions', { sessionName: sessionName } )
@@ -68,6 +68,14 @@ angular.module( 'moviematch.services', [] )
       }, function( err ) {
         console.error( err );
       } );
+    },
+
+    setSession: function( sessionName ) {
+      $window.localStorage.setItem( 'sessionName', sessionName );
+    }, 
+
+    getSession: function() {
+      return $window.localStorage.getItem( 'sessionName' );
     }
 
   }
@@ -91,4 +99,20 @@ angular.module( 'moviematch.services', [] )
       } );
     }
   }
-} );
+} )
+
+.factory( 'Lobby', function( $http ) {
+  return {
+    getUsersInOneSession: function( sessionName ) {
+      return $http.get('/api/sessions/:' + sessionName)
+      .then( function(  res ) {
+        return res;
+      } , 
+      function( err ) {
+        console.error( err );
+      } );
+    }
+  }
+})
+
+;
