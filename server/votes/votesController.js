@@ -6,10 +6,47 @@ var mController = require( '../movies/moviesController' );
 var getAllVotes = function() {};
 
 var addVote = function( req, res, next ) {
-  console.log( 'TESTING: addVote', req.body );
-  res.send( 'TESTING: vote added' );
-  // add vote to database
-  // check if there is a match in current session
+  // if req.body contains a session_user_id,
+  // use that.
+  var session_user = parseInt( req.body.session_user_id );
+  var movie = parseInt( req.body.movie_id );
+  var vote = req.body.vote == 'true';
+  if( !session_user ) {
+    // Otherwise, if req.body contains user_id AND session_id,
+    // look up the session_user_id from those
+    var user = parseInt( req.body.user_id );
+    var session = parseInt( req.body.session_id );
+
+    if( user && session ) {
+     Session_User.getSessionUserBySessionIdAndUserId( session, user )
+     .then( function( sessionUser ) {
+        session_user = sessionUser.id;
+        if( !session_user ) {
+          // Could not find the given user in the given session
+          res.status( 404 );
+          res.send();
+        }
+      });
+    }
+  }
+  if( !movie ) {
+    res.status( 400 );
+    res.send( 'No movie ID provided' );
+  }
+  Vote.addVote( session_user, movie, vote )
+  .then( function( data ) {
+    // add vote to database
+    // return 201 created
+    matchHandler(); // refactor as necessary
+    res.status( 201 );
+    res.json( data );
+  }, function( err ) {
+    helpers.errorHandler( err );
+  })
+};
+
+var matchHandler = function() {
+    // check if there is a match in current session
     // if so, send socket event to inform users of match
 };
 
@@ -39,6 +76,8 @@ var checkMatch = function( req, res, next ) {
   var sessionID = req.params.session_id;
   var movieID = req.params.movie_id;
   // get number of users in session
+  // We are overriding the json method on the response object that our suController receives so that we have 
+  // access to the object it gives us in this scope.
   suController.countUsersInOneSession( req, { json: function( userCount ) { // assume this function expects req.params.session_id
     // get votedata
     getSessMovieVotes( req, { json: function( voteData ) { // assume this function expects req.params.session_id & req.params.movie_id

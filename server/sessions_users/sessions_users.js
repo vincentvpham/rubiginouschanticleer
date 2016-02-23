@@ -1,4 +1,5 @@
 var db = require( '../config/db' );
+var helpers = require( '../config/helpers' );
 var Sequelize = require( 'sequelize' );
 var User = require( '../users/users' );
 var Session = require( '../sessions/sessions' );
@@ -17,5 +18,12 @@ Session_User.sync().then( function(){
 
 Session_User.belongsTo( User, {foreignKey: 'user_id'} );
 Session_User.belongsTo( Session, {foreignKey: 'session_id'} );
+
+Session_User.getSessionUserBySessionIdAndUserId = function( sessionID, userID ) {
+  return Session_User.findOne({session_id: sessionID, user_id: userID})
+    .catch( function( err ) {
+      helpers.errorLogger( err );
+    });
+};
 
 module.exports = Session_User; 
