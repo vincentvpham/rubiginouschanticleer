@@ -8,6 +8,7 @@ angular.module( 'moviematch.sessions', [] )
   console.log($scope.username);
   // TODO: this will need to be pulled from the api
   $scope.sessions = [];
+
   $scope.sessionName = '';
 
   $scope.fetchSessions = function() {
