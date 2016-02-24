@@ -49,6 +49,7 @@ module.exports = {
     var username = req.body.username;
     var sessionName = req.body.sessionName;
     console.log(sessionName);
+    console.log(username);
 
     User.findOne( {where: {username : username}} )
     .then( function( user ) {
