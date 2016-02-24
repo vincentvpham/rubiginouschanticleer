@@ -1,6 +1,13 @@
+var Movies = require('./movies');
+
 module.exports = {
 
   getAllMovies: function() {},
+
+  //returns the requested 10er movie package
+  getMoviePackage: function( req, res ) {
+    res.send( Movies.getMoviePackage( req.params.number ));
+  },   
 
   getMovie: function( req, res, next ) {
   // expects req.params.movie_id

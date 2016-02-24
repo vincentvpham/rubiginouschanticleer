@@ -1,7 +1,41 @@
 angular.module( 'moviematch.match', [] )
 
-.controller( 'MatchController', function( $scope, Match ) {
-  $scope.movie = {};
+.controller( 'MatchController', function( $scope, Match, FetchMovies) {
+
+  var currMovieIndex = 0;
+  var currMoviePackage = 0;
+
+  var fetchNextMovies = function( packageNumber ){         
+    return FetchMovies.getNext10Movies( packageNumber )
+      .then(function( data ){
+        $scope.moviePackage = data;
+      })
+  };
+
+  var loadNextMovie = function(){
+    if( currMovieIndex === 9 ) {
+      currMoviePackage++;
+      fetchNextMovies( currMoviePackage )
+        .then(function(){
+          $scope.currMovie = $scope.moviePackage[0];
+        })
+      currMovieIndex = 0;
+    }
+    else {
+      currMovieIndex++;
+      $scope.currMovie = $scope.moviePackage[currMovieIndex];
+    }
+    
+  };
+
+  $scope.init = function() {        //as soon as the view is loaded request the first movie-package here
+    fetchNextMovies( 0 )
+      .then(function() {
+        $scope.currMovie = $scope.moviePackage[0];
+      })
+  }
+  $scope.init();
+
   $scope.session = {};
   $scope.user = {};
 
@@ -11,7 +45,7 @@ angular.module( 'moviematch.match', [] )
   $scope.session.name = "Girls Night Out";
   $scope.session.id = 1;
 
-  $scope.movie = {
+  $scope.currMovie = {
     name: "Gone With The Wind",
     year: "1939",
     rating: "G",
@@ -24,6 +58,7 @@ angular.module( 'moviematch.match', [] )
     cast: "Clark Cable, Vivian Leigh, Thomas Mitchell",
     id: 1
   }
+  
 
   $scope.yes = function() { Match.sendVote( $scope.session.id, $scope.user.id, $scope.movie.id, true ); }
   $scope.no = function() { Match.sendVote( $scope.session.id, $scope.user.id, $scope.movie.id, false ); }

@@ -116,6 +116,20 @@ angular.module( 'moviematch.services', [] )
   }
 })
 
+.factory( 'FetchMovies', function( $http ) {
+  return {
+    getNext10Movies: function( packageNumber ) {
+      return $http.get('/api/movies/:' + packageNumber)
+      .then( function( res) ) {
+        return res.data;
+      } ,
+      function( err ) {
+        console.log( err );
+      } );
+    }
+  }
+} )
+
 .factory( 'Socket', ['socketFactory', function(socketFactory){
   return socketFactory();
 }]);
