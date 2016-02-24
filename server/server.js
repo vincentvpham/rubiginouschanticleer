@@ -7,6 +7,7 @@ var io = require( 'socket.io' )( http );
 var Session = require('./sessions/sessions');
 var User = require('./users/users');
 
+
 io.on( 'connect' , function( socket ){
   console.log( 'we are connected!!' );
   socket.on( 'disconnect', function() {
@@ -30,6 +31,7 @@ io.on( 'connect' , function( socket ){
       io.to(data.sessionName).emit('newUser', user);
     } ); 
   } );
+
 });
 
 const PORT = 8000;

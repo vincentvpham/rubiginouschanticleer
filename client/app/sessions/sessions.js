@@ -7,6 +7,7 @@ angular.module( 'moviematch.sessions', [] )
   $scope.username += Auth.getUserName();
   // TODO: this will need to be pulled from the api
   $scope.sessions = [];
+
   $scope.sessionName = '';
 
   $scope.fetchSessions = function() {
@@ -39,4 +40,5 @@ angular.module( 'moviematch.sessions', [] )
   Socket.on( 'newSession', function( data ) {
     $scope.sessions.push( data );
   });
+
 } );
