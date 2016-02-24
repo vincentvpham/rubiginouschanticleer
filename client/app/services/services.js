@@ -41,10 +41,11 @@ angular.module( 'moviematch.services', [] )
 
 .factory( 'Session', function( $http, $window, $location ) {
   return {
-    createSession: function( sessionName ) {
+    createSession: function( sessionName, callback ) {
       return $http.post( '/api/sessions', { sessionName: sessionName } )
       .then( function( response ) {
-        $location.path('/lobby');
+        location.path('/lobby');
+        callback( sessionName );
         return response;
       }, function( err ) {
         console.error( err );
@@ -64,10 +65,11 @@ angular.module( 'moviematch.services', [] )
       } ); 
     }, 
 
-    joinSession: function( sessionName, username ) {
+    joinSession: function( sessionName, username, callback ) {
       return $http.post( '/api/sessions/users', { sessionName: sessionName, username: username } )
       .then( function(resonse) {
         $location.path('/lobby');
+        callback( username, sessionName );
         return response;
       }, function( err ) {
         console.error( err );
@@ -111,7 +113,6 @@ angular.module( 'moviematch.services', [] )
     getUsersInOneSession: function( sessionName ) {
       return $http.get('/api/sessions/:' + sessionName)
       .then( function(  res ) {
-        console.log(res.data);
         return res.data;
       } , 
       function( err ) {
