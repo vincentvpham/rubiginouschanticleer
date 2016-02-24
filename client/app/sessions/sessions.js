@@ -5,6 +5,7 @@ angular.module( 'moviematch.sessions', [] )
   // TODO: these two will need to be removed and created in a different controller
   $scope.username = '';
   $scope.username += Auth.getUserName();
+  console.log($scope.username);
   // TODO: this will need to be pulled from the api
   $scope.sessions = [];
 
@@ -20,6 +21,7 @@ angular.module( 'moviematch.sessions', [] )
 
   // TODO: Create functions to make buttons work
   $scope.setSession = Session.setSession;
+
   $scope.createSession = function() { 
     Session.createSession( $scope.sessionName, $scope.emitCreate );
     $scope.joinSession( $scope.sessionName );
@@ -28,6 +30,7 @@ angular.module( 'moviematch.sessions', [] )
     Session.setSession( sessionName )
     Session.joinSession( sessionName, $scope.username, $scope.emitJoin );
   };
+
   $scope.emitCreate = function( sessionName ) {
     //this function emits a create event to the socket. 
     Socket.emit( 'session', {sessionName : sessionName} );
