@@ -39,4 +39,5 @@ angular.module( 'moviematch.sessions', [] )
   Socket.on( 'newSession', function( data ) {
     $scope.sessions.push( data );
   });
+
 } );
