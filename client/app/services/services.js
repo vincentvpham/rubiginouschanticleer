@@ -51,6 +51,10 @@ angular.module( 'moviematch.services', [] )
       } );
     },
 
+    broadcastSession: function( sessionName ) {
+
+    },
+
     fetchSessions: function() {
       return $http.get ( '/api/sessions' )
       .then( function( response ) {
@@ -61,7 +65,6 @@ angular.module( 'moviematch.services', [] )
     }, 
 
     joinSession: function( sessionName, username ) {
-      console.log("join session");
       return $http.post( '/api/sessions/users', { sessionName: sessionName, username: username } )
       .then( function(resonse) {
         $location.path('/lobby');
@@ -118,4 +121,6 @@ angular.module( 'moviematch.services', [] )
   }
 })
 
-;
+.factory( 'Socket', ['socketFactory', function(socketFactory){
+  return socketFactory();
+}]);
