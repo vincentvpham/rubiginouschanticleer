@@ -1,5 +1,7 @@
-var db = require( '../config/db' );
 var Sequelize = require( 'sequelize' );
+
+var db = require( '../config/db' );
+var helpers = require( '../config/helpers' );
 var Session_User = require( '../sessions_users/sessions_users' );
 
 
@@ -19,24 +21,22 @@ Vote.sync().then( function() {
 Vote.belongsTo( Session_User, {foreignKey: 'session_user_id'} );
 
 Vote.addVote = function( sessionUser, movie, vote ) {
-  return Vote.create( { session_user_id: sessionUser, movie_id: movie, vote: vote } );
+  return Vote.create( { session_user_id: sessionUser, movie_id: movie, vote: vote } )
+    .catch( function( err ) {
+      console.error( err.stack );
+    });
 };
 
 Vote.getSessMovieVotes = function( sessionId, movieId ) {
   // expect this function to return a promise
-  // Some test data
-  return {
-    then: function( resolve ) {
-      if( movieId == 2 ) {
-        resolve( [{vote: true}, {vote: false}] ); 
-      } else if ( movieId == 1 ) {
-        resolve( [{vote: true}, {vote: true}] );
-      } else {
-        resolve( null );
-      }
-    }
-  };
-  // end test data
+  // Should query the database and resolve as an array of
+  // objects where each object represents a row
+  // for the particular session and movie
+  // The Votes table has a session_user_id not a session_id, so we have to do an inner join...
+  return Vote.find( { where: { movie_id: movieId }, include: { model: Session_User, attributes: [], where: { session_id: sessionId } } } )
+  .catch( function( err ) {
+    console.error( err.stack );
+  });
 }
 
 

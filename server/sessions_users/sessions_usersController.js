@@ -29,7 +29,7 @@ module.exports = {
     .then( function( count ) {
       res.json( count );
     }, function( err ) {
-      helpers.errorHandler( err );
+      helpers.errorHandler( err, req, res, next );
     });
   },
 
@@ -39,10 +39,25 @@ module.exports = {
     // expects req.params.session_id
     // expects req.params.user_id
     // responds with data for that user in that session
-
-    /* STUB FOR TESTING REMOVE WHEN THIS FN IS IMPLEMENTED */
-    res.json( { id: 1, user_id: 1, session_id: 1} );
-    /* END STUB */
+    var session = parseInt( req.params.session_id );
+    var user = parseInt( req.params.user_id );
+    if( !session ) {
+      res.status( 400 );
+      res.send( "Invalid session id" );
+      return;
+    }
+    if( !user ) {
+      res.status( 400 );
+      res.send( "Invalid user id" );
+      return;
+    }
+    Session_User.getSessionUserBySessionIdAndUserId( session, user )
+      .then( function( sessionUser ) {
+        res.json( sessionUser );
+      })
+      .catch( function( err ) {
+        helpers.errorHandler( err, req, res, next );
+      } );
   },
 
   addOneUser: function(req, res, next) {
