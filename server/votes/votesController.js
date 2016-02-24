@@ -62,7 +62,6 @@ var getSessMovieVotes = function( req, res, next ) {
   // res.json an array of vote objects,
   // Where each object represents a row in the
   // Votes table
-  /* STUB FOR TESTING, REMOVE WHEN THIS FUNCTION IS IMPLEMENTED */
   var sessionId = req.params.session_id;
   var movieId = req.params.movie_id;
   Vote.getSessMovieVotes( sessionId, movieId )
@@ -71,7 +70,6 @@ var getSessMovieVotes = function( req, res, next ) {
   }, function( err ) {
     helpers.errorHandler( err );
   })
-  /* END STUB */
 };
 
 var checkMatch = function( req, res, next ) {
