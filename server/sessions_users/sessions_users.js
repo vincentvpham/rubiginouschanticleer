@@ -5,8 +5,14 @@ var User = require( '../users/users' );
 var Session = require( '../sessions/sessions' );
 
 var Session_User = db.define( 'sessions_users', {
-	user_id : Sequelize.INTEGER,
-	session_id : Sequelize.INTEGER
+	user_id: {
+    type: Sequelize.INTEGER,
+    unique: 'session_user_idx'
+  },
+	session_id: {
+    type: Sequelize.INTEGER,
+    unique: 'session_user_idx'
+  }
 } );
 
 Session_User.sync().then( function(){

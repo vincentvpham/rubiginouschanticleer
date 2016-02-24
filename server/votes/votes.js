@@ -9,7 +9,7 @@ var Vote = db.define( 'votes', {
   session_user_id: {
     type: Sequelize.INTEGER,
     unique: 'su_movie_idx'
-  }
+  },
   movie_id: {
     type: Sequelize.INTEGER,
     unique: 'su_movie_idx'
