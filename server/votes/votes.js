@@ -6,9 +6,15 @@ var Session_User = require( '../sessions_users/sessions_users' );
 
 
 var Vote = db.define( 'votes', {
-  session_user_id : Sequelize.INTEGER,
-  movie_id : Sequelize.INTEGER,
-  vote : Sequelize.BOOLEAN
+  session_user_id: {
+    type: Sequelize.INTEGER,
+    unique: 'su_movie_idx'
+  }
+  movie_id: {
+    type: Sequelize.INTEGER,
+    unique: 'su_movie_idx'
+  }
+  vote: Sequelize.BOOLEAN
 } );
 
 Vote.sync().then( function() {
@@ -33,7 +39,7 @@ Vote.getSessMovieVotes = function( sessionId, movieId ) {
   // objects where each object represents a row
   // for the particular session and movie
   // The Votes table has a session_user_id not a session_id, so we have to do an inner join...
-  return Vote.find( { where: { movie_id: movieId }, include: { model: Session_User, attributes: [], where: { session_id: sessionId } } } )
+  return Vote.findAll( { where: { movie_id: movieId }, include: { model: Session_User, attributes: [], where: { session_id: sessionId } } } )
   .catch( function( err ) {
     console.error( err.stack );
   });
