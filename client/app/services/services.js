@@ -40,11 +40,12 @@ angular.module( 'moviematch.services', [] )
   } 
 } )
 
-.factory( 'Session', function( $http, $window ) {
+.factory( 'Session', function( $http, $window, $location ) {
   return {
     createSession: function( sessionName ) {
       return $http.post( '/api/sessions', { sessionName: sessionName } )
       .then( function( response ) {
+        $location.path('/lobby');
         return response;
       }, function( err ) {
         console.error( err );
@@ -61,24 +62,23 @@ angular.module( 'moviematch.services', [] )
     }, 
 
     joinSession: function( sessionName, username ) {
-      console.log(sessionName);
+      console.log("join session");
       return $http.post( '/api/sessions/users', { sessionName: sessionName, username: username } )
       .then( function(resonse) {
+        $location.path('/lobby');
         return response;
       }, function( err ) {
         console.error( err );
       } );
-<<<<<<< HEAD
     },
 
     setSession: function( sessionName ) {
+      console.log(sessionName);
       $window.localStorage.setItem( 'sessionName', sessionName );
     }, 
 
     getSession: function() {
       return $window.localStorage.getItem( 'sessionName' );
-=======
->>>>>>> 04f570dd80099e4d1785808ae5bef0f27722f07d
     }
 
   }
@@ -109,7 +109,8 @@ angular.module( 'moviematch.services', [] )
     getUsersInOneSession: function( sessionName ) {
       return $http.get('/api/sessions/:' + sessionName)
       .then( function(  res ) {
-        return res;
+        console.log(res.data);
+        return res.data;
       } , 
       function( err ) {
         console.error( err );
