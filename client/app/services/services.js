@@ -68,6 +68,7 @@ angular.module( 'moviematch.services', [] )
       .then( function( response ) {
         callback( username, sessionName ); // used for emitting session data
         $location.path('/lobby');
+        callback( username, sessionName );
         return response;
       }, function( err ) {
         console.error( err );

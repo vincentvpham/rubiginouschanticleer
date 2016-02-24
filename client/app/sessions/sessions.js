@@ -5,6 +5,7 @@ angular.module( 'moviematch.sessions', [] )
   // TODO: these two will need to be removed and created in a different controller
   $scope.username = '';
   $scope.username += Auth.getUserName();
+  console.log($scope.username);
   // TODO: this will need to be pulled from the api
   $scope.sessions = [];
   $scope.sessionName = '';
