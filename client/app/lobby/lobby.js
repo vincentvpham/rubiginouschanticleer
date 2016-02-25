@@ -1,6 +1,6 @@
 angular.module( 'moviematch.lobby', [] )
 
-.controller( 'LobbyController', function( $scope, Session, Lobby, Socket ) {
+.controller( 'LobbyController', function( $scope, Session, Lobby, Socket, $location ) {
   $scope.sessionName = Session.getSession();
   $scope.users = [];
 
@@ -14,5 +14,12 @@ angular.module( 'moviematch.lobby', [] )
     $scope.users.push(data);
   } );
 
+  $scope.startSession = function(sessionName) {
+    Socket.emit('startSession', {sessionName: sessionName} );
+  };
+
+  Socket.on('sessionStarted', function() {
+    $location.path('/match');
+  } );
 
 } )

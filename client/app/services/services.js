@@ -71,7 +71,6 @@ angular.module( 'moviematch.services', [] )
     },
 
     setSession: function( sessionName ) {
-      console.log(sessionName);
       $window.localStorage.setItem( 'sessionName', sessionName );
     }, 
 
