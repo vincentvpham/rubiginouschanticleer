@@ -82,13 +82,17 @@ hr {
   padding-right: 13px;
   z-index: 100;
   cursor: pointer;
-  position:absolute;
+  position: absolute;
   left: -80px;
   top: 25px;
   background:rgba(225,0,0,0.2);
 }
 
-.app-title {
+.session-name {
+  vertical-align: middle;
+}
+
+.app-title, .session-name {
   font-family: 'Franklin Gothic Medium', 'Franklin Gothic', 'ITC Franklin Gothic', Arial, sans-serif;
   font-size: 20px;
 }

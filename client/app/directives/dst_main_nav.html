@@ -3,7 +3,10 @@
     <span class="app-title">
       Movie Match
     </span>
-    <div class="main-nav-menu">
+    <span class="session-name" ng-show="sessionName">
+      {{ sessionName }}
+    </span>
+    <div class="main-nav-menu" ng-show="user.username">
       <div class="logo-arrow" ng-click="toggleNavList({type: 'main-click'})">
         <img class="main-nav-menu-icon" src="../../assets/navmenu.png" />
       </div>
