@@ -1,4 +1,4 @@
-angular.module( 'moviematch', [
+var app = angular.module( 'moviematch', [
   'moviematch.auth',
   'moviematch.match',
   'moviematch.prefs',
@@ -44,3 +44,7 @@ angular.module( 'moviematch', [
       redirectTo: '/signin'
     });
 });
+
+var dstMainNav         = require("./directives/dst_main_nav.js");
+
+app.directive('dstMainNav', dstMainNav);
