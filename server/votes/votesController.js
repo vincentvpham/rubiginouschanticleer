@@ -6,49 +6,54 @@ var mController = require( '../movies/moviesController' );
 var getAllVotes = function() {};
 
 var addVote = function( req, res ) {
-  // if req.body contains a session_user_id,
-  // use that.
+
+  var addVote = function( session_user, movie, vote ) {
+    Vote.addVote( session_user, movie, vote ) // add vote to db
+    .then( function( data ) {
+      // add vote to database
+      // return 201 created
+      matchHandler(); // refactor as necessary
+      res.status( 201 );
+      res.json( data );
+      }, function( err ) {
+        helpers.errorHandler( err, req, res );
+      });
+  };
+
+  var send400 = function( message ) {
+    res.status( 400 );
+    res.send( message );
+  };
+
   var session_user = parseInt( req.body.session_user_id );
   var movie = parseInt( req.body.movie_id );
   var vote = req.body.vote;
-  if( !session_user ) {
-    // Otherwise, if req.body contains user_id AND session_id,
-    // look up the session_user_id from those
-    var user = parseInt( req.body.user_id );
-    var session = parseInt( req.body.session_id );
-
-    if( user && session ) {
-     Session_User.getSessionUserBySessionIdAndUserId( session, user )
+  var user = parseInt( req.body.user_id );
+  var session = parseInt( req.body.session_id );
+  if( !movie ) { // if movie is not provided
+    send400( 'Movie ID not provided' );
+    return;
+  } else if( !session_user ) { // if session_user is not provided
+    if( user && session ) { // but user and session are...
+     Session_User.getSessionUserBySessionIdAndUserId( session, user ) // try to look up session_user
      .then( function( sessionUser ) {
         session_user = sessionUser.id;
-        if( !session_user ) {
+        if( !session_user ) { // we were not able to look up session_user
           // Could not find the given user in the given session
           res.status( 404 );
           res.send();
           return;
+        } else { // we were able to look up session_user
+          addVote( session_user, movie, vote );
         }
       });
-    } else {
-      res.status( 400 );
-      res.send( 'No session, user, or session_user id provided' );
+    } else { // session and user not provided, session_user also not provided
+      send400( 'No session, user, or session_user id provided' );
       return;
     }
+  } else { // session_user is provided
+    addVote( session_user, movie, vote );
   }
-  if( !movie ) {
-    res.status( 400 );
-    res.send( 'No movie ID provided' );
-    return;
-  }
-  Vote.addVote( session_user, movie, vote )
-  .then( function( data ) {
-    // add vote to database
-    // return 201 created
-    matchHandler(); // refactor as necessary
-    res.status( 201 );
-    res.json( data );
-  }, function( err ) {
-    helpers.errorHandler( err, req, res );
-  })
 };
 
 var matchHandler = function() {
