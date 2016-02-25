@@ -2,11 +2,12 @@ var helpers = require( '../config/helpers' );
 var Vote = require( './votes' );
 var Session_User = require( '../sessions_users/sessions_users' );
 var mController = require( '../movies/moviesController' );
+var Session = require( '../sessions/sessions' );
+var User = require( '../users/users' );
 
 var getAllVotes = function() {};
 
 var addVote = function( req, res ) {
-
   var addVote = function( session_user, movie, vote ) {
     Vote.addVote( session_user, movie, vote ) // add vote to db
     .then( function( data ) {
@@ -28,6 +29,15 @@ var addVote = function( req, res ) {
   var session_user = parseInt( req.body.session_user_id );
   var movie = parseInt( req.body.movie_id );
   var vote = req.body.vote;
+  // User.findOne({where: {username: req.body.username}})
+  // .then(function(user){
+  //   var user = user.dataValues.id;
+  // });
+  // console.log("add vote", user);
+  // Session.findOne({where: {sessionName: req.body.sessionName}})
+  // .then(function(session){
+  //   var session = session.dataValues.id;
+  // });
   var user = parseInt( req.body.user_id );
   var session = parseInt( req.body.session_id );
   if( !movie ) { // if movie is not provided
