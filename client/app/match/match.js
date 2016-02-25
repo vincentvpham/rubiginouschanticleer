@@ -1,6 +1,15 @@
 angular.module( 'moviematch.match', ['moviematch.services'] )
 
-.controller( 'MatchController', function( $scope, Match, FetchMovies) {
+.controller( 'MatchController', function( $scope, Match, Auth, Session, FetchMovies ) {
+
+  $scope.session = {};
+  $scope.user = {};
+
+  $scope.user.name = Auth.getUserName();
+  $scope.user.id = 1;
+
+  $scope.session.name = Session.getSession();
+  $scope.session.id = 1;
 
   var currMovieIndex = 0;
   var currMoviePackage = 0;
