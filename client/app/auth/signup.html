@@ -1,9 +1,16 @@
 <div id='signup'>
 	<h1>Sign Up</h1>
 	<form name='signupForm' ng-submit='signup()' novalidate>
-		<input type='text' ng-model='user.username' required>
-		<input type='password' ng-model='user.password' required>
-		<button>Sign Up</button>
+    <div class="row">
+      <input class="col-md-6" name="userInput" type="text" ng-model='user.username' ng-class="{ 'error': signupForm.userInput.$invalid && signupForm.$dirty }" required>
+      <input class="col-md-6" name="pwdInput" type="password" ng-model='user.password' ng-class="{ 'error': signupForm.pwdInput.$invalid && signupForm.$dirty }" required>
+    </div>
+    <div class="row">
+      <span class="col-md-6 error-msg" ng-show="signupForm.userInput.$invalid && signupForm.$dirty">{{ error.userInput }}</span>
+      <span class="col-md-6 error-msg" ng-show="signupForm.pwdInput.$invalid && signupForm.$dirty">{{ error.pwdInput }}</span>
+    </div>
+    <div class="error-msg" ng-show="error.signupError">{{ error.signupError }}</div>
+    <button ng-disabled="signupForm.$invalid">Sign Up</button>
 	</form>
-	<a href='#/signin'>Already an user? <strong>Sign In</strong> </a>
+	<a href='#/signin'>Already a user? <strong>Sign In</strong> </a>
 </div>
