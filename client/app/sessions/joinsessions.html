@@ -19,15 +19,14 @@ or the user can join a group that their friend has already created -->
   <div class="new-session-cnt">
     <label class="session-label" for="new-session">Create a new group:</label>
     <input id="new-session" ng-model="sessionName" placeholder="name"/>
-
     <button class="col-xs-5 pull-right btn-mobile visible-xs visible-sm" ng-click="createSession( sessionName )">Create Group</button>
     <button class="col-xs-5 pull-right btn-laptop hidden-xs hidden-sm" ng-click="createSession( sessionName )">Create Group</button>
-</div>
-<!-- the hr has to be in a div for bootstrap -->
-<div class='row span12'>
-  <hr>
-</div>
-<div class="join-group-cnt block-center" ng-repeat="session in sessions track by $index">
-  <button class="col-xs-12 btn-mobile visible-xs visible-sm" ng-click="joinSession( session.sessionName )">Join <span class="bold">{{session.sessionName}}</span></button>
-  <button class="col-xs-12 btn-laptop hidden-xs hidden-sm" ng-click="joinSession( session.sessionName )">Join <span class="bold">{{session.sessionName}}</span></button>
+  </div>
+  <!-- the hr has to be in a div for bootstrap -->
+  <div class='row span12'>
+    <hr>
+  </div>
+  <div class="join-group-cnt block-center" ng-repeat="session in sessions track by $index">
+    <button class="col-xs-12 btn-mobile visible-xs visible-sm" ng-click="joinSession( session.sessionName )">Join <span class="bold">{{session.sessionName}}</span></button>
+    <button class="col-xs-12 btn-laptop hidden-xs hidden-sm" ng-click="joinSession( session.sessionName )">Join <span class="bold">{{session.sessionName}}</span></button>
 </div>
