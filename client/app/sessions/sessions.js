@@ -10,7 +10,7 @@ angular.module( 'moviematch.sessions', [] )
   $scope.sessionName = '';
 
   $scope.fetchSessions = function() {
-    Session.fetchSessions().then( function(sessions) {
+    Session.fetchSessions().then( function( sessions ) {
       $scope.sessions = sessions;
     } );
   }
