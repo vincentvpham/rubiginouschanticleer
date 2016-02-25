@@ -18,8 +18,8 @@ They will press start when everyone has joined -->
     Once all your friends are here, click start.
   </p>
   <div class="join-group-cnt block-center" ng-repeat="session in sessions">
-    <button class="col-xs-12 btn-mobile visible-xs visible-sm" ng-click="">Start Matching Movies!</button>
-    <button class="col-xs-12 btn-laptop hidden-xs hidden-sm" ng-click="">Start Matching Movies!</button>
+    <button class="col-xs-12 btn-mobile visible-xs visible-sm" ng-click="startMatching()">Start Matching Movies!</button>
+    <button class="col-xs-12 btn-laptop hidden-xs hidden-sm" ng-click="startMatching()">Start Matching Movies!</button>
   </div>
   <!-- the hr has to be in a div for bootstrap -->
   <div class='row span12'>
