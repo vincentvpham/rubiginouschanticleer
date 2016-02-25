@@ -64,13 +64,17 @@ hr {
   margin: 100px 0 50px 0;
 }
 
+<<<<<<< d0f6cc63a93c77e28855ba285d46e0137d1cc847
 <<<<<<< e66a50fbda01b718253c1931e51579d02c2bc516
+=======
+>>>>>>> App named nav bar with pull down menu on right that shows settings, signout, and sessions links
 .main-nav {
   height: 26px;
   background:rgba(225,0,0,0.8);
 }
 
 .main-nav-menu-icon {
+<<<<<<< d0f6cc63a93c77e28855ba285d46e0137d1cc847
   width: 25px;
 }
 
@@ -101,6 +105,28 @@ hr {
   font-size: 20px;
 =======
 .main-nav-menu {
+=======
+>>>>>>> App named nav bar with pull down menu on right that shows settings, signout, and sessions links
   width: 25px;
 >>>>>>> allows clickable image to expand navigation of settings
+}
+
+.main-nav-menu {
+  float: right;
+  position:relative;
+}
+
+.nav-list {
+  padding-right: 13px;
+  z-index: 100;
+  cursor: pointer;
+  position:absolute;
+  left: -80px;
+  top: 25px;
+  background:rgba(225,0,0,0.2);
+}
+
+.app-title {
+  font-family: 'Franklin Gothic Medium', 'Franklin Gothic', 'ITC Franklin Gothic', Arial, sans-serif;
+  font-size: 20px;
 }
