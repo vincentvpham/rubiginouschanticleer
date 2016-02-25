@@ -42,4 +42,8 @@ angular.module( 'moviematch.sessions', [] )
     Socket.emit( 'newJoin', {username: username, sessionName: sessionName} );
   };
 
+  //this function listens to a event emitted by server.js-'new session' and recieves and appends the new session
+  Socket.on( 'newSession', function( data ) {
+    $scope.sessions.push( data );
+  });
 } );
