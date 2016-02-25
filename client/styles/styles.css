@@ -88,6 +88,7 @@ hr {
   z-index: 100;
   cursor: pointer;
   position: absolute;
+<<<<<<< c9204c47c98a0b07b704d8830472f7f349bee5e5
   left: -80px;
   top: 25px;
   background:rgba(225,0,0,0.2);
@@ -121,12 +122,18 @@ hr {
   z-index: 100;
   cursor: pointer;
   position:absolute;
+=======
+>>>>>>> Will only show menu if there is a signed in user; adds the session name if there is a session name;
   left: -80px;
   top: 25px;
   background:rgba(225,0,0,0.2);
 }
 
-.app-title {
+.session-name {
+  vertical-align: middle;
+}
+
+.app-title, .session-name {
   font-family: 'Franklin Gothic Medium', 'Franklin Gothic', 'ITC Franklin Gothic', Arial, sans-serif;
   font-size: 20px;
 }
