@@ -89,10 +89,13 @@ hr {
 }
 
 .session-name {
-  vertical-align: middle;
+  position: relative;
+  left: 35%;
+  font-family: 'Franklin Gothic Medium', 'Franklin Gothic', 'ITC Franklin Gothic', Arial, sans-serif;
+  font-size: 20px;
 }
 
-.app-title, .session-name {
+.app-title {
   font-family: 'Franklin Gothic Medium', 'Franklin Gothic', 'ITC Franklin Gothic', Arial, sans-serif;
   font-size: 20px;
 }
