@@ -64,6 +64,7 @@ hr {
   margin: 100px 0 50px 0;
 }
 
+<<<<<<< e66a50fbda01b718253c1931e51579d02c2bc516
 .main-nav {
   height: 26px;
   background:rgba(225,0,0,0.8);
@@ -98,4 +99,8 @@ hr {
 .app-title {
   font-family: 'Franklin Gothic Medium', 'Franklin Gothic', 'ITC Franklin Gothic', Arial, sans-serif;
   font-size: 20px;
+=======
+.main-nav-menu {
+  width: 25px;
+>>>>>>> allows clickable image to expand navigation of settings
 }
