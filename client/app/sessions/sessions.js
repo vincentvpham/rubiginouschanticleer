@@ -22,8 +22,14 @@ angular.module( 'moviematch.sessions', [] )
 
   // TODO: Create functions to make buttons work
   $scope.setSession = Session.setSession;
-  $scope.createSession = Session.createSession;
-  $scope.joinSession = Session.joinSession;
+  $scope.createSession = function() {
+    Session.createSession( $scope.sessionName, $scope.emitCreate );
+    $scope.joinSession();
+  };
+  $scope.joinSession = function() {
+    Session.setSession( $scope.sessionName )
+    Session.joinSession( $scope.sessionName, $scope.username, $scope.emitJoin );
+  };
   $scope.emitCreate = function( sessionName ) {
     //this function emits a create event to the socket. 
     Socket.emit( 'session', {sessionName : sessionName} );
