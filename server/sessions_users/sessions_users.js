@@ -5,8 +5,14 @@ var User = require( '../users/users' );
 var Session = require( '../sessions/sessions' );
 
 var Session_User = db.define( 'sessions_users', {
-	user_id : Sequelize.INTEGER,
-	session_id : Sequelize.INTEGER
+	user_id: {
+    type: Sequelize.INTEGER,
+    unique: 'session_user_idx'
+  },
+	session_id: {
+    type: Sequelize.INTEGER,
+    unique: 'session_user_idx'
+  }
 } );
 
 Session_User.sync().then( function(){
@@ -20,13 +26,6 @@ Session_User.belongsTo( User, {foreignKey: 'user_id'} );
 Session_User.belongsTo( Session, {foreignKey: 'session_id'} );
 
 Session_User.getSessionUserBySessionIdAndUserId = function( sessionID, userID ) {
-  /* TEST DATA */
-  // expect a promise
-  return { then: function( resolve ) {
-    resolve( { id: 1 } );
-  }};
-
-  /* END TEST DATA */
   return Session_User.findOne({where: {session_id: sessionID, user_id: userID} })
     .catch( function( err ) {
       helpers.errorLogger( err );
