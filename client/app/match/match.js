@@ -5,8 +5,8 @@ angular.module( 'moviematch.match', [] )
   $scope.session = {};
   $scope.user = {};
 
-  $scope.user.name = "John";
-  $scope.user.id = 2;
+  $scope.user.name = "Julie";
+  $scope.user.id = 1;
 
   $scope.session.name = "Girls Night Out";
   $scope.session.id = 1;
