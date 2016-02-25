@@ -5,6 +5,7 @@ angular.module( 'moviematch.sessions', [] )
   // TODO: these two will need to be removed and created in a different controller
   $scope.username = '';
   $scope.username += Auth.getUserName();
+  console.log($scope.username);
   // TODO: this will need to be pulled from the api
   $scope.sessions = [];
   $scope.sessionName = '';
@@ -36,6 +37,7 @@ angular.module( 'moviematch.sessions', [] )
     Socket.emit( 'newJoin', {username: username, sessionName: sessionName} );
   };  
   //this function listens to a event emitted by server.js-'new session' and recieves and appends the new session
+
   Socket.on( 'newSession', function( data ) {
     $scope.sessions.push( data );
   });
