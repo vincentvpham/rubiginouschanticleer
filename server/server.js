@@ -30,6 +30,10 @@ io.on( 'connect' , function( socket ){
       io.to(data.sessionName).emit('newUser', user);
     } ); 
   } );
+  socket.on('startSession', function(data) {
+    socket.join(data.sessionName);
+    io.to(data.sessionName).emit('sessionStarted');
+  } )
 });
 
 const PORT = 8000;

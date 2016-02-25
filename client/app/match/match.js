@@ -1,14 +1,14 @@
 angular.module( 'moviematch.match', [] )
 
-.controller( 'MatchController', function( $scope, Match ) {
+.controller( 'MatchController', function( $scope, Match, Auth, Session ) {
   $scope.movie = {};
   $scope.session = {};
   $scope.user = {};
 
-  $scope.user.name = "Julie";
+  $scope.user.name = Auth.getUserName();
   $scope.user.id = 1;
 
-  $scope.session.name = "Girls Night Out";
+  $scope.session.name = Session.getSession();
   $scope.session.id = 1;
 
   $scope.movie = {
