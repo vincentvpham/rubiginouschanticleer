@@ -1,6 +1,9 @@
+<div> {{sessionName}} </div>
 <div class="users" ng-repeat="user in users">
-  <div> {{sessionName}} </div>
   <ul>
     <li>{{user.username}}</li>
   </ul>
+</div> 
+<div>
+  <button ng-click="startSession(sessionName)">Start</button>
 </div>
