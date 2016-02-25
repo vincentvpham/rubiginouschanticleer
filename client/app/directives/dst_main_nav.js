@@ -12,6 +12,7 @@ angular.module( 'moviematch.directive', [] )
         $scope.lastEventType = ev.type;
       };
     },
-    templateUrl: 'app/directives/dst_main_nav.html'
+    templateUrl: 'app/directives/dst_main_nav.html',
+    controller: 'LobbyController'
   };
 });
