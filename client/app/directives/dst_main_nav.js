@@ -1,4 +1,5 @@
-var dstMainNav = module.exports = function() {
+angular.module( 'moviematch.directive', [] )
+.directive ('dstMainNav',  function() {
   return {
     restrict: 'E',
     controller: function($scope) {
@@ -11,6 +12,6 @@ var dstMainNav = module.exports = function() {
         $scope.lastEventType = ev.type;
       };
     },
-    templateUrl: './dst_main_nav.html'
+    templateUrl: 'app/directives/dst_main_nav.html'
   };
-};
+});
