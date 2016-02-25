@@ -64,17 +64,22 @@ module.exports = {
     var username = req.body.username;
     var sessionName = req.body.sessionName;
     console.log(sessionName);
+    console.log(username);
 
     User.findOne( {where: {username : username}} )
     .then( function( user ) {
-      Session.findOne( {where: {sessionName : sessionName}} )
+      Session.findOne( {where: { sessionName : sessionName } } )
       .then( function( session ) {
         Session_User.create( {
           user_id: user.id,
           session_id: session.id
         } ).then( function( session_user ) {
-          res.send(session_user);
+          res.send( session_user );
+        }, function( err ) {
+          helpers.errorHandler( err, req, res, next );
         });
+      }, function( err ) {
+        helpers.errorHandler( err, req, res, next );
       });
    });
   }
