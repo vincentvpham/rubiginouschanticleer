@@ -1,6 +1,34 @@
-<div class="container">
-  <div> {{sessionName}} </div>
-  <ul>
-    <li class="users" ng-repeat="user in users">{{user.username}}</li>
-  </ul>
-</div>
+<!-- this is the page that users wait in for their freinds to join.
+They will press start when everyone has joined -->
+
+<div id="match" class="container">
+  <div class="header center row">
+    <!-- visible-xs and -sm denote that the element is visible on a small screen -->
+    <h2 class="col-xs-12 visible-xs visible-sm">
+      <div class="app-title large">Movie Match</div>
+      <div class="session-name large">{{ sessionName }}</div>
+    </h2>
+    <!-- hidden-xs and hidden-sm denote that the element is invisible on a small screen -->
+    <h2 class="col-xs-12 hidden-xs hidden-sm">
+      <span class="app-title">Movie Match</span> <span>{{ sessionName }}</span>
+    </h2>
+  </div>
+  <p class="center">
+    <span class="bold">Hi, {{ username }}!</span>
+    Once all your friends are here, click start.
+  </p>
+  <div class="join-group-cnt block-center" ng-repeat="session in sessions">
+    <button class="col-xs-12 btn-mobile visible-xs visible-sm" ng-click="">Start Matching Movies!</button>
+    <button class="col-xs-12 btn-laptop hidden-xs hidden-sm" ng-click="">Start Matching Movies!</button>
+  </div>
+  <!-- the hr has to be in a div for bootstrap -->
+  <div class='row span12'>
+    <hr>
+  </div>
+
+  <div class="users" ng-repeat="user in users">
+    <ul>
+      <li>{{user.username}}</li>
+    </ul>
+  </div>
+>>>>>>> adds context for user when visiting this page; adds start button
