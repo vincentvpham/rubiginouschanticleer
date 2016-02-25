@@ -27,7 +27,6 @@ angular.module( 'moviematch.services', [] )
 
     signout : function() {
       $window.localStorage.removeItem( 'com.moviematch' );
-      $location.path( '/signin' );
     }, 
 
     setUserName : function( user ) {
