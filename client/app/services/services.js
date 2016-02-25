@@ -44,7 +44,7 @@ angular.module( 'moviematch.services', [] )
       return $http.post( '/api/sessions', { sessionName: sessionName } )
       .then( function( response ) {
         location.path('/lobby');
-        callback( sessionName );
+        callback( sessionName ); // used for emitting session data
         return response;
       }, function( err ) {
         console.error( err );
@@ -64,7 +64,7 @@ angular.module( 'moviematch.services', [] )
       return $http.post( '/api/sessions/users', { sessionName: sessionName, username: username } )
       .then( function(resonse) {
         $location.path('/lobby');
-        callback( username, sessionName );
+        callback( username, sessionName ); // used for emitting session data
         return response;
       }, function( err ) {
         console.error( err );
