@@ -50,10 +50,6 @@ angular.module( 'moviematch.services', [] )
       } );
     },
 
-    broadcastSession: function( sessionName ) {
-
-    },
-
     fetchSessions: function() {
       return $http.get ( '/api/sessions' )
       .then( function( response ) {
