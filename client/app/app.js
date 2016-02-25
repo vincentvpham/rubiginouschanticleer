@@ -7,7 +7,8 @@ var app = angular.module( 'moviematch', [
   'moviematch.showmatch',
   'moviematch.lobby',
   'ngRoute',
-  'btford.socket-io'
+  'btford.socket-io',
+  'moviematch.directive'
   ])
 
 .config( function ( $routeProvider ) {
@@ -44,7 +45,3 @@ var app = angular.module( 'moviematch', [
       redirectTo: '/signin'
     });
 });
-
-var dstMainNav         = require("./directives/dst_main_nav.js");
-
-app.directive('dstMainNav', dstMainNav);
