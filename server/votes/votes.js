@@ -13,7 +13,7 @@ var Vote = db.define( 'votes', {
   movie_id: {
     type: Sequelize.INTEGER,
     unique: 'su_movie_idx'
-  }
+  },
   vote: Sequelize.BOOLEAN
 } );
 
