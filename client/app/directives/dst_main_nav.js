@@ -1,5 +1,6 @@
 angular.module( 'moviematch.directive', [] )
 .directive ('dstMainNav',  function() {
+var dstMainNav = module.exports = function() {
   return {
     restrict: 'E',
     controller: function($scope) {

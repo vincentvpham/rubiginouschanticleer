@@ -12,7 +12,7 @@ io.on( 'connect' , function( socket ){
   socket.on( 'disconnect', function() {
     console.log( 'were not connected anymore' );
   });
-  //this recieves the create event emitted in client/sessions/sessions.js-emitCreate 
+  //this recieves the create event emitted in client/sessions/sessions.js-emitCreate
   socket.on('session', function(data) {
     Session.findOne({where: {sessionName: data.sessionName}})
     .then( function(session) {
@@ -28,16 +28,12 @@ io.on( 'connect' , function( socket ){
     .then( function(user) {
       //this function emits a newUser event and the new user to a specific room named the session name
       io.to(data.sessionName).emit('newUser', user);
-    } ); 
+    } );
   } );
   socket.on('startSession', function(data) {
     socket.join(data.sessionName);
     io.to(data.sessionName).emit('sessionStarted');
-<<<<<<< HEAD
   } );
-=======
-  } )
->>>>>>> a3896e8050805306796d0e93dd166814bf601a4d
 });
 
 const PORT = 8000;
