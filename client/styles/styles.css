@@ -64,6 +64,31 @@ hr {
   margin: 100px 0 50px 0;
 }
 
-.main-nav-menu {
+.main-nav {
+  height: 26px;
+  background:rgba(225,0,0,0.8);
+}
+
+.main-nav-menu-icon {
   width: 25px;
+}
+
+.main-nav-menu {
+  float: right;
+  position:relative;
+}
+
+.nav-list {
+  padding-right: 13px;
+  z-index: 100;
+  cursor: pointer;
+  position:absolute;
+  left: -80px;
+  top: 25px;
+  background:rgba(225,0,0,0.2);
+}
+
+.app-title {
+  font-family: 'Franklin Gothic Medium', 'Franklin Gothic', 'ITC Franklin Gothic', Arial, sans-serif;
+  font-size: 20px;
 }
