@@ -119,8 +119,8 @@ angular.module( 'moviematch.services', [] )
 .factory( 'FetchMovies', function( $http ) {
   return {
     getNext10Movies: function( packageNumber ) {
-      return $http.get('/api/movies/:' + packageNumber)
-      .then( function( res) ) {
+      return $http.get('/api/movies/' + packageNumber)
+      .then( function( res ) {
         return res.data;
       } ,
       function( err ) {
