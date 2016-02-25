@@ -17,10 +17,9 @@ angular.module( 'moviematch.match', ['moviematch.services'] )
   var loadNextMovie = function(){
     if( currMovieIndex === 9 ) {
       currMoviePackage++;
-      fetchNextMovies( currMoviePackage )
-        .then(function(){
-          $scope.currMovie = $scope.moviePackage[0];
-        })
+      fetchNextMovies( currMoviePackage, function() {
+        $scope.currMovie = $scope.moviePackage[0];
+        });
       currMovieIndex = 0;
     }
     else {
@@ -33,11 +32,10 @@ angular.module( 'moviematch.match', ['moviematch.services'] )
   $scope.init = function() {        //as soon as the view is loaded request the first movie-package here
     fetchNextMovies( 0 , function() {
         $scope.currMovie = $scope.moviePackage[0];
-        console.log($scope.currMovie);
       })
   }
   $scope.init();
 
-  $scope.yes = function() { Match.sendVote( $scope.session.id, $scope.user.id, $scope.currMovie.id, true ); }
-  $scope.no = function() { Match.sendVote( $scope.session.id, $scope.user.id, $scope.currMovie.id, false ); }
+  $scope.yes = function() { Match.sendVote( $scope.session.id, $scope.user.id, $scope.currMovie.id, true ); loadNextMovie(); }
+  $scope.no = function() { Match.sendVote( $scope.session.id, $scope.user.id, $scope.currMovie.id, false ); loadNextMovie(); }
 } );
