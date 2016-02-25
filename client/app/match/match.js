@@ -1,7 +1,6 @@
 angular.module( 'moviematch.match', ['moviematch.services'] )
 
 .controller( 'MatchController', function( $scope, Match, Auth, Session, FetchMovies ) {
-
   $scope.session = {};
   $scope.user = {};
 
