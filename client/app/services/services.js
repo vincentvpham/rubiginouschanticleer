@@ -13,7 +13,6 @@ angular.module( 'moviematch.services', [] )
     signup : function( user ) {
       return $http.post( '/api/users/signup', user )
       .then(function( resp ) {
-        console.log("resp", resp.data.token);
         return resp.data.token;
       })
       .catch(function( err ) {
