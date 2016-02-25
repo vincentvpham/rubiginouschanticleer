@@ -1,17 +1,6 @@
 <!-- This is the page that is shown when we are trying to match with the other people in our session -->
 <!-- We should be shown a movie, and then choose 'yes' or 'no' -->
 <div id="match" class="container">
-  <div class="header center row">
-    <!-- visible-xs and -sm denote that the element is visible on a small screen -->
-    <h2 class="col-xs-12 visible-xs visible-sm">
-      <div class="app-title large">Movie Match</div>
-      <div class="session-name large">( {{ session.name }} )</div>
-    </h2>
-    <!-- hidden-xs and hidden-sm denote that the element is invisible on a small screen -->
-    <h2 class="col-xs-12 hidden-xs hidden-sm">
-      <span class="app-title">Movie Match</span> <span class="session-name">( {{ session.name }} )</span>
-    </h2>
-  </div>
   <p class="center"><span class="bold">{{ user.name }}</span>, would you like to see this movie with your friends today?</p>
   <div class="movie">
     <h2 class="center">{{ movie.name }} ({{ movie.year }})</h2>

@@ -2,19 +2,8 @@
 They will press start when everyone has joined -->
 
 <div id="match" class="container">
-  <div class="header center row">
-    <!-- visible-xs and -sm denote that the element is visible on a small screen -->
-    <h2 class="col-xs-12 visible-xs visible-sm">
-      <div class="app-title large">Movie Match</div>
-      <div class="session-name large">{{ sessionName }}</div>
-    </h2>
-    <!-- hidden-xs and hidden-sm denote that the element is invisible on a small screen -->
-    <h2 class="col-xs-12 hidden-xs hidden-sm">
-      <span class="app-title">Movie Match</span> <span>{{ sessionName }}</span>
-    </h2>
-  </div>
   <p class="center">
-    <span class="bold">Hi, {{ username }}!</span>
+    <span class="bold">Hi, {{ user.username }}!</span>
     Once all your friends are here, click start.
   </p>
   <div class="join-group-cnt block-center" ng-repeat="session in sessions">
