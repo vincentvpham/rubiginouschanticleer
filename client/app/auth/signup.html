@@ -2,7 +2,7 @@
 	<h1>Sign Up</h1>
 	<form name='signupForm' ng-submit='signup()' novalidate>
     <div class="row">
-      <input class="col-md-6" name="userInput" type="text" ng-model='user.user' ng-class="{ 'error': signupForm.userInput.$invalid && signupForm.$dirty }" required>
+      <input class="col-md-6" name="userInput" type="text" ng-model='user.username' ng-class="{ 'error': signupForm.userInput.$invalid && signupForm.$dirty }" required>
       <input class="col-md-6" name="pwdInput" type="password" ng-model='user.password' ng-class="{ 'error': signupForm.pwdInput.$invalid && signupForm.$dirty }" required>
     </div>
     <div class="row">
