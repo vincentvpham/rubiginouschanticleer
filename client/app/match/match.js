@@ -5,10 +5,10 @@ angular.module( 'moviematch.match', ['moviematch.services'] )
   $scope.user = {};
 
   $scope.user.name = Auth.getUserName();
-  $scope.user.id = 1;
+  //$scope.user.id = 1;
 
   $scope.session.name = Session.getSession();
-  $scope.session.id = 1;
+  //$scope.session.id = 1;
 
   var currMovieIndex = 0;
   var currMoviePackage = 0;
@@ -44,6 +44,6 @@ angular.module( 'moviematch.match', ['moviematch.services'] )
   }
   $scope.init();
 
-  $scope.yes = function() { Match.sendVote( $scope.session.id, $scope.user.id, $scope.currMovie.id, true ); loadNextMovie(); }
-  $scope.no = function() { Match.sendVote( $scope.session.id, $scope.user.id, $scope.currMovie.id, false ); loadNextMovie(); }
+  $scope.yes = function() { Match.sendVote( $scope.session.name, $scope.user.name, $scope.currMovie.id, true ); loadNextMovie(); }
+  $scope.no = function() { Match.sendVote( $scope.session.name, $scope.user.name, $scope.currMovie.id, false ); loadNextMovie(); }
 } );

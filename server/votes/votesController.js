@@ -29,41 +29,40 @@ var addVote = function( req, res ) {
   var session_user = parseInt( req.body.session_user_id );
   var movie = parseInt( req.body.movie_id );
   var vote = req.body.vote;
-  // User.findOne({where: {username: req.body.username}})
-  // .then(function(user){
-  //   var user = user.dataValues.id;
-  // });
-  // console.log("add vote", user);
-  // Session.findOne({where: {sessionName: req.body.sessionName}})
-  // .then(function(session){
-  //   var session = session.dataValues.id;
-  // });
-  var user = parseInt( req.body.user_id );
-  var session = parseInt( req.body.session_id );
-  if( !movie ) { // if movie is not provided
-    send400( 'Movie ID not provided' );
-    return;
-  } else if( !session_user ) { // if session_user is not provided
-    if( user && session ) { // but user and session are...
-     Session_User.getSessionUserBySessionIdAndUserId( session, user ) // try to look up session_user
-     .then( function( sessionUser ) {
-        session_user = sessionUser.id;
-        if( !session_user ) { // we were not able to look up session_user
-          // Could not find the given user in the given session
-          res.status( 404 );
-          res.send();
+  // var user = parseInt( req.body.user_id );
+  // var session = parseInt( req.body.session_id );
+  User.findOne({where: {username: req.body.username}})
+  .then(function(user){
+    var user = user.dataValues.id;
+    Session.findOne({where: {sessionName: req.body.sessionName}})
+    .then(function(session){
+      var session = session.dataValues.id;
+      if( !movie ) { // if movie is not provided
+        send400( 'Movie ID not provided' );
+        return;
+      } else if( !session_user ) { // if session_user is not provided
+        if( user && session ) { // but user and session are...
+         Session_User.getSessionUserBySessionIdAndUserId( session, user ) // try to look up session_user
+         .then( function( sessionUser ) {
+            session_user = sessionUser.id;
+            if( !session_user ) { // we were not able to look up session_user
+              // Could not find the given user in the given session
+              res.status( 404 );
+              res.send();
+              return;
+            } else { // we were able to look up session_user
+              addVote( session_user, movie, vote );
+            }
+          });
+        } else { // session and user not provided, session_user also not provided
+          send400( 'No session, user, or session_user id provided' );
           return;
-        } else { // we were able to look up session_user
-          addVote( session_user, movie, vote );
         }
-      });
-    } else { // session and user not provided, session_user also not provided
-      send400( 'No session, user, or session_user id provided' );
-      return;
-    }
-  } else { // session_user is provided
-    addVote( session_user, movie, vote );
-  }
+      } else { // session_user is provided
+        addVote( session_user, movie, vote );
+      };
+    });
+  });
 };
 
 var matchHandler = function() {
@@ -128,9 +127,7 @@ var checkMatch = function( req, res, next ) {
         res.json( false );
       } // end if ( isArray )
     } );
-  } );
-  
-
+  } );  
 }
 
 
