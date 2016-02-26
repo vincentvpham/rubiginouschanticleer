@@ -1,4 +1,235 @@
-{
+
+//ONE EXAMPLE-PACKAGE OF 10 MOVIES, ALREADY FORMATTED. TO SEE API RESPONSE: SEE BELOW
+
+
+
+
+var examplePackage = [
+    {
+      "poster_path": "/jjBgi2r5cRt36xF6iNUEhzscEcb.jpg",
+      "adult": false,
+      "overview": "Twenty-two years after the events of Jurassic Park, Isla Nublar now features a fully functioning dinosaur theme park, Jurassic World, as originally envisioned by John Hammond.",
+      "release_date": "2015-06-09",
+      "genre_ids": [
+        28,
+        12,
+        878,
+        53
+      ],
+      "id": 135397,
+      "original_title": "Jurassic World",
+      "original_language": "en",
+      "title": "Jurassic World",
+      "backdrop_path": "/dkMD5qlogeRMiEixC4YNPUvax2T.jpg",
+      "popularity": 28.042069,
+      "vote_count": 3884,
+      "video": false,
+      "vote_average": 6.71
+    },
+    {
+      "poster_path": "/kqjL17yufvn9OVLyXYpvtyrFfak.jpg",
+      "adult": false,
+      "overview": "An apocalyptic story set in the furthest reaches of our planet, in a stark desert landscape where humanity is broken, and most everyone is crazed fighting for the necessities of life. Within this world exist two rebels on the run who just might be able to restore order. There's Max, a man of action and a man of few words, who seeks peace of mind following the loss of his wife and child in the aftermath of the chaos. And Furiosa, a woman of action and a woman who believes her path to survival may be achieved if she can make it across the desert back to her childhood homeland.",
+      "release_date": "2015-05-13",
+      "genre_ids": [
+        878,
+        53,
+        28,
+        12
+      ],
+      "id": 76341,
+      "original_title": "Mad Max: Fury Road",
+      "original_language": "en",
+      "title": "Mad Max: Fury Road",
+      "backdrop_path": "/tbhdm8UJAb4ViCTsulYFL3lxMCd.jpg",
+      "popularity": 24.874131,
+      "vote_count": 3744,
+      "video": false,
+      "vote_average": 7.47
+    },
+    {
+      "poster_path": "/hE24GYddaxB9MVZl1CaiI86M3kp.jpg",
+      "adult": false,
+      "overview": "A cryptic message from Bond’s past sends him on a trail to uncover a sinister organization. While M battles political forces to keep the secret service alive, Bond peels back the layers of deceit to reveal the terrible truth behind SPECTRE.",
+      "release_date": "2015-10-26",
+      "genre_ids": [
+        28,
+        12,
+        80
+      ],
+      "id": 206647,
+      "original_title": "Spectre",
+      "original_language": "en",
+      "title": "Spectre",
+      "backdrop_path": "/wVTYlkKPKrljJfugXN7UlLNjtuJ.jpg",
+      "popularity": 22.938967,
+      "vote_count": 2044,
+      "video": false,
+      "vote_average": 6.29
+    },
+    {
+      "poster_path": "/oXUWEc5i3wYyFnL1Ycu8ppxxPvs.jpg",
+      "adult": false,
+      "overview": "In the 1820s, a frontiersman, Hugh Glass, sets out on a path of vengeance against those who left him for dead after a bear mauling.",
+      "release_date": "2015-12-25",
+      "genre_ids": [
+        37,
+        18,
+        12,
+        53
+      ],
+      "id": 281957,
+      "original_title": "The Revenant",
+      "original_language": "en",
+      "title": "The Revenant",
+      "backdrop_path": "/uS1SkjVviraGfFNgkDwe7ohTm8B.jpg",
+      "popularity": 18.502011,
+      "vote_count": 1456,
+      "video": false,
+      "vote_average": 7.25
+    },
+    {
+      "poster_path": "/fYzpM9GmpBlIC893fNjoWCwE24H.jpg",
+      "adult": false,
+      "overview": "Thirty years after defeating the Galactic Empire, Han Solo and his allies face a new threat from the evil Kylo Ren and his army of Stormtroopers.",
+      "release_date": "2015-12-15",
+      "genre_ids": [
+        28,
+        12,
+        878,
+        14
+      ],
+      "id": 140607,
+      "original_title": "Star Wars: The Force Awakens",
+      "original_language": "en",
+      "title": "Star Wars: The Force Awakens",
+      "backdrop_path": "/c2Ax8Rox5g6CneChwy1gmu4UbSb.jpg",
+      "popularity": 17.27778,
+      "vote_count": 3073,
+      "video": false,
+      "vote_average": 7.75
+    },
+    {
+      "poster_path": "/5JU9ytZJyR3zmClGmVm9q4Geqbd.jpg",
+      "adult": false,
+      "overview": "The year is 2029. John Connor, leader of the resistance continues the war against the machines. At the Los Angeles offensive, John's fears of the unknown future begin to emerge when TECOM spies reveal a new plot by SkyNet that will attack him from both fronts; past and future, and will ultimately change warfare forever.",
+      "release_date": "2015-06-23",
+      "genre_ids": [
+        878,
+        28,
+        53,
+        12
+      ],
+      "id": 87101,
+      "original_title": "Terminator Genisys",
+      "original_language": "en",
+      "title": "Terminator Genisys",
+      "backdrop_path": "/bIlYH4l2AyYvEysmS2AOfjO7Dn8.jpg",
+      "popularity": 16.78077,
+      "vote_count": 1773,
+      "video": false,
+      "vote_average": 6.1
+    },
+    {
+      "poster_path": "/xSE4NBFDzqedwa4AIj99r1Z7ljF.jpg",
+      "adult": false,
+      "overview": "The former World Heavyweight Champion Rocky Balboa serves as a trainer and mentor to Adonis Johnson, the son of his late friend and former rival Apollo Creed.",
+      "release_date": "2015-11-25",
+      "genre_ids": [
+        18
+      ],
+      "id": 312221,
+      "original_title": "Creed",
+      "original_language": "en",
+      "title": "Creed",
+      "backdrop_path": "/nF4kmc4gDRQU4OJiJgk6sZtbJbl.jpg",
+      "popularity": 16.757116,
+      "vote_count": 461,
+      "video": false,
+      "vote_average": 7.26
+    },
+    {
+      "poster_path": "/5aGhaIHYuQbqlHWvWYqMCnj40y2.jpg",
+      "adult": false,
+      "overview": "During a manned mission to Mars, Astronaut Mark Watney is presumed dead after a fierce storm and left behind by his crew. But Watney has survived and finds himself stranded and alone on the hostile planet. With only meager supplies, he must draw upon his ingenuity, wit and spirit to subsist and find a way to signal to Earth that he is alive.",
+      "release_date": "2015-09-30",
+      "genre_ids": [
+        18,
+        12,
+        878
+      ],
+      "id": 286217,
+      "original_title": "The Martian",
+      "original_language": "en",
+      "title": "The Martian",
+      "backdrop_path": "/sy3e2e4JwdAtd2oZGA2uUilZe8j.jpg",
+      "popularity": 15.496639,
+      "vote_count": 2541,
+      "video": false,
+      "vote_average": 7.59
+    },
+    {
+      "poster_path": "/t5tGykRvvlLBULIPsAJEzGg1ylm.jpg",
+      "adult": false,
+      "overview": "A father is without the means to pay for his daughter's medical treatment. As a last resort, he partners with a greedy co-worker to rob a casino. When things go awry they're forced to hijack a city bus.",
+      "release_date": "2015-11-13",
+      "genre_ids": [
+        28,
+        53
+      ],
+      "id": 336004,
+      "original_title": "Heist",
+      "original_language": "en",
+      "title": "Heist",
+      "backdrop_path": "/cBlnfR0n1GA2vPoUQNcbL9pb3VW.jpg",
+      "popularity": 13.133614,
+      "vote_count": 97,
+      "video": false,
+      "vote_average": 5.63
+    },
+    {
+      "poster_path": "/fqe8JxDNO8B8QfOGTdjh6sPCdSC.jpg",
+      "adult": false,
+      "overview": "Bounty hunters seek shelter from a raging blizzard and get caught up in a plot of betrayal and deception.",
+      "release_date": "2015-12-25",
+      "genre_ids": [
+        18,
+        9648,
+        53,
+        37
+      ],
+      "id": 273248,
+      "original_title": "The Hateful Eight",
+      "original_language": "en",
+      "title": "The Hateful Eight",
+      "backdrop_path": "/sSvgNBeBNzAuKl8U8sP50ETJPgx.jpg",
+      "popularity": 12.88405,
+      "vote_count": 1010,
+      "video": false,
+      "vote_average": 7.26
+    }
+];
+
+exports.getMoviePackage = function( packageNumber ){
+  return examplePackage;                                        //only returns exampleData for now
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//THIS IS AN AVERAGE API RETURN FROM THE_MOVIE_DATABASE:
+exports.exampleApiResponse = {
   "page": 1,
   "results": [
     {

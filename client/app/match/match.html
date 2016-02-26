@@ -14,22 +14,22 @@
   </div>
   <p class="center"><span class="bold">{{ user.name }}</span>, would you like to see this movie with your friends today?</p>
   <div class="movie">
-    <h2 class="center">{{ movie.name }} ({{ movie.year }})</h2>
-    <h6 class="center">{{ movie.rating }} | {{ movie.runtime }} | <span ng-repeat="genre in movie.genres">{{ genre }} </span> | ({{ movie.country }})</h6>
+    <h2 class="center">{{ currMovie.original_title }} ({{ currMovie.release_date }})</h2>
+    <h6 class="center">{{ currMovie.vote_average }} | <!-- <span ng-repeat="genre in currMovie.genres">{{ genre }} </span> |  --></h6>
     <div class="row">
       <!-- We want to size the poster appropriately so we can
       see the buttons at the bottom -->
-      <img class="poster col-xs-6" alt="{{ movie.name }} poster" src="{{ movie.poster_path }}">
+      <img class="poster col-xs-6" alt="{{ currMovie.original_title }} poster" src="http://image.tmdb.org/t/p/w500{{ currMovie.poster_path }}">
       <div class="summary col-xs-6">
         <h4>Movie Summary</h4>
-        <p>{{ movie.summary }}</p>
+        <p>{{ currMovie.summary }}</p>
       </div>
     </div>
     <div class="crew">
-      <p><span class="bold">Director: </span>{{ movie.director }}</p>
+      <p><span class="bold">Director: </span>{{ currMovie.director }}</p>
     </div>
     <div class="cast">
-      <p><span class="bold">Starring: </span>{{ movie.cast }}</p>
+      <p><span class="bold">Starring: </span>{{ currMovie.cast }}</p>
     </div>
   </div>
 </div>
