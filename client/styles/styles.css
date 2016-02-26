@@ -101,6 +101,7 @@ hr {
 }
 
 .main-nav-menu {
+  width: 25px;
   float: right;
   position:relative;
 }
