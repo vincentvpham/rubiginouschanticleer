@@ -1,4 +1,4 @@
-angular.module( 'moviematch', [
+var app = angular.module( 'moviematch', [
   'moviematch.auth',
   'moviematch.match',
   'moviematch.prefs',
@@ -7,7 +7,8 @@ angular.module( 'moviematch', [
   'moviematch.showmatch',
   'moviematch.lobby',
   'ngRoute',
-  'btford.socket-io'
+  'btford.socket-io',
+  'moviematch.directive'
   ])
 
 .config( function ( $routeProvider ) {
