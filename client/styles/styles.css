@@ -64,17 +64,12 @@ hr {
   margin: 100px 0 50px 0;
 }
 
-<<<<<<< d0f6cc63a93c77e28855ba285d46e0137d1cc847
-<<<<<<< e66a50fbda01b718253c1931e51579d02c2bc516
-=======
->>>>>>> App named nav bar with pull down menu on right that shows settings, signout, and sessions links
 .main-nav {
   height: 26px;
   background:rgba(225,0,0,0.8);
 }
 
 .main-nav-menu-icon {
-<<<<<<< d0f6cc63a93c77e28855ba285d46e0137d1cc847
   width: 25px;
 }
 
@@ -88,7 +83,6 @@ hr {
   z-index: 100;
   cursor: pointer;
   position: absolute;
-<<<<<<< c9204c47c98a0b07b704d8830472f7f349bee5e5
   left: -80px;
   top: 25px;
   background:rgba(225,0,0,0.2);
@@ -104,12 +98,6 @@ hr {
 .app-title {
   font-family: 'Franklin Gothic Medium', 'Franklin Gothic', 'ITC Franklin Gothic', Arial, sans-serif;
   font-size: 20px;
-=======
-.main-nav-menu {
-=======
->>>>>>> App named nav bar with pull down menu on right that shows settings, signout, and sessions links
-  width: 25px;
->>>>>>> allows clickable image to expand navigation of settings
 }
 
 .main-nav-menu {
@@ -122,8 +110,6 @@ hr {
   z-index: 100;
   cursor: pointer;
   position:absolute;
-=======
->>>>>>> Will only show menu if there is a signed in user; adds the session name if there is a session name;
   left: -80px;
   top: 25px;
   background:rgba(225,0,0,0.2);
