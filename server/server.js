@@ -33,7 +33,11 @@ io.on( 'connect' , function( socket ){
   socket.on('startSession', function(data) {
     socket.join(data.sessionName);
     io.to(data.sessionName).emit('sessionStarted');
+<<<<<<< HEAD
   } );
+=======
+  } )
+>>>>>>> a3896e8050805306796d0e93dd166814bf601a4d
 });
 
 const PORT = 8000;
