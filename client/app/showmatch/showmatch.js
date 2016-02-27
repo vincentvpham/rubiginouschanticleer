@@ -9,9 +9,6 @@ angular.module( 'moviematch.showmatch', [] )
 
     $scope.user.name = "Julie";
 
-    $scope.session.name = "Girls Night Out";
-    
-
     $scope.movie = {
     name: "Gone With The Wind",
     year: "1939",

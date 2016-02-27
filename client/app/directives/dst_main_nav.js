@@ -3,10 +3,14 @@ angular.module( 'moviematch.directive', [] )
 .directive ('dstMainNav',  function( ) {
     return {
       restrict: 'E',
-      controller: function($scope, Session, Auth) {
+      controller: function( $scope, Session, Auth ) {
         $scope.expand = false;
         $scope.lastEventType;
-        $scope.sessionName = Session.getSession();
+        Session.getSession();
+        Session.getSession()
+        .then( function( session ) {
+          $scope.sessionName = session.sessionName;
+        })
         $scope.username = Auth.getUserName();
         $scope.toggleNavList = function(ev){
           console.log("toggle called");
