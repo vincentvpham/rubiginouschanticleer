@@ -14,6 +14,7 @@ angular.module( 'moviematch.auth', [] )
     }, 2000 );
   }
 
+
   $scope.signin = function () {
     Auth.signin( $scope.user )
       .then( function ( token ) {
@@ -22,7 +23,7 @@ angular.module( 'moviematch.auth', [] )
         $location.path( '/sessions' );
       } )
       .catch( function ( error ) {
-        $scope.error.userInput = "There was an error logging in. Please double check your username and password.";
+        $scope.error.signinError = "There was an error logging in. Please double check your username and password.";
         console.error( error );
       } );
   };
@@ -35,7 +36,7 @@ angular.module( 'moviematch.auth', [] )
         $location.path( '/sessions' );
       })
       .catch( function ( error ) {
-        $scope.error.userInput = "There was an error signing up. It's possible that username already exists.";
+        $scope.error.signupError = "There was an error signing up. It's possible that username already exists.";
         console.error( error );
       });
   };
