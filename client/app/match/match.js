@@ -51,9 +51,17 @@ angular.module( 'moviematch.match', ['moviematch.services'] )
   });
 
   $scope.yes = function() {
-    Match.sendVote( $scope.session.name, $scope.user.name, $scope.currMovie.id, true );
+    Match.sendVote( $scope.session.name, $scope.user.name, $scope.currMovie.id, true )
     // For every 'yes' we want to double check to see if we have a match. If we do,
     // we want to send a socket event out to inform the server.
+    .then( function() {
+      Match.checkMatch( $scope.session, $scope.currMovie )
+      .then( function( result ) {
+        if( result === true ) {
+          Socket.emit( 'foundMatch', { sessionName: $scope.session.name, movie: $scope.currMovie } );
+        }
+      });
+    });
     loadNextMovie();
   }
   $scope.no = function() {

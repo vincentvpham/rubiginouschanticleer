@@ -103,6 +103,20 @@ angular.module( 'moviematch.services', [] )
 
     matchRedirect: function() {
       $location.path( '/showmatch' );
+    },
+
+    checkMatch: function( session, movie ) {
+      // expects session and movie
+      // Calls /api/sessions/:sid/match/:mid
+      // Should get back either 'false' or the data for the matched movie
+      return $http.get(
+        '/api/sessions/' + session.id + '/match/' + movie.id
+      )
+      .then( function( response ) {
+        return response;
+      }, function( err ) {
+        console.error( err );
+      });
     }
 
   }
