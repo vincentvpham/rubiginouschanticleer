@@ -3,7 +3,7 @@ var Session = require( './sessions' );
 
 module.exports = {
 
-  getAllSessions: function( reqw, res, next ) {
+  getAllSessions: function( req, res, next ) {
     Session.findAll()
     .then( function( sessions ) {
       res.send( sessions );
