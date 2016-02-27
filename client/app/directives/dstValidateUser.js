@@ -18,6 +18,7 @@ angular.module( 'moviematch.dstValidateUser', [] )
              }, function rejected() {
                //username does not exist, therefore this validation passes
                scope.error.userInput = '';
+               scope.error.pwdInput = '';
                return true;
              });
            };
