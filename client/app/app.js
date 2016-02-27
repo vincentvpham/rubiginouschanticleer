@@ -38,7 +38,7 @@ var app = angular.module( 'moviematch', [
       templateUrl: 'app/lobby/lobby.html',
       controller: 'LobbyController'
     })
-    .when( '/showmatch', {
+    .when( '/showmatch/:id', {
       templateUrl: 'app/showmatch/showmatch.html',
       controller: 'ShowmatchController'
     })

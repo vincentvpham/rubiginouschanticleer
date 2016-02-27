@@ -106,8 +106,8 @@ angular.module( 'moviematch.services', [] )
       } );
     },
 
-    matchRedirect: function() {
-      $location.path( '/showmatch' );
+    matchRedirect: function( id ) {
+      $location.path( '/showmatch/' + id );
     },
 
     checkMatch: function( session, movie ) {
