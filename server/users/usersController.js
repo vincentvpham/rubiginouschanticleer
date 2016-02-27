@@ -24,7 +24,7 @@ module.exports = {
   },
 
   validate: function (request, response) {
-    var username = request.body.username;
+    var username = request.params.user;
 
     User.findOne({where: {username: username}})
       .then(function (user) {
@@ -35,9 +35,9 @@ module.exports = {
           fulfill the validation and a status level
           of 4xx in order to reject the validation.
           */
-          response.send(200);
-        } else {
           response.send(400);
+        } else {
+          response.send(200);
         }
       })
     },
