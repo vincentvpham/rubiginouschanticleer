@@ -2,10 +2,10 @@ var express = require( 'express' );
 var db = require( './config/db' );
 var app = express();
 
-var http = require( 'http' ).Server(app);
+var http = require( 'http' ).Server( app );
 var io = require( 'socket.io' )( http );
-var Session = require('./sessions/sessions');
-var User = require('./users/users');
+var Session = require( './sessions/sessions' );
+var User = require( './users/users' );
 
 io.on( 'connect' , function( socket ){
   console.log( 'we are connected!!' );
@@ -13,26 +13,26 @@ io.on( 'connect' , function( socket ){
     console.log( 'were not connected anymore' );
   });
   //this recieves the create event emitted in client/sessions/sessions.js-emitCreate
-  socket.on('session', function(data) {
-    Session.findOne({where: {sessionName: data.sessionName}})
-    .then( function(session) {
+  socket.on( 'session', function( data ) {
+    Session.findOne( { where: { sessionName: data.sessionName } } )
+    .then( function( session ) {
       //this function emits an event named newSession and sends the newly created session
-      socket.emit('newSession', session);
+      socket.emit( 'newSession', session );
     } );
   } );
   //this function listens to the new join event in client/sessions/sessions.js-emitJoin
-  socket.on('newJoin', function(data) {
+  socket.on( 'newJoin', function( data ) {
     //this function creates a new or joins an existing socket-room
-    socket.join(data.sessionName);
-    User.findOne( {where: {username: data.username}} )
-    .then( function(user) {
+    socket.join( data.sessionName );
+    User.findOne( { where: { username: data.username } } )
+    .then( function( user ) {
       //this function emits a newUser event and the new user to a specific room named the session name
-      io.to(data.sessionName).emit('newUser', user);
+      io.to( data.sessionName ).emit('newUser', user);
     } );
   } );
-  socket.on('startSession', function(data) {
-    socket.join(data.sessionName);
-    io.to(data.sessionName).emit('sessionStarted');
+  socket.on( 'startSession', function( data ) {
+    socket.join( data.sessionName );
+    io.to( data.sessionName ).emit( 'sessionStarted' );
   } );
 });
 
