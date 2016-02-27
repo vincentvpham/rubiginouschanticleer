@@ -1,4 +1,4 @@
-
+var _ = require( 'underscore' );
 //ONE EXAMPLE-PACKAGE OF 10 MOVIES, ALREADY FORMATTED. TO SEE API RESPONSE: SEE BELOW
 
 
@@ -209,6 +209,16 @@ var examplePackage = [
       "vote_average": 7.26
     }
 ];
+
+exports.getAllMovies = function() {
+  return examplePackage;
+};
+
+exports.getMovie = function( id ) {
+  return _.find( exports.getAllMovies(), function( movie ) {
+    return movie.id === id;
+  });
+};
 
 exports.getMoviePackage = function( packageNumber ){
   return examplePackage;                                        //only returns exampleData for now

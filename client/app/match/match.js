@@ -47,8 +47,9 @@ angular.module( 'moviematch.match', ['moviematch.services'] )
   $scope.init();
 
   // Listen for the signal to redirect to a 'match found' page.
-  Socket.on( 'matchRedirect', function( data ) {
-    Match.matchRedirect();
+  Socket.on( 'matchRedirect', function( id ) {
+    // id refers to the id of the movie that the group matched on
+    Match.matchRedirect( id );
   });
 
   $scope.yes = function() {
