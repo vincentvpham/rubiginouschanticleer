@@ -5,7 +5,7 @@ var User = require( '../users/users' )
 module.exports = {
 
   getUsersInOneSession: function( req, res, next ) {
-    var sessionName = req.params.sessionName.slice(1);
+    var sessionName = req.params.sessionName;
     Session.findOne( {where: {sessionName: sessionName}} )
     .then( function(session) {
       Session_User.findAll( {where: {session_id: session.id}} )
