@@ -12,12 +12,14 @@ io.on( 'connect' , function( socket ){
   socket.on( 'disconnect', function() {
     console.log( 'were not connected anymore' );
   });
+
+
   //this recieves the create event emitted in client/sessions/sessions.js-emitCreate
   socket.on( 'session', function( data ) {
     Session.findOne( { where: { sessionName: data.sessionName } } )
     .then( function( session ) {
       //this function emits an event named newSession and sends the newly created session
-      socket.emit( 'newSession', session );
+      io.emit( 'newSession', session.dataValues );
     } );
   } );
   //this function listens to the new join event in client/sessions/sessions.js-emitJoin
@@ -27,9 +29,10 @@ io.on( 'connect' , function( socket ){
     User.findOne( { where: { username: data.username } } )
     .then( function( user ) {
       //this function emits a newUser event and the new user to a specific room named the session name
-      io.to( data.sessionName ).emit('newUser', user);
+      io.to( data.sessionName ).emit( 'newUser', user );
     } );
   } );
+
   socket.on( 'startSession', function( data ) {
     socket.join( data.sessionName );
     io.to( data.sessionName ).emit( 'sessionStarted' );
