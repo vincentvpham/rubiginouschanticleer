@@ -44,7 +44,7 @@ const PORT = 8000;
 require( './config/middleware' )( app, express );
 require( './config/routes' )( app, express );
 
-http.listen( PORT );
+http.listen( process.env.PORT || PORT );
 console.log( 'Listening on port ' + PORT );
 
 
