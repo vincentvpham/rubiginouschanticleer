@@ -62,8 +62,9 @@ angular.module( 'moviematch.services', [] )
     joinSession: function( sessionName, username, callback ) {
       return $http.post( '/api/sessions/users', { sessionName: sessionName, username: username } )
       .then( function( response ) {
+        console.log( "joinSession", sessionName );
         callback( username, sessionName ); // used for emitting session data
-        $location.path('/lobby');
+        $location.path( '/lobby' );
         return response;
       }, function( err ) {
         console.error( err );

@@ -39,6 +39,7 @@ module.exports = {
     // responds with data for that user in that session
     var session = parseInt( req.params.session_id );
     var user = parseInt( req.params.user_id );
+    
     console.log("getSessionUserBySessionAndUser", session, user);
     if( !session ) {
       res.status( 400 );
@@ -63,7 +64,7 @@ module.exports = {
     var username = req.body.username;
     var sessionName = req.body.sessionName;
 
-    User.findOne( {where: {username : username}} )
+    User.findOne( {where: {username : username} } )
     .then( function( user ) {
       Session.findOne( {where: { sessionName : sessionName } } )
       .then( function( session ) {
