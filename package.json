@@ -51,6 +51,8 @@
     "jwt-simple": "^0.4.1",
     "mocha": "^2.4.5",
     "morgan": "^1.6.1",
+    "phantomjs-prebuilt": "^2.1.4",
+    "requirejs": "^2.1.22",
     "sequelize": "^3.19.3",
     "socket.io": "^1.4.5",
     "sockets": "^0.4.2",
@@ -62,6 +64,16 @@
     "chai": "*",
     "expect.js": "^0.3.1",
     "grunt-mocha-test": "^0.12.7",
-    "mocha": "*"
+    "mocha": "*",
+    "karma": "^0.13.21",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-cli": "^0.1.2",
+    "karma-mocha": "^0.2.2",
+    "karma-nyan-reporter": "^0.2.3",
+    "karma-phantomjs-launcher": "^1.9.0",
+    "karma-requirejs": "^0.2.5",
+    "karma-unicorn-reporter": "^0.1.4",
+    "nyan": "^1.0.3"
   }
 }
