@@ -63,8 +63,7 @@ angular.module( 'moviematch.services', [] )
       return $http.post( '/api/sessions/users', { sessionName: sessionName, username: username } )
       .then( function( response ) {
         callback( username, sessionName ); // used for emitting session data
-        $location.path('/lobby');
-        callback( username, sessionName );
+        $location.path( '/lobby' );
         return response;
       }, function( err ) {
         console.error( err );
@@ -76,14 +75,21 @@ angular.module( 'moviematch.services', [] )
     }, 
 
     getSession: function() {
-      return $window.localStorage.getItem( 'sessionName' );
+      var sessionName = $window.localStorage.getItem( 'sessionName' );
+      return $http.get( '/api/sessions/' + sessionName )
+      .then( function( session ) {
+        return session.data;
+      }, function( err ) {
+        console.error( err );
+      });
     }
 
   }
 } )
 
-.factory( 'Match', function( $http ) {
+.factory( 'Match', function( $http, $location ) {
   return {
+
     sendVote: function( sessionName, username, movieID, vote ) {
       return $http.post( // returns a promise; if you want to make use of a callback simply use .then on the return value.
         '/api/votes', // expect this endpoint to take a json object
@@ -98,15 +104,34 @@ angular.module( 'moviematch.services', [] )
       function( err ) { // if the promise is rejected
         console.error( err );
       } );
+    },
+
+    matchRedirect: function() {
+      $location.path( '/showmatch' );
+    },
+
+    checkMatch: function( session, movie ) {
+      // expects session and movie
+      // Calls /api/sessions/:sid/match/:mid
+      // Should get back either 'false' or the data for the matched movie
+      return $http.get(
+        '/api/sessions/' + session.id + '/match/' + movie.id
+      )
+      .then( function( response ) {
+        return response.data;
+      }, function( err ) {
+        console.error( err );
+      });
     }
+
   }
 } )
 
 .factory( 'Lobby', function( $http ) {
   return {
     getUsersInOneSession: function( sessionName ) {
-      return $http.get('/api/sessions/:' + sessionName)
-      .then( function(  res ) {
+      return $http.get( '/api/sessions/users/' + sessionName )
+      .then( function( res ) {
         return res.data;
       } , 
       function( err ) {
@@ -119,7 +144,7 @@ angular.module( 'moviematch.services', [] )
 .factory( 'FetchMovies', function( $http ) {
   return {
     getNext10Movies: function( packageNumber ) {
-      return $http.get('/api/movies/' + packageNumber)
+      return $http.get('/api/movies/package/' + packageNumber)
       .then( function( res ) {
         return res.data;
       } ,

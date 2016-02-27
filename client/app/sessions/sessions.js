@@ -29,7 +29,7 @@ angular.module( 'moviematch.sessions', [] )
     $scope.joinSession( $scope.sessionName );
   };
   $scope.joinSession = function( sessionName ) { // sessionName is from a given session in the view, or from creation
-    Session.setSession( sessionName )
+    Session.setSession( sessionName );
     Session.joinSession( sessionName, $scope.username, $scope.emitJoin );
   };
 

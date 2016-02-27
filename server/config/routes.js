@@ -22,9 +22,9 @@ module.exports = function ( app, express ) {
   app.get('/api/genres/:genre', genresController.getGenre );
 
   /* MOVIES */
-  app.get('/api/movies', moviesController.getAllMovies);
-  app.get('/api/movies/:number', moviesController.getMoviePackage);
-  // app.get('/api/movies/:movie', moviesController.getMovie);
+  app.get('/api/movies', moviesController.getAllMovies );
+  app.get('/api/movies/package/:number', moviesController.getMoviePackage );
+  app.get('/api/movies/:movie_id', moviesController.getMovie );
 
   /* PREFS */
   app.get('/api/prefs', prefsController.getPrefs );
@@ -40,18 +40,18 @@ module.exports = function ( app, express ) {
   app.post('/api/votes', votesController.addVote );
 
   /* SESSIONS_USERS */
+  app.get('/api/sessions/users/:sessionName', sessions_usersController.getUsersInOneSession );
+  app.get('/api/sessions/:sessionName', sessionsController.getSessionByName );
   app.get('/api/sessions/:session_id/:user_id', sessions_usersController.getSessionUserBySessionAndUser );
-  app.get('/api/sessions/:sessionName', sessions_usersController.getUsersInOneSession );
   app.post('/api/sessions/users', sessions_usersController.addOneUser );
 
   /* MATCHING */
   // This endpoint answers the question, 'For session <id>, do we currently have a match on movie <id>?'
   app.get('/api/sessions/:session_id/match/:movie_id', votesController.checkMatch );
 
-
   // If a request is sent somewhere other than the routes above,
   // send it through our custom error handler
-  app.use(helpers.errorLogger );
-  app.use(helpers.errorHandler );
+  app.use( helpers.errorLogger );
+  app.use( helpers.errorHandler );
 
 };

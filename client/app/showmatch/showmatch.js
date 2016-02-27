@@ -6,7 +6,6 @@ angular.module( 'moviematch.showmatch', [] )
     $scope.user = {};
     $scope.imgPath = 'http://image.tmdb.org/t/p/w500';
 
-
     $scope.moviePackage = [
       {
         "poster_path": "/jjBgi2r5cRt36xF6iNUEhzscEcb.jpg",
