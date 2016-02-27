@@ -14,7 +14,6 @@ angular.module( 'moviematch.auth', [] )
     }, 2000 );
   }
 
-
   $scope.signin = function () {
     Auth.signin( $scope.user )
       .then( function ( token ) {
