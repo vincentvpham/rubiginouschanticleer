@@ -22,9 +22,8 @@ module.exports = function ( app, express ) {
   app.get('/api/genres/:genre', genresController.getGenre );
 
   /* MOVIES */
-  app.get('/api/movies', moviesController.getAllMovies);
-  app.get('/api/movies/:number', moviesController.getMoviePackage);
-  // app.get('/api/movies/:movie', moviesController.getMovie);
+  app.get('/api/movies', moviesController.getAllMovies );
+  app.get('/api/movies/:movie', moviesController.getMovie );
 
   /* PREFS */
   app.get('/api/prefs', prefsController.getPrefs );
@@ -32,7 +31,6 @@ module.exports = function ( app, express ) {
 
   /* SESSIONS */
   app.get('/api/sessions', sessionsController.getAllSessions );
-  app.get('/api/sessions/:sessionName', sessionsController.getSessionByName );
   app.post('/api/sessions', sessionsController.addSession );
 
   /* VOTES */
@@ -42,6 +40,7 @@ module.exports = function ( app, express ) {
 
   /* SESSIONS_USERS */
   app.get('/api/sessions/users/:sessionName', sessions_usersController.getUsersInOneSession );
+  app.get('/api/sessions/:sessionName', sessionsController.getSessionByName );
   app.get('/api/sessions/:session_id/:user_id', sessions_usersController.getSessionUserBySessionAndUser );
   app.post('/api/sessions/users', sessions_usersController.addOneUser );
 
