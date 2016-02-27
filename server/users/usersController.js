@@ -19,7 +19,7 @@ module.exports = {
           } else {
             response.redirect('/signin');
           }
-        } 
+        }
     })
   },
 
@@ -43,6 +43,25 @@ module.exports = {
         }
       })
   },
+
+  validate: function (request, response) {
+    var username = request.params.user;
+
+    User.findOne({where: {username: username}})
+      .then(function (user) {
+        if (!user) {
+          /* Please note that if $http is used then
+          it is important that the server returns a
+          success HTTP response code in order to
+          fulfill the validation and a status level
+          of 4xx in order to reject the validation.
+          */
+          response.send(400);
+        } else {
+          response.send(200);
+        }
+      })
+    },
 
   signout: function() {}
 

@@ -8,7 +8,8 @@ var app = angular.module( 'moviematch', [
   'moviematch.lobby',
   'ngRoute',
   'btford.socket-io',
-  'moviematch.directive'
+  'moviematch.directive',
+  'moviematch.dstValidateUser'
   ])
 
 .config( function ( $routeProvider ) {
