@@ -13,7 +13,6 @@ io.on( 'connect' , function( socket ){
     console.log( 'were not connected anymore' );
   });
 
-
   //this recieves the create event emitted in client/sessions/sessions.js-emitCreate
   socket.on( 'session', function( data ) {
     Session.findOne( { where: { sessionName: data.sessionName } } )
@@ -22,6 +21,7 @@ io.on( 'connect' , function( socket ){
       io.emit( 'newSession', session.dataValues );
     } );
   } );
+
   //this function listens to the new join event in client/sessions/sessions.js-emitJoin
   socket.on( 'newJoin', function( data ) {
     //this function creates a new or joins an existing socket-room
@@ -37,6 +37,12 @@ io.on( 'connect' , function( socket ){
     socket.join( data.sessionName );
     io.to( data.sessionName ).emit( 'sessionStarted' );
   } );
+
+  // This listener handles broadcasting a matched movie to connected clients.
+  socket.on( 'foundMatch', function( data ) {
+    socket.join( data.sessionName );
+    io.to( data.sessionName ).emit( 'matchRedirect', data.movie.id );
+  });
 });
 
 const PORT = 8000;
@@ -46,7 +52,5 @@ require( './config/routes' )( app, express );
 
 http.listen( process.env.PORT || PORT );
 console.log( 'Listening on port ' + PORT );
-
-
 
 module.exports = app;
