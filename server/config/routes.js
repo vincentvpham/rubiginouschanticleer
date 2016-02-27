@@ -32,6 +32,7 @@ module.exports = function ( app, express ) {
 
   /* SESSIONS */
   app.get('/api/sessions', sessionsController.getAllSessions );
+  app.get('/api/sessions/:sessionName', sessionsController.getSessionByName );
   app.post('/api/sessions', sessionsController.addSession );
 
   /* VOTES */
@@ -41,7 +42,7 @@ module.exports = function ( app, express ) {
 
   /* SESSIONS_USERS */
   app.get('/api/sessions/:session_id/:user_id', sessions_usersController.getSessionUserBySessionAndUser );
-  app.get('/api/sessions/:sessionName', sessions_usersController.getUsersInOneSession );
+  app.get('/api/sessions/users/:sessionName', sessions_usersController.getUsersInOneSession );
   app.post('/api/sessions/users', sessions_usersController.addOneUser );
 
   /* MATCHING */
