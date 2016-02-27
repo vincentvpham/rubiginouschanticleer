@@ -33,17 +33,10 @@ Session_User.getSessionUserBySessionIdAndUserId = function( sessionID, userID ) 
 };
 
 Session_User.countUsersInOneSession = function( sessionID ) {
-  /* STUB FOR TESTING, REMOVE WHEN THIS FUNCTION IS IMPLEMENTED */
-  return {
-    then: function( resolve ) {
-      if( sessionID == 1 ) {
-        resolve( 2 );
-      } else {
-        resolve( 0 );
-      }
-    }
-  }
-  /* END STUB */
+  return Session_User.count( { where: { id: sessionId } } )
+  .catch( function( err ) {
+    helpers.errorLogger( err );
+  });
 };
 
 module.exports = Session_User; 
