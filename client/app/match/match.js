@@ -57,7 +57,7 @@ angular.module( 'moviematch.match', ['moviematch.services'] )
     .then( function() {
       Match.checkMatch( $scope.session, $scope.currMovie )
       .then( function( result ) {
-        if( result === true ) {
+        if( result == true ) {
           Socket.emit( 'foundMatch', { sessionName: $scope.session.name, movie: $scope.currMovie } );
         }
       });
