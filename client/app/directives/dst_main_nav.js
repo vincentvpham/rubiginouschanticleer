@@ -12,7 +12,6 @@ angular.module( 'moviematch.directive', [] )
         });
         $scope.username = Auth.getUserName();
         $scope.toggleNavList = function(ev){
-          console.log("toggle called");
           if (!(ev.type === 'mouseleave' && $scope.lastEventType === 'click')) {
             $scope.expand = !$scope.expand;
           }

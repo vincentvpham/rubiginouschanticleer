@@ -39,7 +39,7 @@ module.exports = {
     // responds with data for that user in that session
     var session = parseInt( req.params.session_id );
     var user = parseInt( req.params.user_id );
-    
+
     console.log("getSessionUserBySessionAndUser", session, user);
     if( !session ) {
       res.status( 400 );

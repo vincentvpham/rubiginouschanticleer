@@ -18,7 +18,6 @@ angular.module( 'moviematch.match', ['moviematch.services'] )
   var fetchNextMovies = function( packageNumber, callback ){
     FetchMovies.getNext10Movies( packageNumber )
       .then(function( data ){
-        console.log(data);
         $scope.moviePackage = data;
         callback();
       })
