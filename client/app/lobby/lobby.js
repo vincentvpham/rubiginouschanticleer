@@ -5,16 +5,19 @@ angular.module( 'moviematch.lobby', [] )
 
   Session.getSession()
   .then( function( session ) {
+
     $scope.session = session;
+    
+    Lobby.getUsersInOneSession( $scope.session.sessionName )
+    .then( function( users ){
+      $scope.users = users;
+    } );
+
   });
 
   $scope.username = Auth.getUserName();
   $scope.users = [];
 
-  Lobby.getUsersInOneSession( $scope.session.sessionName )
-  .then( function( users ){
-    $scope.users = users;
-  } );
 
   //this function is listening to any newUser event and recieves/appends the new user
   Socket.on( 'newUser', function( data ) {
