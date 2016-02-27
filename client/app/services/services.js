@@ -64,7 +64,6 @@ angular.module( 'moviematch.services', [] )
       .then( function( response ) {
         callback( username, sessionName ); // used for emitting session data
         $location.path('/lobby');
-        callback( username, sessionName );
         return response;
       }, function( err ) {
         console.error( err );
@@ -76,7 +75,13 @@ angular.module( 'moviematch.services', [] )
     }, 
 
     getSession: function() {
-      return $window.localStorage.getItem( 'sessionName' );
+      var sessionName = $window.localStorage.getItem( 'sessionName' );
+      return $http.get( '/api/sessions/' + sessionName )
+      .then( function( response ) {
+        return response;
+      }, function( err ) {
+        console.error( err );
+      });
     }
 
   }
