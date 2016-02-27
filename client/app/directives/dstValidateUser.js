@@ -7,7 +7,6 @@ angular.module( 'moviematch.dstValidateUser', [] )
       link: function (scope, elm, attrs, ngModel ) {
         ngModel.$asyncValidators.uniqueUsername = function(modelValue, viewValue) {
           var value = modelValue || viewValue;
-
           // Lookup user by username
           return $http.get('/api/users/' + value)
             .then(function resolved() {
