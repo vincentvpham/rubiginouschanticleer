@@ -45,6 +45,12 @@ angular.module( 'moviematch.match', ['moviematch.services'] )
   }
   $scope.init();
 
-  $scope.yes = function() { Match.sendVote( $scope.session.name, $scope.user.name, $scope.currMovie.id, true ); loadNextMovie(); }
-  $scope.no = function() { Match.sendVote( $scope.session.name, $scope.user.name, $scope.currMovie.id, false ); loadNextMovie(); }
+  $scope.yes = function() {
+    Match.sendVote( $scope.session.name, $scope.user.name, $scope.currMovie.id, true );
+    loadNextMovie();
+  }
+  $scope.no = function() {
+    Match.sendVote( $scope.session.name, $scope.user.name, $scope.currMovie.id, false );
+    loadNextMovie();
+  }
 } );
