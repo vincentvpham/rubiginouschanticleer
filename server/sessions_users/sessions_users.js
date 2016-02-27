@@ -36,6 +36,7 @@ Session_User.countUsersInOneSession = function( sessionID ) {
   return Session_User.count( { where: { session_id: sessionID } } )
   .then( function( result ) {
     console.log( 'Count', sessionID, result );
+    return result;
   })
   .catch( function( err ) {
     helpers.errorLogger( err );
