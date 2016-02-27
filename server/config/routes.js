@@ -23,7 +23,7 @@ module.exports = function ( app, express ) {
 
   /* MOVIES */
   app.get('/api/movies', moviesController.getAllMovies );
-  app.get('/api/movies/:movie', moviesController.getMovie );
+  app.get('/api/movies/:number', moviesController.getMoviePackage);
 
   /* PREFS */
   app.get('/api/prefs', prefsController.getPrefs );
@@ -48,10 +48,9 @@ module.exports = function ( app, express ) {
   // This endpoint answers the question, 'For session <id>, do we currently have a match on movie <id>?'
   app.get('/api/sessions/:session_id/match/:movie_id', votesController.checkMatch );
 
-
   // If a request is sent somewhere other than the routes above,
   // send it through our custom error handler
-  app.use(helpers.errorLogger );
-  app.use(helpers.errorHandler );
+  app.use( helpers.errorLogger );
+  app.use( helpers.errorHandler );
 
 };
