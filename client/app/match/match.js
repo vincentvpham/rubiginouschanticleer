@@ -60,10 +60,11 @@ angular.module( 'moviematch.match', ['moviematch.services'] )
       .then( function( result ) {
         if( result ) {
           Socket.emit( 'foundMatch', { sessionName: $scope.session.sessionName, movie: $scope.currMovie } );
+        } else {
+          loadNextMovie(); 
         }
       });
     });
-    loadNextMovie();
   }
   $scope.no = function() {
     Match.sendVote( $scope.session.sessionName, $scope.user.name, $scope.currMovie.id, false );
