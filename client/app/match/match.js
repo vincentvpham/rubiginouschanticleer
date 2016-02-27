@@ -3,6 +3,7 @@ angular.module( 'moviematch.match', ['moviematch.services'] )
 .controller( 'MatchController', function( $scope, Match, Auth, Session, FetchMovies ) {
   $scope.session = {};
   $scope.user = {};
+  $scope.imgPath = 'http://image.tmdb.org/t/p/w500';
 
   $scope.user.name = Auth.getUserName();
   //$scope.user.id = 1;
@@ -13,7 +14,7 @@ angular.module( 'moviematch.match', ['moviematch.services'] )
   var currMovieIndex = 0;
   var currMoviePackage = 0;
 
-  var fetchNextMovies = function( packageNumber, callback ){         
+  var fetchNextMovies = function( packageNumber, callback ){
     FetchMovies.getNext10Movies( packageNumber )
       .then(function( data ){
         console.log(data);
@@ -34,7 +35,7 @@ angular.module( 'moviematch.match', ['moviematch.services'] )
       currMovieIndex++;
       $scope.currMovie = $scope.moviePackage[currMovieIndex];
     }
-    
+
   };
 
   $scope.init = function() {        //as soon as the view is loaded request the first movie-package here
