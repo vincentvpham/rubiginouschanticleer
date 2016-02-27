@@ -118,7 +118,7 @@ angular.module( 'moviematch.services', [] )
         '/api/sessions/' + session.id + '/match/' + movie.id
       )
       .then( function( response ) {
-        return response;
+        return response.data;
       }, function( err ) {
         console.error( err );
       });
