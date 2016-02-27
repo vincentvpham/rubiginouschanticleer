@@ -46,6 +46,7 @@
     "body-parser": "^1.15.0",
     "bower": "^1.7.7",
     "express": "^4.13.4",
+    "grunt": "^0.4.5",
     "jwt-simple": "^0.4.1",
     "morgan": "^1.6.1",
     "phantomjs-prebuilt": "^2.1.4",
@@ -58,6 +59,7 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "grunt-karma": "^0.12.1",
     "karma": "^0.13.21",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^0.2.2",
