@@ -43,6 +43,7 @@ angular.module( 'moviematch.services', [] )
     createSession: function( sessionName, callback ) {
       return $http.post( '/api/sessions', { sessionName: sessionName } )
       .then( function( response ) {
+        $location.path('/lobby');
         callback( sessionName ); // used for emitting session data
         return response;
       }, function( err ) {
