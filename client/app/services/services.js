@@ -125,7 +125,7 @@ angular.module( 'moviematch.services', [] )
 .factory( 'Lobby', function( $http ) {
   return {
     getUsersInOneSession: function( sessionName ) {
-      return $http.get('/api/sessions/:' + sessionName)
+      return $http.get( '/api/sessions/users/:' + sessionName )
       .then( function(  res ) {
         return res.data;
       } , 
