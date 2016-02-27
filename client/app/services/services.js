@@ -78,7 +78,7 @@ angular.module( 'moviematch.services', [] )
       var sessionName = $window.localStorage.getItem( 'sessionName' );
       return $http.get( '/api/sessions/' + sessionName )
       .then( function( session ) {
-        return session;
+        return session.data;
       }, function( err ) {
         console.error( err );
       });
@@ -130,7 +130,7 @@ angular.module( 'moviematch.services', [] )
 .factory( 'Lobby', function( $http ) {
   return {
     getUsersInOneSession: function( sessionName ) {
-      return $http.get( '/api/sessions/users/:' + sessionName )
+      return $http.get( '/api/sessions/users/' + sessionName )
       .then( function(  res ) {
         return res.data;
       } , 
