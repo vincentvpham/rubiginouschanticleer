@@ -1,6 +1,6 @@
 angular.module( 'moviematch.match', ['moviematch.services'] )
 
-.controller( 'MatchController', function( $scope, Match, Auth, Session, FetchMovies ) {
+.controller( 'MatchController', function( $scope, Match, Auth, Session, FetchMovies, Socket ) {
   $scope.session = {};
   $scope.user = {};
   $scope.imgPath = 'http://image.tmdb.org/t/p/w500';
@@ -45,8 +45,15 @@ angular.module( 'moviematch.match', ['moviematch.services'] )
   }
   $scope.init();
 
+  // Listen for the signal to redirect to a 'match found' page.
+  Socket.on( 'matchRedirect', function( data ) {
+    Match.matchRedirect();
+  });
+
   $scope.yes = function() {
     Match.sendVote( $scope.session.name, $scope.user.name, $scope.currMovie.id, true );
+    // For every 'yes' we want to double check to see if we have a match. If we do,
+    // we want to send a socket event out to inform the server.
     loadNextMovie();
   }
   $scope.no = function() {

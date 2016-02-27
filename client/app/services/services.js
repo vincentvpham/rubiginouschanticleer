@@ -82,8 +82,9 @@ angular.module( 'moviematch.services', [] )
   }
 } )
 
-.factory( 'Match', function( $http ) {
+.factory( 'Match', function( $http, $location ) {
   return {
+
     sendVote: function( sessionName, username, movieID, vote ) {
       return $http.post( // returns a promise; if you want to make use of a callback simply use .then on the return value.
         '/api/votes', // expect this endpoint to take a json object
@@ -98,7 +99,12 @@ angular.module( 'moviematch.services', [] )
       function( err ) { // if the promise is rejected
         console.error( err );
       } );
+    },
+
+    matchRedirect: function() {
+      $location.path( '/showmatch' );
     }
+
   }
 } )
 
