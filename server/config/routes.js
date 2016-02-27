@@ -24,7 +24,7 @@ module.exports = function ( app, express ) {
   /* MOVIES */
   app.get('/api/movies', moviesController.getAllMovies );
   app.get('/api/movies/package/:number', moviesController.getMoviePackage );
-  app.get('/api/movies/:movie', moviesController.getMovie );
+  app.get('/api/movies/:movie_id', moviesController.getMovie );
 
   /* PREFS */
   app.get('/api/prefs', prefsController.getPrefs );
