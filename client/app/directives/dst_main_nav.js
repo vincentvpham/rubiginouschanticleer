@@ -2,11 +2,12 @@ angular.module( 'moviematch.directive', [] )
 
 .directive ('dstMainNav',  function( ) {
     return {
-      // dstMainNav : function( ) {
       restrict: 'E',
-      controller: function($scope) {
+      controller: function($scope, Session, Auth) {
         $scope.expand = false;
         $scope.lastEventType;
+        $scope.sessionName = Session.getSession();
+        $scope.username = Auth.getUserName();
         $scope.toggleNavList = function(ev){
           console.log("toggle called");
           if (!(ev.type === 'mouseleave' && $scope.lastEventType === 'click')) {
@@ -15,8 +16,6 @@ angular.module( 'moviematch.directive', [] )
           $scope.lastEventType = ev.type;
         };
       },
-      templateUrl: 'app/directives/dst_main_nav.html',
-      controller: 'LobbyController'
-    //};
+      templateUrl: 'app/directives/dst_main_nav.html'
   }
 });
