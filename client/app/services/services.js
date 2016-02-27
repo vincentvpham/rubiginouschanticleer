@@ -77,8 +77,8 @@ angular.module( 'moviematch.services', [] )
     getSession: function() {
       var sessionName = $window.localStorage.getItem( 'sessionName' );
       return $http.get( '/api/sessions/' + sessionName )
-      .then( function( response ) {
-        return response;
+      .then( function( session ) {
+        return session;
       }, function( err ) {
         console.error( err );
       });

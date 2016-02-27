@@ -6,10 +6,11 @@ angular.module( 'moviematch.match', ['moviematch.services'] )
   $scope.imgPath = 'http://image.tmdb.org/t/p/w500';
 
   $scope.user.name = Auth.getUserName();
-  //$scope.user.id = 1;
 
-  $scope.session.name = Session.getSession();
-  //$scope.session.id = 1;
+  Session.getSession()
+  .then( function( session ) {
+    $scope.session = session;
+  });
 
   var currMovieIndex = 0;
   var currMoviePackage = 0;
@@ -51,21 +52,21 @@ angular.module( 'moviematch.match', ['moviematch.services'] )
   });
 
   $scope.yes = function() {
-    Match.sendVote( $scope.session.name, $scope.user.name, $scope.currMovie.id, true )
+    Match.sendVote( $scope.session.sessionName, $scope.user.name, $scope.currMovie.id, true )
     // For every 'yes' we want to double check to see if we have a match. If we do,
     // we want to send a socket event out to inform the server.
     .then( function() {
       Match.checkMatch( $scope.session, $scope.currMovie )
       .then( function( result ) {
         if( result == true ) {
-          Socket.emit( 'foundMatch', { sessionName: $scope.session.name, movie: $scope.currMovie } );
+          Socket.emit( 'foundMatch', { sessionName: $scope.session.sessionName, movie: $scope.currMovie } );
         }
       });
     });
     loadNextMovie();
   }
   $scope.no = function() {
-    Match.sendVote( $scope.session.name, $scope.user.name, $scope.currMovie.id, false );
+    Match.sendVote( $scope.session.sessionName, $scope.user.name, $scope.currMovie.id, false );
     loadNextMovie();
   }
 } );
