@@ -16,7 +16,7 @@ angular.module( 'moviematch.match', ['moviematch.services'] )
 
   var fetchNextMovies = function( packageNumber, callback ){         
     FetchMovies.getNext10Movies( packageNumber )
-      .then(function( data ){
+      .then( function( data ) {
         $scope.moviePackage = data;
         callback();
       })
@@ -38,10 +38,11 @@ angular.module( 'moviematch.match', ['moviematch.services'] )
   };
 
   $scope.init = function() {        //as soon as the view is loaded request the first movie-package here
-    fetchNextMovies( 0 , function() {
-        $scope.currMovie = $scope.moviePackage[0];
-      })
-  }
+    fetchNextMovies( 0, function() {
+      $scope.currMovie = $scope.moviePackage[0];
+    });
+  };
+
   $scope.init();
 
   // Listen for the signal to redirect to a 'match found' page.
