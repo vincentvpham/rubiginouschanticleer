@@ -33,8 +33,6 @@ module.exports = {
     });
   },
 
-  addOneUser: function() {},
-
   getSessionUserBySessionAndUser: function( req, res, next ) {
     // expects req.params.session_id
     // expects req.params.user_id
@@ -64,17 +62,15 @@ module.exports = {
   addOneUser: function(req, res, next) {
     var username = req.body.username;
     var sessionName = req.body.sessionName;
-    console.log(sessionName);
-    console.log(username);
 
     User.findOne( {where: {username : username}} )
     .then( function( user ) {
       Session.findOne( {where: { sessionName : sessionName } } )
       .then( function( session ) {
-        Session_User.create( {
+        Session_User.findOrCreate( { where: {
           user_id: user.id,
           session_id: session.id
-        } ).then( function( session_user ) {
+        } } ).then( function( session_user ) {
           res.send( session_user );
         }, function( err ) {
           helpers.errorHandler( err, req, res, next );

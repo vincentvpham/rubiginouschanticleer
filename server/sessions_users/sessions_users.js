@@ -33,7 +33,10 @@ Session_User.getSessionUserBySessionIdAndUserId = function( sessionID, userID ) 
 };
 
 Session_User.countUsersInOneSession = function( sessionID ) {
-  return Session_User.count( { where: { id: sessionId } } )
+  return Session_User.count( { where: { session_id: sessionID } } )
+  .then( function( result ) {
+    console.log( 'Count', sessionID, result );
+  })
   .catch( function( err ) {
     helpers.errorLogger( err );
   });
