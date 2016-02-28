@@ -18,7 +18,7 @@ module.exports = function(grunt) {
           // tests which is why the coverage instrumentation has to be done here
           // require: 'coverage/blanket'
         },
-        src: ['test/{server/,*.js}*.js']
+        src: ['test/{server/,*.js}**/*.js']
       },
       coverage: {
         options: {

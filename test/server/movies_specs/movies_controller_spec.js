@@ -1,2 +1,2 @@
 describe('MoviesController', function() {
-};
+});
