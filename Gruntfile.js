@@ -39,9 +39,9 @@ module.exports = function(grunt) {
   });
 
     grunt.loadNpmTasks('grunt-mocha-test');
+    grunt.loadNpmTasks('grunt-karma');
 
     grunt.registerTask('mocha', ['mochaTest']);
 
-  grunt.loadNpmTasks('grunt-karma');
 
 };
