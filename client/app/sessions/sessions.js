@@ -43,7 +43,6 @@ angular.module( 'moviematch.sessions', [] )
       //this function emits a new join event to the socket.
       Socket.emit( 'newJoin', {username: username, sessionName: sessionName} );
     };
->>>>>>> implement isAuth
   }
 
 } );
