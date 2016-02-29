@@ -1,6 +1,6 @@
 angular.module( 'moviematch.sessions', [] )
 
-.controller( 'SessionsController', function( $scope, Session, Auth, Socket ) {
+.controller( 'SessionsController', function( $scope, Session, Auth, Socket, $location ) {
   if (!Auth.isAuth()) {
     $location.path('/signin');
   } else {
