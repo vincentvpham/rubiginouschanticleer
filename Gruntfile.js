@@ -30,11 +30,16 @@ module.exports = function(grunt) {
           captureFile: 'coverage.html'
         },
         src: ['test/{server/,*.js}*.js']
+    // to run karma 'grunt karma' from terminal
+    karma: {
+      unit: {
+        configFile: 'karma.conf.js'
       }
     }
   });
 
     grunt.loadNpmTasks('grunt-mocha-test');
+    grunt.loadNpmTasks('grunt-karma');
 
     grunt.registerTask('mocha', ['mochaTest']);
 
