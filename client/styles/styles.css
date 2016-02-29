@@ -24,7 +24,19 @@ button:disabled {
   text-align: center;
 }
 
-.buttons {
+.container {
+  width: 100%;
+}
+
+
+.laptop-buttons {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  margin: 5px;
+}
+
+.mobile-buttons {
   width: 100%;
   position: fixed;
   bottom: 0;
@@ -37,12 +49,19 @@ button:disabled {
 }
 
 .btn-mobile {
-  height: 250px;
-  width: 250px;
-  font-size: 4em;
+  height: 80px;
+  width: 80px;
+  font-size: 1em;
   border-radius: 50%;
 }
 
+.right-mobile {
+  margin-right: 40px;
+}
+
+.right-laptop {
+  margin-right: 80px;
+}
 .error {
   border: 1px solid red;
   border-radius: 5%;
@@ -70,7 +89,7 @@ hr {
 
 .main-nav {
   height: 26px;
-  background:rgba(225,0,0,0.8);
+  background:rgba(0,94,255,0.6);
 }
 
 .app-title {
@@ -101,5 +120,5 @@ hr {
   position: absolute;
   left: -80px;
   top: 25px;
-  background:rgba(225,0,0,0.2);
+  background:rgba(0,94,225,0.3);
 }
