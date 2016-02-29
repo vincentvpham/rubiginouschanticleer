@@ -1,9 +1,9 @@
 <div id='signin'>
-  <h1>Welcome back! Sign In</h1>
+  <h1>Welcome back! </h1>
   <form name="signinForm" ng-submit='signin()' novalidate>
     <div class="row">
-      <label class="col-md-2">Username</label>
-      <label class="col-md-2">Password</label>
+      <label class="col-md-2">Enter Your Username</label>
+      <label class="col-md-2">Enter Your Password</label>
     </div>
     <div class="row">
       <input class="col-md-2" name="userInput" type="text" ng-model='user.username' ng-class="{ 'error': signinForm.userInput.$invalid && signinForm.$dirty }" required>

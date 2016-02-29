@@ -2,8 +2,8 @@
 	<h1>New Member Sign Up</h1>
 	<form name='signupForm' ng-submit='signup()' novalidate>
 		<div class="row">
-			<label class="col-md-2">Username</label>
-			<label class="col-md-2">Password</label>
+			<label class="col-md-2">Create a Username</label>
+			<label class="col-md-2"> Enter a Password</label>
 		</div>
     <div class="row">
       <input class="col-md-2" name="userInput" type="text" dst-validate-user ng-model='user.username' ng-class="{ 'error': signupForm.userInput.$invalid && signupForm.$dirty && signupForm.userInput.$error.uniqueUsername}" required>
