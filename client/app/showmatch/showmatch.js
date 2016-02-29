@@ -1,6 +1,6 @@
 angular.module( 'moviematch.showmatch', [] )
 
-  .controller( 'ShowmatchController', function( $scope, FetchMovies, Session, Auth, $routeParams ) {
+  .controller( 'ShowmatchController', function( $scope, FetchMovies, Session, Auth, $routeParams, $location ) {
     if (!Auth.isAuth()) {
       $location.path('/signin');
     } else {
