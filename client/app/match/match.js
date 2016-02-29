@@ -1,6 +1,6 @@
 angular.module( 'moviematch.match', ['moviematch.services'] )
 
-.controller( 'MatchController', function( $scope, Match, Auth, Session, FetchMovies, Socket ) {
+.controller( 'MatchController', function( $scope, Match, Auth, Session, FetchMovies, Socket, $location ) {
   if (!Auth.isAuth()) {
     $location.path('/signin');
   } else {
