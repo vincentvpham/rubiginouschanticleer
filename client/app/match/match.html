@@ -14,8 +14,12 @@
         <p>{{ currMovie.overview }}</p>
       </div>
     </div>
-</div>
-<div class="buttons row">
-  <button class="col-xs-5 pull-left btn-mobile visible-xs visible-sm" ng-click="no()">No Thanks</button><button class="col-xs-5 pull-right btn-mobile visible-xs visible-sm" ng-click="yes()">Yes Please</button>
-  <button class="col-xs-5 pull-left btn-laptop hidden-xs hidden-sm" ng-click="no()">No Thanks</button><button class="col-xs-5 pull-right btn-laptop hidden-xs hidden-sm" ng-click="yes()">Yes Please</button>
+    <div class="mobile-buttons">
+      <button class="col-xs-5 pull-left btn-mobile visible-xs visible-sm" ng-click="no()">No Thanks</button>
+      <button class="col-xs-5 pull-right btn-mobile right-mobile visible-xs visible-sm" ng-click="yes()">Yes Please</button>
+    </div>
+    <div class="laptop-buttons">
+      <button class="col-xs-5 btn-laptop hidden-xs hidden-sm" ng-click="no()">No Thanks</button>
+      <button class="col-xs-5 pull-right btn-laptop right-laptop hidden-xs hidden-sm" ng-click="yes()">Yes Please</button>
+    </div>
 </div>
