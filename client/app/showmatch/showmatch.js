@@ -1,9 +1,7 @@
 angular.module( 'moviematch.showmatch', [] )
 
   .controller( 'ShowmatchController', function( $scope, FetchMovies, Session, Auth, $routeParams, $location ) {
-    if (!Auth.isAuth()) {
-      $location.path('/signin');
-    } else {
+
       Session.getSession()
       .then( function( session ) {
         $scope.session = session;
@@ -19,6 +17,5 @@ angular.module( 'moviematch.showmatch', [] )
       .then( function( movie ) {
         $scope.currMovie = movie;
       });
-  } 
 
   });

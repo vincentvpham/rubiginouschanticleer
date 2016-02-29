@@ -1,9 +1,6 @@
 angular.module( 'moviematch.sessions', [] )
 
 .controller( 'SessionsController', function( $scope, Session, Auth, Socket, $location ) {
-  if (!Auth.isAuth()) {
-    $location.path('/signin');
-  } else {
     // TODO: these two will need to be removed and created in a different controller
     // $scope.username = '';
     $scope.username = Auth.getUserName();
@@ -43,6 +40,5 @@ angular.module( 'moviematch.sessions', [] )
       //this function emits a new join event to the socket.
       Socket.emit( 'newJoin', {username: username, sessionName: sessionName} );
     };
-  }
 
 } );

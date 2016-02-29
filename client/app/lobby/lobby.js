@@ -1,9 +1,6 @@
 angular.module( 'moviematch.lobby', [] )
 
 .controller( 'LobbyController', function( $scope, Session, Lobby, Socket, $location, Auth ) {
-  if (!Auth.isAuth()) {
-    $location.path('/signin');
-  } else {
     $scope.session = {};
 
     Session.getSession()
@@ -34,6 +31,5 @@ angular.module( 'moviematch.lobby', [] )
     Socket.on( 'sessionStarted', function() {
       $location.path( '/match' );
     } );
-}
 
 } )

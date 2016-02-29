@@ -1,9 +1,6 @@
 angular.module( 'moviematch.match', ['moviematch.services'] )
 
-.controller( 'MatchController', function( $scope, Match, Auth, Session, FetchMovies, Socket, $location ) {
-  if (!Auth.isAuth()) {
-    $location.path('/signin');
-  } else {
+.controller( 'MatchController', function( $scope, Match, Auth, Session, FetchMovies, Socket ) {
     $scope.session = {};
     $scope.user = {};
     $scope.imgPath = 'http://image.tmdb.org/t/p/w500';
@@ -74,5 +71,4 @@ angular.module( 'moviematch.match', ['moviematch.services'] )
       Match.sendVote( $scope.session.sessionName, $scope.user.name, $scope.currMovie.id, false );
       loadNextMovie();
     }
-  }
 } );
