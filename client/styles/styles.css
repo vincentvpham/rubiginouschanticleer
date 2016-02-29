@@ -89,7 +89,7 @@ hr {
 
 .main-nav {
   height: 26px;
-  background:rgba(0,0,255,0.6);
+  background:rgba(0,94,255,0.6);
 }
 
 .app-title {
@@ -120,5 +120,5 @@ hr {
   position: absolute;
   left: -80px;
   top: 25px;
-  background:rgba(0,0,225,0.2);
+  background:rgba(0,94,225,0.3);
 }
