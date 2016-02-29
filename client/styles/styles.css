@@ -1,3 +1,7 @@
+button:disabled {
+  color: lightgrey;
+}
+
 .bold {
   font-weight: bold;
 }
