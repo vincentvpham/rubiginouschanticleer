@@ -88,13 +88,12 @@ hr {
 }
 
 .main-nav {
-  height: 26px;
-  background:rgba(0,94,255,0.6);
+  height: 35px;
+  background:rgba(0,94,255,0.2);
 }
 
-.app-title {
-  font-family: 'Franklin Gothic Medium', 'Franklin Gothic', 'ITC Franklin Gothic', Arial, sans-serif;
-  font-size: 20px;
+.app-logo {
+  width: 100px;
 }
 
 .session-name {
@@ -107,6 +106,7 @@ hr {
 .main-nav-menu {
   float: right;
   position:relative;
+  margin-top: 4px;
 }
 
 .main-nav-menu-icon {
@@ -119,6 +119,6 @@ hr {
   cursor: pointer;
   position: absolute;
   left: -80px;
-  top: 25px;
+  top: 35px;
   background:rgba(0,94,225,0.3);
 }
