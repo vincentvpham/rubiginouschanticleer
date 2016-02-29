@@ -45,4 +45,8 @@ angular.module( 'moviematch.auth', [] )
     Auth.setUserName( $scope.user );
   };
 
+  $scope.isAuth = function() {
+    return !!$window.localStorage.getItem('com.moviematch');
+  };
+
 } );
