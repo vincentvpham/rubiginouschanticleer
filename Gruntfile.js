@@ -36,7 +36,7 @@ module.exports = function(grunt) {
         configFile: 'karma.conf.js'
       }
     }
-  });
+  };
 
     grunt.loadNpmTasks('grunt-mocha-test');
     grunt.loadNpmTasks('grunt-karma');
