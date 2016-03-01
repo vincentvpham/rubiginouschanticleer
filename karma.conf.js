@@ -17,6 +17,9 @@ module.exports = function(config) {
       // angular source
       'client/lib/angular/angular.js',
       'client/lib/angular-route/angular-route.js',
+      'node_modules/angular-mocks/angular-mocks.js',
+      'client/lib/angular-socket-io/mock/socket-io.js',
+      'client/lib/angular-socket-io/socket.js',
 
       // our app code
       'client/app/**/*.js',
