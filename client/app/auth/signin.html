@@ -1,16 +1,20 @@
 <div id='signin'>
-  <h1>signin</h1>
+  <h1>Welcome back! </h1>
   <form name="signinForm" ng-submit='signin()' novalidate>
     <div class="row">
-      <input class="col-md-6" name="userInput" type="text" ng-model='user.username' ng-class="{ 'error': signinForm.userInput.$invalid && signinForm.$dirty }" required>
-      <input class="col-md-6" name="pwdInput" type="password" ng-model='user.password' ng-class="{ 'error': signinForm.pwdInput.$invalid && signinForm.$dirty }" required>
+      <label class="col-md-2">Enter Your Username</label>
+      <label class="col-md-2">Enter Your Password</label>
     </div>
     <div class="row">
-      <span class="col-md-6 error-msg" ng-show="signinForm.userInput.$invalid && signinForm.$dirty">{{ error.userInput }}</span>
-      <span class="col-md-6 error-msg" ng-show="signinForm.pwdInput.$invalid && signinForm.$dirty">{{ error.pwdInput }}</span>
+      <input class="col-md-2" name="userInput" type="text" ng-model='user.username' ng-class="{ 'error': signinForm.userInput.$invalid && signinForm.$dirty }" required>
+      <input class="col-md-2" name="pwdInput" type="password" ng-model='user.password' ng-class="{ 'error': signinForm.pwdInput.$invalid && signinForm.$dirty }" required>
+    </div>
+    <div class="row">
+      <span class="col-md-2 error-msg" ng-show="signinForm.userInput.$invalid && signinForm.$dirty">{{ error.userInput }}</span>
+      <span class="col-md-2 error-msg" ng-show="signinForm.pwdInput.$invalid && signinForm.$dirty">{{ error.pwdInput }}</span>
     </div>
     <div class="error-msg" ng-show="error.signinError">{{ error.signinError }}</div>
     <button ng-disabled="signinForm.$invalid">signin</button>
   </form>
-  <a href="#/signup"> New User? <strong>Signup</strong></a>
+  <a href="#/signup"> New Member? <strong>Sign Up</strong></a>
 </div>
