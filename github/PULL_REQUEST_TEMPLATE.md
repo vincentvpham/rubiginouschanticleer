@@ -1,7 +1,7 @@
-##Status
+## Status
 Resolves/In Development/Hold #issueNumber
 
-##Description
+## Description
 What does it do?
 
 ## Impacted Areas in Application
