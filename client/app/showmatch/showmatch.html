@@ -4,18 +4,18 @@
 <div id="showmatch" class="container">
   <div class="header center row">
     <h1 class="col-xs-12">
-      <div class="app-title large">It's a Match!</div>
+      <div>It's a Match!</div>
     </h1>
   </div>
-  <p class="center"><span class="bold">{{ user.name }}</span>, you have a MovieMatch!</p>
+  <p class="center"><span class="bold">{{ user.name }}</span>, you guys have a MovieMatch!</p>
   <div class="movie">
     <h2 class="center">{{ currMovie.title }} ({{ currMovie.release_date | date:"yyyy" }})</h2>
     <h6 class="center">Avg Rating: {{ currMovie.vote_average }} | ({{ currMovie.original_language }})</h6>
     <div class="row">
       <!-- We want to size the poster appropriately so we can
       see the buttons at the bottom -->
-      <img class="poster col-xs-6" alt="{{ currMovie.title }} poster" src="{{imgPath}}{{ currMovie.poster_path }}">
-      <div class="summary col-xs-6">
+      <img class="poster col-xs-12" alt="{{ currMovie.title }} poster" src="{{imgPath}}{{ currMovie.poster_path }}">
+      <div class="summary col-xs-12">
         <h4>Movie Summary</h4>
         <p>{{ currMovie.overview }}</p>
       </div>

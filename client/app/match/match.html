@@ -8,18 +8,21 @@
     <div class="row">
       <!-- We want to size the poster appropriately so we can
       see the buttons at the bottom -->
-      <img class="poster col-xs-6" alt="{{ currMovie.title }} poster" src="{{imgPath}}{{ currMovie.poster_path }}">
-      <div class="summary col-xs-6">
+      <div class="poster col-xs-12 center">
+        <img alt="{{ currMovie.title }} " src="{{imgPath}}{{ currMovie.poster_path }}" class = "foto">
+      </div>
+      <div class="summary col-xs-12 center">
         <h4>Movie Summary</h4>
         <p>{{ currMovie.overview }}</p>
       </div>
     </div>
     <div class="mobile-buttons">
-      <button class="col-xs-5 pull-left btn-mobile visible-xs visible-sm" ng-click="no()">No Thanks</button>
-      <button class="col-xs-5 pull-right btn-mobile right-mobile visible-xs visible-sm" ng-click="yes()">Yes Please</button>
-    </div>
-    <div class="laptop-buttons">
-      <button class="col-xs-5 btn-laptop hidden-xs hidden-sm" ng-click="no()">No Thanks</button>
-      <button class="col-xs-5 pull-right btn-laptop right-laptop hidden-xs hidden-sm" ng-click="yes()">Yes Please</button>
+      <button class="col-xs-5 pull-left btn-mobile visible-xs visible-sm btn-danger" ng-click="no()">NOPE</button>
+      <button class="col-xs-5 pull-right btn-mobile right-mobile visible-xs visible-sm btn-success" ng-click="yes()">YEA!</button>
     </div>
 </div>
+</div>
+    <div class="laptop-buttons">
+      <button class="col-xs-5 btn-laptop hidden-xs hidden-sm btn-danger" ng-click="no()">NOPE</button>
+      <button class="col-xs-5 pull-right btn-laptop right-laptop hidden-xs hidden-sm btn-success" ng-click="yes()">YEA!</button>
+    </div>
