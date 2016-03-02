@@ -42,5 +42,4 @@ client/lib
 
 server/config/moviematch.sqlite
 
-
 server/env/env.js
