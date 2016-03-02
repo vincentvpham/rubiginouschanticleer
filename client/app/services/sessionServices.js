@@ -5,6 +5,7 @@ angular.module( 'moviematch.sessionServices', [] )
     createSession: function( creator, callback ) {
       return $http.post( '/api/sessions', { creator: creator } )
       .then( function( response ) {
+        console.log("in createSession, response.data:", response.data);
         callback( creator ); // used for emitting session data
         return response;
       }, function( err ) {
@@ -21,10 +22,10 @@ angular.module( 'moviematch.sessionServices', [] )
       } );
     },
 
-    joinSession: function( creator, username, callback ) {
-      return $http.post( '/api/sessions/users', { creator: creator, username: username } )
+    joinSession: function( sessionId, username, callback ) {
+      return $http.post( '/api/sessions/users', { sessionId: sessionId, username: username } )
       .then( function( response ) {
-        callback( username, creator ); // used for emitting session data
+        callback( username, sessionId ); // used for emitting session data
         $location.path( '/lobby' );
         return response;
       }, function( err ) {
@@ -32,13 +33,13 @@ angular.module( 'moviematch.sessionServices', [] )
       } );
     },
 
-    setSession: function( creator ) {
-      $window.localStorage.setItem( 'sessionName', creator );
+    setSession: function( sessionId ) {
+      $window.localStorage.setItem( 'sessionId', sessionId );
     },
 
     getSession: function() {
-      var sessionName = $window.localStorage.getItem( 'sessionName' );
-      return $http.get( '/api/sessions/' + sessionName )
+      var sessionId = $window.localStorage.getItem( 'sessionId' );
+      return $http.get( '/api/sessions/' + sessionId )
       .then( function( session ) {
         return session.data;
       }, function( err ) {

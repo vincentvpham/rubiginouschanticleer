@@ -27,18 +27,18 @@ angular.module( 'moviematch.sessions', [] )
     Session.createSession( creator, $scope.emitCreate );
     // $scope.joinSession( $scope.sessionName );
   };
-  $scope.joinSession = function( creator ) { // creator is from a given session in the view, or from creation
-    Session.setSession( creator );
-    Session.joinSession( creator, $scope.username, $scope.emitJoin );
+  $scope.joinSession = function( sessionId ) { // from a given session in the view, or from creation
+    Session.setSession( sessionId );
+    Session.joinSession( sessionId, $scope.username, $scope.emitJoin );
   };
 
   $scope.emitCreate = function( creator ) {
     //this function emits a create event to the socket.
     Socket.emit( 'session', {creator : creator} );
   };
-  $scope.emitJoin = function( username, creator ) {
+  $scope.emitJoin = function( username, sessionId ) {
     //this function emits a new join event to the socket.
-    Socket.emit( 'newJoin', {username: username, creator: creator} );
+    Socket.emit( 'newJoin', {username: username, sessionId: sessionId} );
   };
 
 } );
