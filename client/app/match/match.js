@@ -1,4 +1,9 @@
-angular.module( 'moviematch.match', ['moviematch.services'] )
+angular.module( 'moviematch.match', [
+  'moviematch.authServices',
+  'moviematch.lobbyServices',
+  'moviematch.matchServices',
+  'moviematch.sessionServices',
+  'moviematch.miscServices'] )
 
 .controller( 'MatchController', function( $scope, Match, Auth, Session, FetchMovies, Socket ) {
   $scope.session = {};
@@ -62,7 +67,7 @@ angular.module( 'moviematch.match', ['moviematch.services'] )
         if( result ) {
           Socket.emit( 'foundMatch', { sessionName: $scope.session.sessionName, movie: $scope.currMovie } );
         } else {
-          loadNextMovie(); 
+          loadNextMovie();
         }
       });
     });
