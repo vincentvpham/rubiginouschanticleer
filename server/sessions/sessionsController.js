@@ -11,10 +11,12 @@ module.exports = {
   },
 
   addSession: function( req, res, next ) {
-    var sessionName = req.body.sessionName;
+    var creator = req.body.creator;
+    // var code = helpers.generateGroupCode();
 
     Session.create( {
-      sessionName: sessionName
+      creator: creator,
+      code: 'AAAA'
     } ).then( function() {
       res.status = 201;
       res.end();
@@ -31,5 +33,5 @@ module.exports = {
       helpers.errorHandler( err, req, res, next );
     });
   }
-  
+
 };

@@ -2,10 +2,10 @@ angular.module( 'moviematch.sessionServices', [] )
 
 .factory( 'Session', function( $http, $window, $location ) {
   return {
-    createSession: function( sessionName, callback ) {
-      return $http.post( '/api/sessions', { sessionName: sessionName } )
+    createSession: function( creator, callback ) {
+      return $http.post( '/api/sessions', { creator: creator } )
       .then( function( response ) {
-        callback( sessionName ); // used for emitting session data
+        callback( creator ); // used for emitting session data
         return response;
       }, function( err ) {
         console.error( err );

@@ -2,7 +2,8 @@ var db = require( '../config/db' );
 var Sequelize = require( 'sequelize' );
 
 var Session = db.define( 'sessions', {
-  sessionName : Sequelize.STRING
+  creator : Sequelize.STRING,
+  code: Sequelize.STRING
 } );
 
 Session.sync().then( function() {
