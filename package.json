@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rubiginouschanticleer/rubiginouschanticleer.git"
+    "url": "git+https://github.com/GigglingGoiters/rubiginouschanticleer.git"
   },
   "keywords": [
     "mobile",
@@ -54,9 +54,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rubiginouschanticleer/rubiginouschanticleer/issues"
+    "url": "https://github.com/GigglingGoiters/rubiginouschanticleer/issues"
   },
-  "homepage": "https://github.com/rubiginouschanticleer/rubiginouschanticleer#readme",
+  "homepage": "https://github.com/GigglingGoiters/rubiginouschanticleer#readme",
   "dependencies": {
     "angular-mocks": "^1.5.0",
     "body-parser": "^1.15.0",
