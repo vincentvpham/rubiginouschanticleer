@@ -49,23 +49,15 @@ or the user can join a group that their friend has already created -->
 </div>
 <div data-wrapper-for="Grid3" class="container-fluid">
     <div class="row">
-        <div class="col-xs-3">
-            <h4>
-                Create:
-            </h4>
-        </div>
-           <form name="createSessionForm" class="new-session-cnt" ng-submit="createSession( username )" novalidate>
-            <div class="col-xs-6">
-                <input type="text" value="" placeholder="Enter Groupname" class="form-control" name="new-session" ng-model="sessionName" required>
-            </div>
+        <form name="createSessionForm" class="new-session-cnt" ng-submit="createSession( username )" novalidate>
             <div class="col-xs-3">
                 <button class="btn btn-success" type="submit" ng-disabled="createSessionForm.$invalid">
-                    Create
+                    Create a new movie group
                 </button>
             </div>
-          </form>
+        </form>
         <div class="col-xs-12">
-          <hr>
+            <hr>
         </div>
         <div class="col-xs-12">
             <h4>
