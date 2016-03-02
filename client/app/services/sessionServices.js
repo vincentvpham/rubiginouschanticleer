@@ -21,10 +21,10 @@ angular.module( 'moviematch.sessionServices', [] )
       } );
     },
 
-    joinSession: function( sessionName, username, callback ) {
-      return $http.post( '/api/sessions/users', { sessionName: sessionName, username: username } )
+    joinSession: function( creator, username, callback ) {
+      return $http.post( '/api/sessions/users', { creator: creator, username: username } )
       .then( function( response ) {
-        callback( username, sessionName ); // used for emitting session data
+        callback( username, creator ); // used for emitting session data
         $location.path( '/lobby' );
         return response;
       }, function( err ) {
@@ -32,8 +32,8 @@ angular.module( 'moviematch.sessionServices', [] )
       } );
     },
 
-    setSession: function( sessionName ) {
-      $window.localStorage.setItem( 'sessionName', sessionName );
+    setSession: function( creator ) {
+      $window.localStorage.setItem( 'sessionName', creator );
     },
 
     getSession: function() {
