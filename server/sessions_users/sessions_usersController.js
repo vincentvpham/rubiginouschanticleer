@@ -62,11 +62,11 @@ module.exports = {
 
   addOneUser: function(req, res, next) {
     var username = req.body.username;
-    var sessionName = req.body.sessionName;
+    var sessionId = req.body.sessionId;
 
     User.findOne( {where: {username : username} } )
     .then( function( user ) {
-      Session.findOne( {where: { sessionName : sessionName } } )
+      Session.findOne( {where: { id : sessionId } } )
       .then( function( session ) {
         Session_User.findOrCreate( { where: {
           user_id: user.id,
