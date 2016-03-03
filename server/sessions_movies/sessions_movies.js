@@ -27,4 +27,4 @@ Session_Movie.belongsTo( Movie, {foreignKey: 'movie_id'} );
 Session_Movie.belongsTo( Session, {foreignKey: 'session_id'} );
 
 
-module.exports = Session_Movie; 
+module.exports = Session_Movie;
