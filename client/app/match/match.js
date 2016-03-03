@@ -58,14 +58,14 @@ angular.module( 'moviematch.match', [
   });
 
   $scope.yes = function() {
-    Match.sendVote( $scope.session.sessionName, $scope.user.name, $scope.currMovie.id, true )
+    Match.sendVote( $scope.session.id, $scope.user.name, $scope.currMovie.id, true )
     // For every 'yes' we want to double check to see if we have a match. If we do,
     // we want to send a socket event out to inform the server.
     .then( function() {
       Match.checkMatch( $scope.session, $scope.currMovie )
       .then( function( result ) {
         if( result ) {
-          Socket.emit( 'foundMatch', { sessionName: $scope.session.sessionName, movie: $scope.currMovie } );
+          Socket.emit( 'foundMatch', { sessionId: $scope.session.id, movie: $scope.currMovie } );
         } else {
           loadNextMovie();
         }
@@ -73,7 +73,7 @@ angular.module( 'moviematch.match', [
     });
   }
   $scope.no = function() {
-    Match.sendVote( $scope.session.sessionName, $scope.user.name, $scope.currMovie.id, false );
+    Match.sendVote( $scope.session.id, $scope.user.name, $scope.currMovie.id, false );
     loadNextMovie();
   }
 } );

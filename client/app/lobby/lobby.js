@@ -5,10 +5,9 @@ angular.module( 'moviematch.lobby', [] )
 
   Session.getSession()
   .then( function( session ) {
-
     $scope.session = session;
-    
-    Lobby.getUsersInOneSession( $scope.session.sessionName )
+
+    Lobby.getUsersInOneSession( $scope.session.id )
     .then( function( users ){
       $scope.users = users;
     } );
@@ -24,8 +23,8 @@ angular.module( 'moviematch.lobby', [] )
     $scope.users.push( data );
   } );
 
-  $scope.startSession = function( sessionName ) {
-    Socket.emit( 'startSession', { sessionName: sessionName } );
+  $scope.startSession = function( sessionId ) {
+    Socket.emit( 'startSession', { sessionId: sessionId } );
   };
 
   Socket.on( 'sessionStarted', function() {

@@ -11,25 +11,31 @@ module.exports = {
   },
 
   addSession: function( req, res, next ) {
-    var sessionName = req.body.sessionName;
+    var creator = req.body.creator;
+    // var code = helpers.generateGroupCode();
 
     Session.create( {
-      sessionName: sessionName
-    } ).then( function() {
+      creator: creator,
+      code: 'AAAA'
+    } ).then( function(response) {
       res.status = 201;
-      res.end();
+      var sessionId = response.dataValues.id.toString();
+      res.send(sessionId);
+    }, function(err) {
+      console.log("got an error in sessionsController.addSession:", err);
+      helpers.errorHandler( err, req, res, next );
     } )
   },
 
-  getSessionByName: function( req, res, next ) {
-    var sessionName = req.params.sessionName;
+  getSessionById: function( req, res, next ) {
+    var sessionId = req.params.sessionId;
 
-    Session.findOne( { where: { sessionName: sessionName } } )
+    Session.findOne( { where: { id: sessionId } } )
     .then( function( session ) {
       res.json( session );
     }, function( err ) {
       helpers.errorHandler( err, req, res, next );
     });
   }
-  
+
 };

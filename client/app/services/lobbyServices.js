@@ -2,8 +2,8 @@ angular.module( 'moviematch.lobbyServices', [] )
 
 .factory( 'Lobby', function( $http ) {
   return {
-    getUsersInOneSession: function( sessionName ) {
-      return $http.get( '/api/sessions/users/' + sessionName )
+    getUsersInOneSession: function( sessionId ) {
+      return $http.get( '/api/sessions/users/' + sessionId )
       .then( function( res ) {
         return res.data;
       } ,

@@ -2,13 +2,15 @@ angular.module( 'moviematch.sessionServices', [] )
 
 .factory( 'Session', function( $http, $window, $location ) {
   return {
-    createSession: function( sessionName, callback ) {
-      return $http.post( '/api/sessions', { sessionName: sessionName } )
+    createSession: function( creator, callback ) {
+      return $http.post( '/api/sessions', { creator: creator } )
       .then( function( response ) {
-        callback( sessionName ); // used for emitting session data
+        // console.log("in createSession, typeof parseInt(response.data):", typeof parseInt(response.data));
+        var sessionId = parseInt(response.data);
+        callback( sessionId ); // used for emitting session data
         return response;
       }, function( err ) {
-        console.error( err );
+        console.error("error from Session.createSession:", err );
       } );
     },
 
@@ -21,10 +23,10 @@ angular.module( 'moviematch.sessionServices', [] )
       } );
     },
 
-    joinSession: function( sessionName, username, callback ) {
-      return $http.post( '/api/sessions/users', { sessionName: sessionName, username: username } )
+    joinSession: function( sessionId, username, callback ) {
+      return $http.post( '/api/sessions/users', { sessionId: sessionId, username: username } )
       .then( function( response ) {
-        callback( username, sessionName ); // used for emitting session data
+        callback( username, sessionId ); // used for emitting session data
         $location.path( '/lobby' );
         return response;
       }, function( err ) {
@@ -32,13 +34,13 @@ angular.module( 'moviematch.sessionServices', [] )
       } );
     },
 
-    setSession: function( sessionName ) {
-      $window.localStorage.setItem( 'sessionName', sessionName );
+    setSession: function( sessionId ) {
+      $window.localStorage.setItem( 'sessionId', sessionId );
     },
 
     getSession: function() {
-      var sessionName = $window.localStorage.getItem( 'sessionName' );
-      return $http.get( '/api/sessions/' + sessionName )
+      var sessionId = $window.localStorage.getItem( 'sessionId' );
+      return $http.get( '/api/sessions/' + sessionId )
       .then( function( session ) {
         return session.data;
       }, function( err ) {

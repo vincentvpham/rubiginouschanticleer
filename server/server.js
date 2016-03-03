@@ -15,7 +15,7 @@ io.on( 'connect' , function( socket ){
 
   //this recieves the create event emitted in client/sessions/sessions.js-emitCreate
   socket.on( 'session', function( data ) {
-    Session.findOne( { where: { sessionName: data.sessionName } } )
+    Session.findOne( { where: { id: data.sessionId } } )
     .then( function( session ) {
       //this function emits an event named newSession and sends the newly created session
       io.emit( 'newSession', session.dataValues );
@@ -25,23 +25,23 @@ io.on( 'connect' , function( socket ){
   //this function listens to the new join event in client/sessions/sessions.js-emitJoin
   socket.on( 'newJoin', function( data ) {
     //this function creates a new or joins an existing socket-room
-    socket.join( data.sessionName );
+    socket.join( data.sessionId );
     User.findOne( { where: { username: data.username } } )
     .then( function( user ) {
-      //this function emits a newUser event and the new user to a specific room named the session name
-      io.to( data.sessionName ).emit( 'newUser', user );
+      //this function emits a newUser event and the new user to a specific room
+      io.to( data.sessionId).emit( 'newUser', user );
     } );
   } );
 
   socket.on( 'startSession', function( data ) {
-    socket.join( data.sessionName );
-    io.to( data.sessionName ).emit( 'sessionStarted' );
+    socket.join( data.sessionId );
+    io.to( data.sessionId ).emit( 'sessionStarted' );
   } );
 
   // This listener handles broadcasting a matched movie to connected clients.
   socket.on( 'foundMatch', function( data ) {
-    socket.join( data.sessionName );
-    io.to( data.sessionName ).emit( 'matchRedirect', data.movie.id );
+    socket.join( data.sessionId );
+    io.to( data.sessionId ).emit( 'matchRedirect', data.movie.id );
   });
 });
 
