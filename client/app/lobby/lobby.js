@@ -31,4 +31,4 @@ angular.module( 'moviematch.lobby', [] )
     $location.path( '/add' );
   } );
 
-} )
+} );
