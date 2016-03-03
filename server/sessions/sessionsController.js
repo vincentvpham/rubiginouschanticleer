@@ -27,10 +27,10 @@ module.exports = {
     } )
   },
 
-  getSessionByName: function( req, res, next ) {
-    var sessionName = req.params.sessionName;
+  getSessionById: function( req, res, next ) {
+    var sessionId = req.params.sessionId;
 
-    Session.findOne( { where: { sessionName: sessionName } } )
+    Session.findOne( { where: { id: sessionId } } )
     .then( function( session ) {
       res.json( session );
     }, function( err ) {

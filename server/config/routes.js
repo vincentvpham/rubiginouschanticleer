@@ -42,7 +42,7 @@ module.exports = function ( app, express ) {
 
   /* SESSIONS_USERS */
   app.get('/api/sessions/users/:sessionName', sessions_usersController.getUsersInOneSession );
-  app.get('/api/sessions/:sessionName', sessionsController.getSessionByName );
+  app.get('/api/sessions/:sessionId', sessionsController.getSessionById );
   app.get('/api/sessions/:session_id/:user_id', sessions_usersController.getSessionUserBySessionAndUser );
   app.post('/api/sessions/users', sessions_usersController.addOneUser );
 

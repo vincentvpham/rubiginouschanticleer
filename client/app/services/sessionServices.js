@@ -5,8 +5,9 @@ angular.module( 'moviematch.sessionServices', [] )
     createSession: function( creator, callback ) {
       return $http.post( '/api/sessions', { creator: creator } )
       .then( function( response ) {
-        // console.log("in createSession, response.data:", response.data);
-        callback( creator ); // used for emitting session data
+        // console.log("in createSession, typeof parseInt(response.data):", typeof parseInt(response.data));
+        var sessionId = parseInt(response.data);
+        callback( sessionId ); // used for emitting session data
         return response;
       }, function( err ) {
         console.error("error from Session.createSession:", err );

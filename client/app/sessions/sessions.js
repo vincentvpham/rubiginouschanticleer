@@ -32,9 +32,10 @@ angular.module( 'moviematch.sessions', [] )
     Session.joinSession( sessionId, $scope.username, $scope.emitJoin );
   };
 
-  $scope.emitCreate = function( creator ) {
+  $scope.emitCreate = function( sessionId ) {
     //this function emits a create event to the socket.
-    Socket.emit( 'session', {creator : creator} );
+    console.log("inside $scope.emitCreate, sessionId:", sessionId);
+    Socket.emit( 'session', {sessionId : sessionId} );
   };
   $scope.emitJoin = function( username, sessionId ) {
     //this function emits a new join event to the socket.
