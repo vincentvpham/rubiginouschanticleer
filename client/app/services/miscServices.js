@@ -33,14 +33,31 @@ angular.module( 'moviematch.miscServices', [] )
 .factory( 'Movies', function ($http) {
   return {
     searchMovies: function (query) {
-      return $http.get('/api/movies/search/' + query)
+      return $http.post(
+       '/api/movies/search/',
+        {query: query}
+      )
       .then( function (res) {
         return res.data;
       },
       function (err) {
         console.log(err);
       });
-    }
+    },
 
+    saveMovie: function ( movie, sessionId ) {
+      return $http.post(
+        '/api/movies/save/',
+        {
+          movie: movie,
+          sessionId: sessionId
+        })
+      .then( function( res ) {
+        return res.data;
+      },
+      function ( err ) {
+        console.log('Error saving movie', err);
+      });
+    }
   };
 });

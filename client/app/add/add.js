@@ -5,6 +5,7 @@ angular.module( 'moviematch.add', [] )
   Session.getSession()
   .then( function( session ) {
     $scope.session = session;
+    console.log('GET SESSION and scope.session', $scope.session);
   });
 
   $scope.searchMovies = function () {
@@ -23,13 +24,14 @@ angular.module( 'moviematch.add', [] )
   };
 
   $scope.addToQueue = function (movie) {
-    console.log('movie from addToQueue function', movie);
     $scope.movies = $scope.movies || [];
     $scope.movies.push(movie);
+    Movies.saveMovie(movie, $scope.session.id);
   };
 
-  $scope.startSession = function (sessionName) {
-    console.log('The START SESSION BUTTON RESPONSE', sessionName);
+  $scope.startSession = function (sessionId) {
+    console.log('The START SESSION BUTTON RESPONSE', sessionId);
+    $location.path( '/match' );
   };
 
 });
