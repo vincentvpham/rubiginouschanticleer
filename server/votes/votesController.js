@@ -34,7 +34,7 @@ var addVote = function( req, res ) {
   User.findOne({where: {username: req.body.username}})
   .then(function(user){
     var user = user.dataValues.id;
-    Session.findOne({where: {sessionName: req.body.sessionName}})
+    Session.findOne({where: {id: req.body.sessionId}})
     .then(function(session){
       var session = session.dataValues.id;
       if( !movie ) { // if movie is not provided
@@ -95,7 +95,7 @@ var checkMatch = function( req, res, next ) {
   var sessionID = req.params.session_id;
   var movieID = req.params.movie_id;
   // get number of users in session
-  // We are overriding the json method on the response object that our suController receives so that we have 
+  // We are overriding the json method on the response object that our suController receives so that we have
   // access to the object it gives us in this scope.
   Session_User.countUsersInOneSession( sessionID ).then( function( userCount ) {
     // get votedata
@@ -127,7 +127,7 @@ var checkMatch = function( req, res, next ) {
         res.json( false );
       } // end if ( isArray )
     } );
-  } );  
+  } );
 }
 
 
@@ -138,5 +138,5 @@ module.exports = {
   addVote: addVote,
   getSessMovieVotes: getSessMovieVotes,
   checkMatch: checkMatch
-  
+
 };
