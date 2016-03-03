@@ -7,7 +7,7 @@ module.exports = {
     Session.findAll()
     .then( function( sessions ) {
       res.send( sessions );
-    })
+    });
   },
 
   addSession: function( req, res, next ) {
@@ -20,11 +20,12 @@ module.exports = {
     } ).then( function(response) {
       res.status = 201;
       var sessionId = response.dataValues.id.toString();
+      console.log('THIS IS OUR SESSION ID', sessionId);
       res.send(sessionId);
     }, function(err) {
       console.log("got an error in sessionsController.addSession:", err);
       helpers.errorHandler( err, req, res, next );
-    } )
+    } );
   },
 
   getSessionById: function( req, res, next ) {
