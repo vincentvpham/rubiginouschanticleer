@@ -17,9 +17,13 @@ module.exports = {
     Session.create( {
       creator: creator,
       code: 'AAAA'
-    } ).then( function() {
+    } ).then( function(response) {
       res.status = 201;
-      res.end();
+      var sessionId = response.dataValues.id.toString();
+      res.send(sessionId);
+    }, function(err) {
+      console.log("got an error in sessionsController.addSession:", err);
+      helpers.errorHandler( err, req, res, next );
     } )
   },
 
