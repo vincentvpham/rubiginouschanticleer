@@ -8,7 +8,7 @@ angular.module( 'moviematch.directive', [] )
         $scope.lastEventType;
         Session.getSession()
         .then( function( session ) {
-          $scope.sessionName = session.sessionName;
+          $scope.sessionId = session.id;
         });
         $scope.username = Auth.getUserName();
         $scope.toggleNavList = function(ev){
