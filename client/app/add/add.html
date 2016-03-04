@@ -1,17 +1,17 @@
 <div id="match" class="container">
-    <div data-wrapper-for="Grid1" class="container-fluid">
+
+
+    <!--Search For Specific Movies-->
+    <div data-wrapper-for="Grid1" class="container-fluid specificMovieSearch">
         <div class="row">
             <div class="col-xs-12">
-                <h3>
-                    Use the search bar to add movies to your queue!
-                </h3>
-                <p>
-                    Once everyone presses &quot;Done&quot; the matching will begin.
-                </p>
+                <button class="btn btn-success btn-lg" type="button" ng-click="search=!search">
+                    Add Movies
+                </button>
             </div>
         </div>
     </div>
-    <div>
+    <div class="well" ng-show="search">
         <input ng-model="query" type="text" ng-change="searchMovies()" ng-model-options="{debounce: 300}" placeholder="search here"><button type="submit" ng-click="searchMovies()">search</button>
         <div class="container">
           <div class="row" ng-repeat="result in results">
@@ -21,7 +21,25 @@
           </div>
         </div>
     </div>
-    <form class="form-inline" role="form" name=>
+
+    <!--Search Movies By Genre-->
+    <div class="container genreSearch">
+        <div class="row">
+            <div class="col-xs-12">
+                <button class="btn btn-success btn-lg" type="button" ng-click="genreSearch=!genreSearch">
+                    Browse By Genre
+                </button>
+            </div>
+        </div>
+        <div class="well" ng-show="genreSearch">
+        You are in the genreSearch well
+        </div>
+    </div>
+
+
+
+
+    <form class="form-inline" role="form">
         <div class="form-group ">
             <div>
               <hr>
@@ -40,7 +58,10 @@
         <div class="row">
             <div class="col-xs-3">
             </div>
-            <div class="col-xs-6">
+            <div class="col-xs-4">
+            <p>
+                Once everyone presses &quot;Done&quot; the matching will begin.
+            </p>
                 <button class="btn btn-success btn-lg" type="button" ng-click="startSession( session.id )">
                     <span class="ion ion-arrow-right-b" style="color: black;">
                     </span>
