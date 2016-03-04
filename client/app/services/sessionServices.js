@@ -26,16 +26,18 @@ angular.module( 'moviematch.sessionServices', [] )
     joinSession: function( sessionId, username, callback ) {
       return $http.post( '/api/sessions/users', { sessionId: sessionId, username: username } )
       .then( function( response ) {
-        callback( username, sessionId ); // used for emitting session data
+        callback( null, username, sessionId ); // used for emitting session data
         $location.path( '/lobby' );
         return response;
       }, function( err ) {
+        callback( err );
+        console.log("error from Session.joinSession");
         console.error( err );
       } );
     },
 
     setSession: function( sessionId ) {
-      console.log('setSession==============>>>>>>>');
+      // console.log('session set to:', sessionId);
       $window.localStorage.setItem( 'sessionId', sessionId );
     },
 
