@@ -1,18 +1,22 @@
 var Genre = require( './genres' );
+var request = require('request');
+var env = require('../env/env.js');
+var api_key = env.api_key;
 
 module.exports = {
 
   getAllGenres: function() {},
 
   getGenre: function( req, res, next ) {
+    console.log('ALL THE WAY IN GET GENRES in genresController===========================>>>>>>>>>>');
     var genre = req.params.genre;
     var options = {
       method: 'GET',
-      url: 'http://api.themoviedb.org/3/search/movie',
+      url: 'http://api.themoviedb.org/3/genre/movie/list',
       qs:
         {
-          api_key: 'c062102bb9e2f7a7ab5d2a0f7fb7f2d0',
-        query: query
+          api_key: api_key
+        // ,query: query
       },
       headers:
         {

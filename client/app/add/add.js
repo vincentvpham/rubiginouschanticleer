@@ -7,7 +7,8 @@ angular.module( 'moviematch.add', [] )
   $scope.genres = [{name: 'comedy'}];
 
   $scope.getGenreMovies = function(genre) {
-    FetchMovies.getGenreMovies(genre);
+    console.log('in scope get genre with this genre: ', genre);
+    FetchMovies.getGenreMovies(genre)
   };
 
   Session.getSession()
