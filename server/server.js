@@ -13,7 +13,7 @@ io.on( 'connect' , function( socket ){
     console.log( 'were not connected anymore' );
   });
 
-  //this recieves the create event emitted in client/sessions/sessions.js-emitCreate
+  //this recieves the create event emitted in client/sessions/sessions.js-handleCreate
   socket.on( 'session', function( data ) {
     Session.findOne( { where: { id: data.sessionId } } )
     .then( function( session ) {
