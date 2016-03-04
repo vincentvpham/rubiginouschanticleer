@@ -2,17 +2,17 @@ var Genre = require( './genres' );
 var request = require('request');
 var env = require('../env/env.js');
 var api_key = env.api_key;
-
+//request for genre list: 'http://api.themoviedb.org/3/genre/movie/list'
 module.exports = {
 
   getAllGenres: function() {},
 
   getGenre: function( req, res, next ) {
-    console.log('ALL THE WAY IN GET GENRES in genresController===========================>>>>>>>>>>');
-    var genre = req.params.genre;
+    var genreId = req.params.genre;
+    console.log('ALL THE WAY IN GET GENRES in genresController===========================>>>>>>>>>> with genreId', genreId );
     var options = {
       method: 'GET',
-      url: 'http://api.themoviedb.org/3/genre/movie/list',
+      url: 'http://api.themoviedb.org/3/genre/'+ genreId + '/movies',
       qs:
         {
           api_key: api_key
@@ -30,5 +30,4 @@ module.exports = {
      res.end(body);
     });
   }
-
 };

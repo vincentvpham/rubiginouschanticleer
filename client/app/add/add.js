@@ -4,17 +4,30 @@ angular.module( 'moviematch.add', [] )
   $scope.movies = [];
   $scope.search = false;
   $scope.genreSearch = false;
-  $scope.genres = [{name: 'comedy'}];
   $scope.users = [];
   $scope.doneUsers = 0;
   $scope.loading = false;
   $scope.preLoading = true;
   var _ = window._;
-
+  $scope.genreMovies = [];
+  $scope.genres = [
+  {
+    name: 'comedy',
+    id: 35
+  },
+  {
+    name: 'action',
+    id: 28
+  }];
 
   $scope.getGenreMovies = function(genre) {
     console.log('in scope get genre with this genre: ', genre);
     FetchMovies.getGenreMovies(genre)
+    .then( function (movies) {
+      $scope.genreMovies = movies.data.results;
+    }, function ( err ) {
+      console.error( 'Error retrieving genre movies', err);
+    });
   };
 
   Session.getSession()
@@ -26,7 +39,7 @@ angular.module( 'moviematch.add', [] )
         return user.username;
       });
       console.log('GET USERS IN SESSION ', $scope.users);
-    })
+    });
     console.log('GET SESSION and scope.session', $scope.session);
   });
 
@@ -69,7 +82,7 @@ angular.module( 'moviematch.add', [] )
   });
 
   Socket.on( 'newUser', function ( data ) {
-    $scope.doneUsers++
+    $scope.doneUsers++;
     if($scope.doneUsers === $scope.users.length){
       $location.path( '/match' );
     }
