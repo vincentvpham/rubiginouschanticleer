@@ -8,7 +8,10 @@ angular.module( 'moviematch.directive', [] )
         $scope.lastEventType;
         Session.getSession()
         .then( function( session ) {
-          $scope.sessionCreator = session.creator;
+          if(session) {
+            $scope.sessionCreator = session.creator;
+            $scope.sessionId = session.id;
+          }
         });
         $scope.username = Auth.getUserName();
         $scope.toggleNavList = function(ev){
@@ -19,5 +22,5 @@ angular.module( 'moviematch.directive', [] )
         };
       },
       templateUrl: 'app/directives/dst_main_nav.html'
-  }
+  };
 });

@@ -35,6 +35,7 @@ angular.module( 'moviematch.sessionServices', [] )
     },
 
     setSession: function( sessionId ) {
+      console.log('setSession==============>>>>>>>');
       $window.localStorage.setItem( 'sessionId', sessionId );
     },
 
@@ -48,5 +49,5 @@ angular.module( 'moviematch.sessionServices', [] )
       });
     }
 
-  }
+  };
 });

@@ -13,7 +13,7 @@ angular.module( 'moviematch.sessions', [] )
     Session.fetchSessions().then( function( sessions ) {
       $scope.sessions = sessions;
     } );
-  }
+  };
 
   $scope.fetchSessions();
   //this function listens to a event emitted by server.js-'new session' and recieves and appends the new session
@@ -28,6 +28,8 @@ angular.module( 'moviematch.sessions', [] )
     // $scope.joinSession( $scope.sessionName );
   };
   $scope.joinSession = function( sessionId ) { // from a given session in the view, or from creation
+    console.log('the sessionId from joinSession fn', sessionId);
+    console.log('$scope.username', $scope.username);
     Session.setSession( sessionId );
     Session.joinSession( sessionId, $scope.username, $scope.emitJoin );
   };

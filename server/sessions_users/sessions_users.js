@@ -43,4 +43,4 @@ Session_User.countUsersInOneSession = function( sessionID ) {
   });
 };
 
-module.exports = Session_User; 
+module.exports = Session_User;

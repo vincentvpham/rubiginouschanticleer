@@ -37,5 +37,5 @@ angular.module( 'moviematch.matchServices', [] )
       });
     }
 
-  }
+  };
 });
