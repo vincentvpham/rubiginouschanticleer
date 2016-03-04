@@ -34,11 +34,38 @@ module.exports = {
 
   },
 
-  generateGroupCode: function () {
-    var groupNumber = module.exports.groupNumber;
-    module.exports.groupNumber++;
-  },
+  generateGroupCode: function (length, target) {
 
-  groupNumber: 0
+      var code;
+      var counter = 0;
+      var alphabet = 'abcdefghijklmnopqrstuvwxyz';
+
+      var recurse = function(index, result) {
+
+      // base case
+      if (index === length) {
+        // increment counter
+        counter++;
+        // if we are at our target
+        if (counter === target) {
+          // save result
+          code = result;
+        }
+      }
+      // recursive case
+      else {
+        for (var i = 0; i < alphabet.length; i++) {
+          // recurse with index (length of string being built)
+          // and string being built
+          recurse(index + 1, result + alphabet[i]);
+        }
+      }
+    }
+
+    // initial call to recursive function
+    recurse(0, '');
+    // return code in the end
+    return code;
+  }
 
 }
