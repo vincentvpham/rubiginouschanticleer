@@ -30,7 +30,7 @@ angular.module( 'moviematch.match', [
 
   var loadNextMovie = function(){
     currMovieIndex++;
-    $scope.currMovie = $scope.queue[currMovieIndex];
+    $scope.currMovie = $scope.queue[currMovieIndex] || {title: 'No Movies Left In Your Queue. Here are movies with the most votes.'};
   };
 
     $scope.yes = function() {
