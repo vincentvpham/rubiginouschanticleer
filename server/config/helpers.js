@@ -38,7 +38,7 @@ module.exports = {
 
     var code;
     var counter = 0;
-    var alphabet = 'abcdefghijklmnopqrstuvwxyz';
+    var alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
     var recurse = function(index, result) {
 

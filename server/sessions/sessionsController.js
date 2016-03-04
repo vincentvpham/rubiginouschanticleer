@@ -12,18 +12,26 @@ module.exports = {
 
   addSession: function( req, res, next ) {
     var creator = req.body.creator;
-    // var code = helpers.generateGroupCode();
 
     Session.create( {
-      creator: creator,
-      code: 'AAAA'
-    } ).then( function(response) {
-      res.status = 201;
-      var sessionId = response.dataValues.id.toString();
-      console.log('THIS IS OUR SESSION ID', sessionId);
-      res.send(sessionId);
-    }, function(err) {
-      console.log("got an error in sessionsController.addSession:", err);
+      creator: creator
+    } )
+    .then( function( response ) {
+      var sessionId = response.dataValues.id;
+      var sessionCode = helpers.generateGroupCode( 4, sessionId );
+      // find session created to update
+      Session.findOne( { where: { id: sessionId } } )
+      .then( function( session ) {
+        // update session afterwards because id is created when row is created
+        session.update( {
+          code: sessionCode
+        } )
+        res.status = 201;
+        res.send( sessionId.toString() );
+        res.end();
+      } )
+    }, function( err ) {
+      console.log( "got an error in sessionsController.addSession:", err );
       helpers.errorHandler( err, req, res, next );
     } );
   },
