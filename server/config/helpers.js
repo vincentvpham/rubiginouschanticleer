@@ -36,11 +36,11 @@ module.exports = {
 
   generateGroupCode: function (length, target) {
 
-      var code;
-      var counter = 0;
-      var alphabet = 'abcdefghijklmnopqrstuvwxyz';
+    var code;
+    var counter = 0;
+    var alphabet = 'abcdefghijklmnopqrstuvwxyz';
 
-      var recurse = function(index, result) {
+    var recurse = function(index, result) {
 
       // base case
       if (index === length) {
