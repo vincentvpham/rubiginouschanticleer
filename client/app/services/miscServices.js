@@ -53,6 +53,7 @@ angular.module( 'moviematch.miscServices', [] )
           sessionId: sessionId
         })
       .then( function( res ) {
+        console.log('Movie successfully saved', res.data);
         return res.data;
       },
       function ( err ) {

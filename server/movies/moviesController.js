@@ -1,4 +1,5 @@
 var Movies = require( './movies' );
+var Sessions_Movies = require ('../sessions_movies/sessions_movies');
 var env = require('../env/env.js');
 var api_key = env.api_key;
 var searchUrl = 'http://api.themoviedb.org/3/search/movie';
@@ -42,6 +43,18 @@ module.exports = {
   saveMovie: function ( req, res, next ) {
     var sessionId = req.body.sessionId;
     var movie = req.body.movie;
+    Movies.create( {
+      title: movie.title,
+      image: movie.poster_path,
+      movieDbId: movie.id
+    }).then( function ( movie ) {
+      Sessions_Movies.create( {
+        movie_id: movie.id,
+        session_id: sessionId
+    }).then( function ( session_movie ) {
+      res.json('MASSIVE SUCCESS!!!!!!!!',  session_movie );
+    });
+    });
   }
 
 };

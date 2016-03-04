@@ -16,7 +16,7 @@ var Session_Movie = db.define( 'sessions_movies', {
   }
 } );
 
-Session_User.sync().then( function(){
+Session_Movie.sync().then( function(){
   console.log("sessions_users table created");
 } )
 .catch( function( err ){
