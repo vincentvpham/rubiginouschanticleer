@@ -22,7 +22,7 @@ io.on( 'connect' , function( socket ){
     } );
   } );
 
-  //this function listens to the new join event in client/sessions/sessions.js-emitJoin
+  //this function listens to the new join event in client/sessions/sessions.js-handleJoin
   socket.on( 'newJoin', function( data ) {
     //this function creates a new or joins an existing socket-room
     socket.join( data.sessionId );
