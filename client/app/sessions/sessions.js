@@ -24,20 +24,25 @@ angular.module( 'moviematch.sessions', [] )
   // TODO: Create functions to make buttons work
   $scope.setSession = Session.setSession;
   $scope.createSession = function(creator) {
-    Session.createSession( creator, $scope.emitCreate );
+    Session.createSession( creator, $scope.handleCreate );
     // $scope.joinSession( $scope.sessionName );
   };
   $scope.joinSession = function( sessionId ) { // from a given session in the view, or from creation
-    Session.joinSession( sessionId, $scope.username, $scope.emitJoin );
+    Session.joinSession( sessionId, $scope.username, $scope.handleJoin );
   };
 
-  $scope.emitCreate = function( sessionId ) {
-    //this function emits a create event to the socket.
-    console.log("inside $scope.emitCreate, sessionId:", sessionId);
-    Socket.emit( 'session', {sessionId : sessionId} );
+  $scope.handleCreate = function( error, sessionId ) {
+    //this function handles a create event to the socket.
+    if (error) {
+      console.error("error from Session.createSession");
+    } else {
+      console.log("inside $scope.handleCreate, sessionId:", sessionId);
+      Socket.emit( 'session', {sessionId : sessionId} );
+      $scope.joinSession(sessionId);
+    }
   };
-  $scope.emitJoin = function( error, username, sessionId ) {
-    //this function emits a new join event to the socket.
+  $scope.handleJoin = function( error, username, sessionId ) {
+    //this function handles a new join event to the socket.
     if (error) {
       $scope.invalidInput = true;
     } else {

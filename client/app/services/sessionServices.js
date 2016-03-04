@@ -7,9 +7,10 @@ angular.module( 'moviematch.sessionServices', [] )
       .then( function( response ) {
         // console.log("in createSession, typeof parseInt(response.data):", typeof parseInt(response.data));
         var sessionId = parseInt(response.data);
-        callback( sessionId ); // used for emitting session data
+        callback( null, sessionId ); // used for emitting session data
         return response;
       }, function( err ) {
+        callback(err);
         console.error("error from Session.createSession:", err );
       } );
     },
