@@ -7,8 +7,24 @@ var request = require('request');
 
 module.exports = {
 
-  getAllMovies: function() {
-    Movies.getAllMovies();
+  getMovies: function( req, res, next ) {
+   var sessionId = req.body.sessionId;
+   Sessions_Movies.findAll({where: {
+     session_id: sessionId
+   }})
+   .then( function ( session_movies ) {
+     if(!session_movies) {
+       res.send(404, 'no movies found');
+     } else {
+       var movies = session_movies.map(function (obj) {
+         return obj.movie_id;
+       });
+       Movies.findAll( {where: {id: {$in: movies}}} )
+       .then( function( moviesInfo ) {
+         res.json( moviesInfo );
+       } );
+     }
+   });
   },
 
   //returns the requested 10er movie package
@@ -16,10 +32,17 @@ module.exports = {
     res.send( Movies.getMoviePackage( req.params.number ));
   },
 
-  getMovie: function( req, res, next ) {
-    var movieID = parseInt( req.params.movie_id );
-    var movie = Movies.getMovie( movieID );
-    res.json( movie );
+  getMovie: function( req, res ) {
+   var movieId = parseInt( req.params.movie_id );
+   Movies.findOne({where: {id: movieId}})
+     .then( function ( movie ) {
+       if(!movie) {
+         res.send(404, 'did not find movie');
+       } else {
+         console.log('and we are returning this fat movie', movie.dataValues);
+         res.json(movie.dataValues);
+       }
+     });
   },
 
   getSearchResults: function (req, res, next) {
@@ -41,7 +64,6 @@ module.exports = {
 
     request(options, function (error, response, body) {
      if (error) throw new Error(error);
-     console.log(body);
      res.end(body);
     });
   },

@@ -18,6 +18,7 @@ angular.module( 'moviematch.sessions', [] )
   $scope.fetchSessions();
   //this function listens to a event emitted by server.js-'new session' and recieves and appends the new session
   Socket.on( 'newSession', function( data ) {
+    $scope.sessions = $scope.sessions || [];
     $scope.sessions.push( data );
   });
 

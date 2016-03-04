@@ -5,51 +5,54 @@ angular.module( 'moviematch.match', [
   'moviematch.sessionServices',
   'moviematch.miscServices'] )
 
-.controller( 'MatchController', function( $scope, Match, Auth, Session, FetchMovies, Socket ) {
+.controller( 'MatchController', function( $scope, Match, Auth, Session, FetchMovies, Socket, Movies ) {
   $scope.session = {};
   $scope.user = {};
   $scope.imgPath = 'http://image.tmdb.org/t/p/w500';
-
+  var currMovieIndex = 0;
   $scope.user.name = Auth.getUserName();
 
   Session.getSession()
   .then( function( session ) {
     $scope.session = session;
+    $scope.init();
   });
 
-  var currMovieIndex = 0;
-  var currMoviePackage = 0;
-
-  var fetchNextMovies = function( packageNumber, callback ){
-    FetchMovies.getNext10Movies( packageNumber )
-      .then( function( data ) {
-        $scope.moviePackage = data;
-        callback();
-      })
-  };
+  //as soon as the view is loaded request the movie queue here
+   $scope.init = function() {
+      FetchMovies.getMovies($scope.session.id)
+      .then( function (data) {
+        console.log('movies in init', data);
+        $scope.queue = data;
+        $scope.currMovie = data[currMovieIndex];
+     });
+     };
 
   var loadNextMovie = function(){
-    if( currMovieIndex === 9 ) {
-      currMoviePackage++;
-      fetchNextMovies( currMoviePackage, function() {
-        $scope.currMovie = $scope.moviePackage[0];
+    currMovieIndex++;
+    $scope.currMovie = $scope.queue[currMovieIndex] || {title: 'No Movies Left In Your Queue. Here are movies with the most votes.'};
+  };
+
+    $scope.yes = function() {
+      Match.sendVote( $scope.session.id, $scope.user.name, $scope.currMovie.id, true )
+      // For every 'yes' we want to double check to see if we have a match. If we do,
+      // we want to send a socket event out to inform the server.
+      .then( function() {
+        Match.checkMatch( $scope.session, $scope.currMovie )
+        .then( function( result ) {
+          if( result ) {
+            Socket.emit( 'foundMatch', { sessionId: $scope.session.id, movie: $scope.currMovie } );
+          } else {
+            loadNextMovie();
+          }
         });
-      currMovieIndex = 0;
-    }
-    else {
-      currMovieIndex++;
-      $scope.currMovie = $scope.moviePackage[currMovieIndex];
-    }
+      });
+    };
 
-  };
-
-  $scope.init = function() {        //as soon as the view is loaded request the first movie-package here
-    fetchNextMovies( 0, function() {
-      $scope.currMovie = $scope.moviePackage[0];
-    });
-  };
-
-  $scope.init();
+    $scope.no = function() {
+      Match.sendVote( $scope.session.id, $scope.user.name, $scope.currMovie.id, false );
+      loadNextMovie();
+    };
 
   // Listen for the signal to redirect to a 'match found' page.
   Socket.on( 'matchRedirect', function( id ) {
@@ -57,23 +60,4 @@ angular.module( 'moviematch.match', [
     Match.matchRedirect( id );
   });
 
-  $scope.yes = function() {
-    Match.sendVote( $scope.session.id, $scope.user.name, $scope.currMovie.id, true )
-    // For every 'yes' we want to double check to see if we have a match. If we do,
-    // we want to send a socket event out to inform the server.
-    .then( function() {
-      Match.checkMatch( $scope.session, $scope.currMovie )
-      .then( function( result ) {
-        if( result ) {
-          Socket.emit( 'foundMatch', { sessionId: $scope.session.id, movie: $scope.currMovie } );
-        } else {
-          loadNextMovie();
-        }
-      });
-    });
-  }
-  $scope.no = function() {
-    Match.sendVote( $scope.session.id, $scope.user.name, $scope.currMovie.id, false );
-    loadNextMovie();
-  }
-} );
+});

@@ -20,7 +20,7 @@ module.exports = {
             response.redirect('/signin');
           }
         }
-    })
+    });
   },
 
   signup: function(request, response) {
@@ -41,7 +41,7 @@ module.exports = {
             response.json({token: token});
           });
         }
-      })
+      });
   },
 
   validate: function (request, response) {

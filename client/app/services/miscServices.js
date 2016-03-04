@@ -3,6 +3,17 @@ angular.module( 'moviematch.miscServices', [] )
 .factory( 'FetchMovies', function( $http ) {
   return {
 
+   getMovies: function (sessionId) {
+     return $http.post(
+       '/api/movies/',
+       {sessionId: sessionId})
+      .then( function( res ) {
+        return res.data;
+      }, function ( err ) {
+        console.error( err );
+      });
+    },
+
     getMovie: function( id ) {
       return $http.get( '/api/movies/' + id )
       .then( function( res ) {

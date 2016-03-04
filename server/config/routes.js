@@ -23,7 +23,7 @@ module.exports = function ( app, express ) {
   app.get('/api/genres/:genre', genresController.getGenre );
 
   /* MOVIES */
-  app.get('/api/movies', moviesController.getAllMovies );
+  app.post('/api/movies', moviesController.getMovies );
   app.get('/api/movies/package/:number', moviesController.getMoviePackage );
   app.get('/api/movies/:movie_id', moviesController.getMovie );
   app.get('/api/movies/search/', moviesController.getSearchResults );

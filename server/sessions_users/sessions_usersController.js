@@ -1,7 +1,7 @@
 var helpers = require( '../config/helpers' );
 var Session_User = require( './sessions_users' );
 var Session = require( '../sessions/sessions' );
-var User = require( '../users/users' )
+var User = require( '../users/users' );
 module.exports = {
 
   getUsersInOneSession: function( req, res, next ) {
@@ -17,9 +17,9 @@ module.exports = {
         User.findAll( {where: {id: {$in: users}}} )
         .then( function(users) {
           res.send(users);
-        } )
-      } )
-    } )
+        } );
+      } );
+    } );
   },
 
   countUsersInOneSession: function( req, res, next ) {
