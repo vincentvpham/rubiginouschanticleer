@@ -12,7 +12,7 @@
         </div>
     </div>
     <div>
-        <input ng-model="query" placeholder="search here"><button type="submit" ng-click="searchMovies()">search</button>
+        <input ng-model="query" type="text" ng-change="searchMovies()" ng-model-options="{debounce: 300}" placeholder="search here"><button type="submit" ng-click="searchMovies()">search</button>
         <div class="container">
           <div class="row" ng-repeat="result in results">
             <hr>
@@ -31,9 +31,8 @@
             </h4>
         </div>
         <div class="row movies" ng-repeat="movie in movies">
-          <div class="lead col-xs-2">
-              {{ movie.title }}
-          </div>
+          <div class="btn lead col-xs-1">{{ movie.title }}</div>
+          <div class="col-xs-2 col-xs-offset-1">Year: {{ movie.year.substring(0,4) }}</div>
           <hr>
         </div>
     </form>

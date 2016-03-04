@@ -43,6 +43,13 @@ io.on( 'connect' , function( socket ){
     socket.join( data.sessionId );
     io.to( data.sessionId ).emit( 'matchRedirect', data.movie.id );
   });
+
+  socket.on( 'addMovie', function (data) {
+    console.log("SOCKET2 recieved data: ", data);
+    socket.join( data.sessionId );
+    io.to( data.sessionId ).emit( 'newMovie', {title: data.movie.title, year: data.movie.release_date});
+  });
+
 });
 
 const PORT = 8000;

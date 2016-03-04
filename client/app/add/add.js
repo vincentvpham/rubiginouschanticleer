@@ -1,6 +1,7 @@
 angular.module( 'moviematch.add', [] )
 .controller( 'AddController', function( $scope, Session, Lobby, Socket, $location, Auth, Movies ) {
   $scope.session = {};
+  $scope.movies = [];
 
   Session.getSession()
   .then( function( session ) {
@@ -15,8 +16,9 @@ angular.module( 'moviematch.add', [] )
         console.log('here the data data data', data);
         $scope.updateMovieResults(data);
       });
+    } else {
+      $scope.results = [];
     }
-    $scope.query = '';
   };
 
   $scope.updateMovieResults = function (data) {
@@ -24,14 +26,19 @@ angular.module( 'moviematch.add', [] )
   };
 
   $scope.addToQueue = function (movie) {
-    $scope.movies = $scope.movies || [];
-    $scope.movies.push(movie);
+    console.log('movie from addToQueue function: SOCKET1', movie);
+    console.log('SESSION', $scope.session);
+    Socket.emit( 'addMovie', {sessionId: $scope.session.id, movie: movie} );
     Movies.saveMovie(movie, $scope.session.id);
   };
 
   $scope.startSession = function (sessionId) {
-    console.log('The START SESSION BUTTON RESPONSE', sessionId);
     $location.path( '/match' );
   };
+
+  Socket.on( 'newMovie', function( data ) {
+      console.log(data);
+      $scope.movies.push( data );
+  });
 
 });
