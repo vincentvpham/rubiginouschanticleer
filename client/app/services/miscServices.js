@@ -14,8 +14,14 @@ angular.module( 'moviematch.miscServices', [] )
       });
     },
 
-    getMovie: function (id) {
-      return $http.get();
+    getMovie: function( id ) {
+      return $http.get( '/api/movies/' + id )
+      .then( function( res ) {
+        return res.data;
+      },
+      function( err ) {
+        console.error( err );
+      });
     },
 
     getNext10Movies: function( packageNumber ) {

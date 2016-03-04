@@ -12,7 +12,6 @@ angular.module( 'moviematch.showmatch', [] )
 
   $scope.currMovie = {};
   var id = parseInt( $routeParams.id );
-  console.log( 'THE WEIRD ROUTE PARAMS ID GETTING PASSED INTO fetchMovies.getMovie', id);
 
   FetchMovies.getMovie( id )
   .then( function( movie ) {
