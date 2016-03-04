@@ -53,7 +53,6 @@ angular.module( 'moviematch.match', [
       Match.sendVote( $scope.session.id, $scope.user.name, $scope.currMovie.id, false );
       loadNextMovie();
     };
-  } );
 
   // Listen for the signal to redirect to a 'match found' page.
   Socket.on( 'matchRedirect', function( id ) {
@@ -61,4 +60,4 @@ angular.module( 'moviematch.match', [
     Match.matchRedirect( id );
   });
 
-
+});
