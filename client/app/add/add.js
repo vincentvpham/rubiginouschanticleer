@@ -1,9 +1,14 @@
 angular.module( 'moviematch.add', [] )
-.controller( 'AddController', function( $scope, Session, Lobby, Socket, $location, Auth, Movies ) {
+.controller( 'AddController', function( $scope, Session, Lobby, Socket, $location, Auth, Movies, FetchMovies ) {
   $scope.session = {};
   $scope.movies = [];
   $scope.search = false;
   $scope.genreSearch = false;
+  $scope.genres = [{name: 'comedy'}];
+
+  $scope.getGenreMovies = function(genre) {
+    FetchMovies.getGenreMovies(genre);
+  };
 
   Session.getSession()
   .then( function( session ) {

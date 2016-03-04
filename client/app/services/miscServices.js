@@ -24,14 +24,8 @@ angular.module( 'moviematch.miscServices', [] )
       });
     },
 
-    getNext10Movies: function( packageNumber ) {
-      return $http.get( '/api/movies/package/' + packageNumber )
-      .then( function( res ) {
-        return res.data;
-      },
-      function( err ) {
-        console.error( err );
-      } );
+    getGenreMovies: function ( genre ) {
+      return $http.get('/api/genres/' + genre);
     }
 
   };

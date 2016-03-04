@@ -52,7 +52,7 @@ module.exports = {
       url: 'http://api.themoviedb.org/3/search/movie',
       qs:
         {
-          api_key: 'c062102bb9e2f7a7ab5d2a0f7fb7f2d0',
+          api_key: 'api_key',
         query: query
       },
       headers:
