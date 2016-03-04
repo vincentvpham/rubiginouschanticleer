@@ -28,9 +28,6 @@ angular.module( 'moviematch.sessions', [] )
     // $scope.joinSession( $scope.sessionName );
   };
   $scope.joinSession = function( sessionId ) { // from a given session in the view, or from creation
-    console.log('the sessionId from joinSession fn', sessionId);
-    console.log('$scope.username', $scope.username);
-    Session.setSession( sessionId );
     Session.joinSession( sessionId, $scope.username, $scope.emitJoin );
   };
 
@@ -39,9 +36,15 @@ angular.module( 'moviematch.sessions', [] )
     console.log("inside $scope.emitCreate, sessionId:", sessionId);
     Socket.emit( 'session', {sessionId : sessionId} );
   };
-  $scope.emitJoin = function( username, sessionId ) {
+  $scope.emitJoin = function( error, username, sessionId ) {
     //this function emits a new join event to the socket.
-    Socket.emit( 'newJoin', {username: username, sessionId: sessionId} );
+    if (error) {
+      $scope.invalidInput = true;
+    } else {
+      $scope.invalidInput = false;
+      Session.setSession(sessionId);
+      Socket.emit( 'newJoin', {username: username, sessionId: sessionId} );
+    }
   };
 
 } );

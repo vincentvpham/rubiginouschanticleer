@@ -68,14 +68,20 @@ module.exports = {
     .then( function( user ) {
       Session.findOne( {where: { id : sessionId } } )
       .then( function( session ) {
-        Session_User.findOrCreate( { where: {
-          user_id: user.id,
-          session_id: session.id
-        } } ).then( function( session_user ) {
-          res.send( session_user );
-        }, function( err ) {
-          helpers.errorHandler( err, req, res, next );
-        });
+        if (session) {
+          Session_User.findOrCreate( { where: {
+            user_id: user.id,
+            session_id: session.id
+          } } ).then( function( session_user ) {
+            res.send( session_user );
+          }, function( err ) {
+            helpers.errorHandler( err, req, res, next );
+          });
+        } else {
+          // console.log("==========> inside addOneUser, session came back null due to invalid sessionId");
+          res.status (400);
+          res.send( "Invalid sessionId");
+        }
       }, function( err ) {
         helpers.errorHandler( err, req, res, next );
       });
