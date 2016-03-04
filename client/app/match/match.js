@@ -18,7 +18,7 @@ angular.module( 'moviematch.match', [
     $scope.init();
   });
 
-  //as soon as the view is loaded request the first movie-package here
+  //as soon as the view is loaded request the movie queue here
    $scope.init = function() {
       FetchMovies.getMovies($scope.session.id)
       .then( function (data) {
@@ -30,7 +30,7 @@ angular.module( 'moviematch.match', [
 
   var loadNextMovie = function(){
     currMovieIndex++;
-    $scope.currMovie = $scope.moviePackage[currMovieIndex];
+    $scope.currMovie = $scope.queue[currMovieIndex];
   };
 
     $scope.yes = function() {
