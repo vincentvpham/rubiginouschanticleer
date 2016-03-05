@@ -48,7 +48,7 @@ io.on( 'connect' , function( socket ){
   socket.on( 'addMovie', function (data) {
     console.log("SOCKET2 recieved data: ", data);
     socket.join( data.sessionId );
-    io.to( data.sessionId ).emit( 'newMovie', {title: data.movie.title, year: data.movie.release_date});
+    io.to( data.sessionId ).emit( 'newMovie', {title: data.movie.title, year: data.movie.release_date, poster_path: data.movie.poster_path});
   });
 
   socket.on( 'doneUser', function (data) {
