@@ -83,8 +83,7 @@ angular.module( 'moviematch.add', [] )
   });
 
   Socket.on( 'newMovie', function( data ) {
-      //console.log(data);
-      $scope.movies.push( data );
+    $scope.movies.push( data );
   });
 
   Socket.on( 'newUser', function ( data ) {
