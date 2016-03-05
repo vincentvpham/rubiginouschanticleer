@@ -41,24 +41,21 @@
             <div class="col-lg-12 col-md-10 ">
                 <div class="cover-container">
                     <!-- START PANEL -->
-                    <div ng-repeat="movie in genreMovies" class="cover-item" style="background-image: url('{{imgPath}}{{movie.poster_path}}')">
-                        <!--Bootstrap Popover Modal-->
+                    <div ng-repeat="movie in genreMovies">
+                      <img ng-repeat="movie in genreMovies" class="cover-item" ng-src="{{imgPath}}{{movie.poster_path}}" ng-click="popover(movie)"data-toggle="modal" data-target="#myModal">
 
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                          Launch demo modal
-                        </button>
-
-                        <!-- Modal -->
+                        <!-- Bootstrap Popover Modal -->
                         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                                <h4 class="modal-title" id="myModalLabel">{{ popModal.title }}</h4>
                               </div>
                               <div class="modal-body">
-                                See the movie here
+                                <span>{{ popModal.rating }}</span>
+                                <img ng-src="{{imgPath}}{{popModal.poster_path}}">
+                                <div class="col-xs-4 popModalText">{{ popModal.overview }}</div>
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -11,6 +11,9 @@ angular.module( 'moviematch.add', [] )
   var _ = window._;
   $scope.imgPath = 'http://image.tmdb.org/t/p/w500';
   $scope.genreMovies = [];
+  $scope.popModal = {
+    name: 'peter'
+  };
   $scope.genres = [
   {
     name: 'comedy',
@@ -21,6 +24,13 @@ angular.module( 'moviematch.add', [] )
     id: 28
   }];
 
+  $scope.popover = function(movie){
+    $scope.popModal.title = movie.title;
+    $scope.popModal.poster_path = movie.poster_path;
+    $scope.popModal.overview = movie.overview;
+    $scope.popModal.rating = movie.vote_average;
+    console.log('popover logs: ', movie);
+  };
   $scope.getGenreMovies = function(genre) {
     console.log('in scope get genre with this genre: ', genre);
     FetchMovies.getGenreMovies(genre)

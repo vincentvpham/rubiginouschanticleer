@@ -161,3 +161,7 @@ img.genreMovieImg {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.popModalText {
+  text-align: center;
+}
