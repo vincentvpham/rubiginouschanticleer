@@ -23,6 +23,13 @@ button:disabled {
   width: 100%;
 }
 
+.load {
+  height: 25%;
+  width: 25%;
+  position: absolute;
+  z-index: 2;
+}
+
 
 .laptop-buttons {
   width: 100%;

@@ -6,6 +6,7 @@ var http = require( 'http' ).Server( app );
 var io = require( 'socket.io' )( http );
 var Session = require( './sessions/sessions' );
 var User = require( './users/users' );
+var Session_User = require('./sessions_users/sessions_users');
 
 io.on( 'connect' , function( socket ){
   console.log( 'we are connected!!' );
@@ -48,6 +49,12 @@ io.on( 'connect' , function( socket ){
     console.log("SOCKET2 recieved data: ", data);
     socket.join( data.sessionId );
     io.to( data.sessionId ).emit( 'newMovie', {title: data.movie.title, year: data.movie.release_date});
+  });
+
+  socket.on( 'doneUser', function (data) {
+    console.log('SOCKET2 ', data);
+    socket.join( data.sessionId );
+    io.to( data.sessionId ).emit( 'newUser');
   });
 
 });
