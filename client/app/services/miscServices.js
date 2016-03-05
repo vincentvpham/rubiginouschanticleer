@@ -24,16 +24,17 @@ angular.module( 'moviematch.miscServices', [] )
       });
     },
 
-    getNext10Movies: function( packageNumber ) {
-      return $http.get( '/api/movies/package/' + packageNumber )
+    getGenreMovies: function ( genre ) {
+      console.log('in get genre in fetchmovies factory with this genre: ', genre);
+      return $http.get( '/api/genres/' + genre )
       .then( function( res ) {
+        console.log('now in get genre in fetchmovies factory with this res', res);
         return res.data;
       },
       function( err ) {
         console.error( err );
-      } );
+      });
     }
-
   };
 })
 
