@@ -135,6 +135,8 @@ div.genreSearch {
   margin-top: 2em;
 }
 
+
+
 img.genreMovieImg {
   border-radius: 2em;
   max-width: 10em;
@@ -174,10 +176,15 @@ button.cover-item {
   height: 30px;
 }
 div.genre.cover-container {
-  height: 60px;
+  height: 100px;
 }
 
 div.well {
   background-color: #ffffff;
   margin: 10px;
+}
+
+.searchButtons {
+  margin: 20px;
+  margin-top: 40px;
 }
