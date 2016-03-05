@@ -9,6 +9,7 @@ angular.module( 'moviematch.add', [] )
   $scope.loading = false;
   $scope.preLoading = true;
   var _ = window._;
+  $scope.imgPath = 'http://image.tmdb.org/t/p/w500';
   $scope.genreMovies = [];
   $scope.genres = [
   {
@@ -24,7 +25,7 @@ angular.module( 'moviematch.add', [] )
     console.log('in scope get genre with this genre: ', genre);
     FetchMovies.getGenreMovies(genre)
     .then( function (movies) {
-      $scope.genreMovies = movies.data.results;
+      $scope.genreMovies = movies.results;
     }, function ( err ) {
       console.error( 'Error retrieving genre movies', err);
     });
