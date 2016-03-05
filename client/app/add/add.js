@@ -15,6 +15,7 @@ angular.module( 'moviematch.add', [] )
     name: 'peter'
   };
 
+  // FEATURE TO BE IMPLEMENTED
   $scope.popover = function(movie){
     $scope.popModal.title = movie.title;
     $scope.popModal.poster_path = movie.poster_path;
@@ -23,6 +24,7 @@ angular.module( 'moviematch.add', [] )
     $scope.popModal.movie = movie;
     console.log('popover logs: ', movie);
   };
+
   $scope.getGenreMovies = function(genre) {
     console.log('in scope get genre with this genre: ', genre);
     FetchMovies.getGenreMovies(genre)

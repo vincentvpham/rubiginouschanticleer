@@ -31,9 +31,9 @@
               <!-- START PANEL -->
         <div class="cover-container">
           <div ng-repeat="result in results">
-            <img ng-repeat="result in results" class="cover-item" ng-src="{{imgPath}}{{result.poster_path}}" ng-click="popover(result)"data-toggle="modal" data-target="#myModal">
+            <img ng-repeat="result in results" class="cover-item" ng-src="{{imgPath}}{{result.poster_path}}" ng-click="addToQueue(result)">
 
-              <!-- Bootstrap Popover Modal -->
+              <!-- Bootstrap Popover Modal - FEATURE TO BE IMPLEMENTED  -->
               <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
@@ -72,9 +72,9 @@
                     <div class="cover-container">
                         <!-- START Genre Movies PANEL -->
                         <div ng-repeat="movie in genreMovies">
-                          <img ng-repeat="movie in genreMovies" class="cover-item" ng-src="{{imgPath}}{{movie.poster_path}}" ng-click="popover(movie)"data-toggle="modal" data-target="#myModal">
+                          <img ng-repeat="movie in genreMovies" class="cover-item" ng-src="{{imgPath}}{{movie.poster_path}}" ng-click="addToQueue(movie)">
 
-                            <!-- Bootstrap Popover Modal -->
+                            <!-- Bootstrap Popover Modal - FEATURE TO BE IMPLEMENTED -->
                             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                               <div class="modal-dialog" role="document">
                                 <div class="modal-content">
