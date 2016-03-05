@@ -45,6 +45,17 @@ module.exports = {
     }, function( err ) {
       helpers.errorHandler( err, req, res, next );
     });
+  },
+
+  getSessionIdByCode: function( req, res, next ) {
+    var sessionCode = req.params.sessionCode;
+
+    Session.findOne( { where: { code: sessionCode } } )
+    .then( function( session ) {
+      res.json( session );
+    }, function( err ) {
+      helpers.errorHandler( err, req, res, next );
+    });
   }
 
 };
