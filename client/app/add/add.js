@@ -5,6 +5,12 @@ angular.module( 'moviematch.add', [] )
   $scope.search = false;
   $scope.genreSearch = false;
   $scope.genres = [{name: 'comedy'}];
+  $scope.users = [];
+  $scope.doneUsers = 0;
+  $scope.loading = false;
+  $scope.preLoading = true;
+  var _ = window._;
+
 
   $scope.getGenreMovies = function(genre) {
     console.log('in scope get genre with this genre: ', genre);
@@ -14,6 +20,13 @@ angular.module( 'moviematch.add', [] )
   Session.getSession()
   .then( function( session ) {
     $scope.session = session;
+    Lobby.getUsersInOneSession($scope.session.id)
+    .then( function (users){
+      $scope.users = _.map(users, function(user) {
+        return user.username;
+      });
+      console.log('GET USERS IN SESSION ', $scope.users);
+    })
     console.log('GET SESSION and scope.session', $scope.session);
   });
 
@@ -34,8 +47,8 @@ angular.module( 'moviematch.add', [] )
   };
 
   $scope.addToQueue = function (movie) {
-    console.log('movie from addToQueue function: SOCKET1', movie);
-    console.log('SESSION', $scope.session);
+    // console.log('movie from addToQueue function: SOCKET1', movie);
+    // console.log('SESSION', $scope.session);
     Socket.emit( 'addMovie', {sessionId: $scope.session.id, movie: movie} );
     Movies.saveMovie(movie, $scope.session.id);
   };
@@ -44,9 +57,22 @@ angular.module( 'moviematch.add', [] )
     $location.path( '/match' );
   };
 
+  $scope.userDone = _.once(function () {
+    $scope.preLoading = false;
+    $scope.loading = true;
+    Socket.emit( 'doneUser', {sessionId: $scope.session.id} );
+  });
+
   Socket.on( 'newMovie', function( data ) {
-      console.log(data);
+      //console.log(data);
       $scope.movies.push( data );
+  });
+
+  Socket.on( 'newUser', function ( data ) {
+    $scope.doneUsers++
+    if($scope.doneUsers === $scope.users.length){
+      $location.path( '/match' );
+    }
   });
 
 });
