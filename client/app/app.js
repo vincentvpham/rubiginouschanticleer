@@ -23,6 +23,9 @@ var app = angular.module( 'moviematch', [
     //   templateUrl: 'app/auth/signin.html',
     //   controller: 'AuthController'
     // })
+    .when('/', {
+      redirectTo: '/sessions'
+    })
     .when( '/signup', {
       templateUrl: 'app/auth/signup.html',
       controller: 'AuthController'
