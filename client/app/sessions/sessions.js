@@ -53,4 +53,11 @@ angular.module( 'moviematch.sessions', [] )
     }
   };
 
+  $scope.getSessionIdByCode = function( sessionCode, callback ) {
+    Session.getSessionIdByCode( sessionCode )
+    .then(function(session) {
+      callback(session.id);
+    })
+  };
+
 } );

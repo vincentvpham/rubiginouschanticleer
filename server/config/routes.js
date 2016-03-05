@@ -37,6 +37,8 @@ module.exports = function ( app, express ) {
   /* SESSIONS */
   app.get('/api/sessions', sessionsController.getAllSessions );
   app.post('/api/sessions', sessionsController.addSession );
+  app.get('/api/sessions/:sessionId', sessionsController.getSessionById );
+  app.get('/api/sessions/code/:sessionCode', sessionsController.getSessionIdByCode );
 
   /* VOTES */
   app.get('/api/votes', votesController.getAllVotes );
@@ -45,9 +47,9 @@ module.exports = function ( app, express ) {
 
   /* SESSIONS_USERS */
   app.get('/api/sessions/users/:sessionId', sessions_usersController.getUsersInOneSession );
-  app.get('/api/sessions/:sessionId', sessionsController.getSessionById );
   app.get('/api/sessions/:session_id/:user_id', sessions_usersController.getSessionUserBySessionAndUser );
   app.post('/api/sessions/users', sessions_usersController.addOneUser );
+
 
   /* MATCHING */
   // This endpoint answers the question, 'For session <id>, do we currently have a match on movie <id>?'

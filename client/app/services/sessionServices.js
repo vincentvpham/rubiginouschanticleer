@@ -50,6 +50,15 @@ angular.module( 'moviematch.sessionServices', [] )
       }, function( err ) {
         console.error( err );
       });
+    },
+
+    getSessionIdByCode: function( sessionCode ) {
+      return $http.get( '/api/sessions/code/' + sessionCode )
+      .then( function( session ) {
+        return session.data;
+      }, function( err ) {
+        console.error( err );
+      });
     }
 
   };
