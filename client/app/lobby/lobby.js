@@ -6,6 +6,7 @@ angular.module( 'moviematch.lobby', [] )
   Session.getSession()
   .then( function( session ) {
     $scope.session = session;
+    $scope.sessionCode = session.code;
 
     Lobby.getUsersInOneSession( $scope.session.id )
     .then( function( users ){
