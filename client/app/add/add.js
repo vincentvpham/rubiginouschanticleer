@@ -15,6 +15,12 @@ angular.module( 'moviematch.add', [] )
     name: 'peter'
   };
 
+  $scope.showOneSearch = function(searchToShow) {
+    $scope.search = false;
+    $scope.genreSearch = false;
+    searchToShow = true;
+  }
+
   // FEATURE TO BE IMPLEMENTED
   $scope.popover = function(movie){
     $scope.popModal.title = movie.title;
