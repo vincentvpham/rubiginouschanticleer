@@ -29,6 +29,7 @@ angular.module( 'moviematch.add', [] )
     $scope.popModal.poster_path = movie.poster_path;
     $scope.popModal.overview = movie.overview;
     $scope.popModal.rating = movie.vote_average;
+    $scope.popModal.movie = movie;
     console.log('popover logs: ', movie);
   };
   $scope.getGenreMovies = function(genre) {
@@ -73,6 +74,9 @@ angular.module( 'moviematch.add', [] )
   $scope.addToQueue = function (movie) {
     // console.log('movie from addToQueue function: SOCKET1', movie);
     // console.log('SESSION', $scope.session);
+    movie = movie || $scope.popModal.movie;
+    console.log('movie from addToQueue function: SOCKET1', movie);
+    console.log('SESSION', $scope.session);
     Socket.emit( 'addMovie', {sessionId: $scope.session.id, movie: movie} );
     Movies.saveMovie(movie, $scope.session.id);
   };

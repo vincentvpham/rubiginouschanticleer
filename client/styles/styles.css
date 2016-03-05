@@ -162,6 +162,10 @@ img.genreMovieImg {
     background-size: cover;
 }
 
-.popModalText {
+.modal-body {
+    text-align: center;
+}
+
+h4.modal-title {
   text-align: center;
 }

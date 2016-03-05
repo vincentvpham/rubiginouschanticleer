@@ -50,16 +50,15 @@
                             <div class="modal-content">
                               <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="myModalLabel">{{ popModal.title }}</h4>
+                                <h4 class="modal-title lead" id="myModalLabel">{{ popModal.title }}</h4>
                               </div>
                               <div class="modal-body">
-                                <span>{{ popModal.rating }}</span>
+                                <p class="modal-body">Average Rating: {{ popModal.rating }}</p>
                                 <img ng-src="{{imgPath}}{{popModal.poster_path}}">
-                                <div class="col-xs-4 popModalText">{{ popModal.overview }}</div>
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Add movie</button>
+                                <button ng-click="addToQueue()" type="button" class="btn btn-primary" data-dismiss="modal">Add movie</button>
                               </div>
                             </div>
                           </div>
