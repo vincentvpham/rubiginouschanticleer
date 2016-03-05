@@ -14,7 +14,7 @@ module.exports = function ( app, express ) {
   /* USERS */
   app.get('/api/users', usersController.getAllUsers );
   app.get('/api/users/:user', usersController.validate );
-  app.post('/api/users/signin', usersController.signin );
+  // app.post('/api/users/signin', usersController.signin );
   app.post('/api/users/signup', usersController.signup );
   app.post('/api/users/signout', usersController.signout );
 

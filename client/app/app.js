@@ -19,10 +19,10 @@ var app = angular.module( 'moviematch', [
 
 .config( function ( $routeProvider, $httpProvider ) {
   $routeProvider
-    .when( '/signin', {
-      templateUrl: 'app/auth/signin.html',
-      controller: 'AuthController'
-    })
+    // .when( '/signin', {
+    //   templateUrl: 'app/auth/signin.html',
+    //   controller: 'AuthController'
+    // })
     .when( '/signup', {
       templateUrl: 'app/auth/signup.html',
       controller: 'AuthController'
@@ -57,7 +57,7 @@ var app = angular.module( 'moviematch', [
       authenticate: true
     })
     .otherwise({
-      redirectTo: '/signin'
+      redirectTo: '/signup'
     })
 
     $httpProvider.interceptors.push('AttachTokens');

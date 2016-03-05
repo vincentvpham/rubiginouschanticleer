@@ -3,12 +3,12 @@ angular.module( 'moviematch.authServices', [] )
 .factory( 'Auth', function( $http, $location, $window ) {
   var username = '';
   return {
-    signin : function( user ) {
-      return $http.post( '/api/users/signin', user )
-      .then(function ( resp ) {
-        return resp.data.token;
-      });
-    },
+    // signin : function( user ) {
+    //   return $http.post( '/api/users/signin', user )
+    //   .then(function ( resp ) {
+    //     return resp.data.token;
+    //   });
+    // },
 
     signup : function( user ) {
       return $http.post( '/api/users/signup', user )
