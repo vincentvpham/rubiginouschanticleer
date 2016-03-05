@@ -14,9 +14,9 @@
 </div>
 <div data-wrapper-for="Grid3" class="container-fluid">
     <div class="row">
-        <form name="joinSessionForm" class="join-group-cnt" ng-submit="joinSession( sessionId )" novalidate>
+        <form name="joinSessionForm" class="join-group-cnt" ng-submit="getSessionIdByCode( sessionCode, joinSession )" novalidate>
             <div class="col-xs-5">
-                <input type="text" value="" placeholder="Group code" class="form-control" name="join-session" ng-model="sessionId" required>
+                <input type="text" value="" placeholder="Group code" class="form-control" name="join-session" ng-model="sessionCode" required>
             </div>
             <div class="col-xs-3">
                 <button class="btn btn-success" type="submit" ng-disabled="joinSessionForm.$invalid">
