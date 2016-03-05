@@ -115,7 +115,8 @@ hr {
 
 .main-nav {
   height: 35px;
-  background:rgba(0,94,255,0.2);
+  background: black;
+  color: white;
 }
 
 .app-logo {
