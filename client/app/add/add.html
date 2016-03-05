@@ -19,26 +19,33 @@
 
     <!--Search For Specific Movies Well-->
     <div class="well" ng-show="search">
-        <input ng-model="query" type="text" ng-change="searchMovies()" ng-model-options="{debounce: 300}" placeholder="search here"><button type="submit" ng-click="searchMovies()">search</button>
-        <div class="container">
-          <div class="row" ng-repeat="result in results">
-            <hr>
-            <div ng-click="addToQueue(result)" class="btn lead col-xs-1">{{ result.title }}</div>
-            <div class="col-xs-2 col-xs-offset-1">Year: {{ result.release_date.substring(0,4) }}</div>
-          </div>
-        </div>
-    </div>
-
-    <!--Search Movies By Genre Well-->
- <!--    <div class="container genreSearch">
         <div class="row">
-            <div class="col-xs-2 col-xs-offset-5">
-                <button class="btn btn-success btn-lg" type="button" ng-click="genreSearch=!genreSearch">
-                    Browse Genres
-                </button>
+          <div class="col-xs-8 col-xs-offset-4">
+              <input ng-model="query" type="text" ng-change="searchMovies()" ng-model-options="{debounce: 300}" placeholder="search here"><button type="submit" ng-click="searchMovies()">search</button>
+
+              <!--Show Specific Movie Results From Search-->
+
+              <!-- START PANEL -->
+              <div class="cover-container">
+                    <div ng-repeat="result in results" class="cover-item" ng-click="addToQueue(result)">{{ result.title }}
+                      <img ng-src="{{imgPath}}{{result.image}}">
+                    </div>
+              </div>
+              <!--End Panel-->
+
+
+                <<!-- div class="container">
+                  <div class="row" ng-repeat="result in results">
+                    <hr>
+                    <div ng-click="addToQueue(result)" class="btn lead col-xs-1">{{ result.title }}</div>
+                    <div class="col-xs-2 col-xs-offset-1">Year: {{ result.release_date.substring(0,4) }}</div>
+                  </div>
+                </div> -->
             </div>
         </div>
-    </div> -->
+    </div>
+    <!--End Movies Well-->
+
         <div class="well" ng-show="genreSearch">
             <!-- START PANEL -->
             <div class="genre cover-container">
