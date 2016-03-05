@@ -14,15 +14,6 @@ angular.module( 'moviematch.add', [] )
   $scope.popModal = {
     name: 'peter'
   };
-  $scope.genres = [
-  {
-    name: 'comedy',
-    id: 35
-  },
-  {
-    name: 'action',
-    id: 28
-  }];
 
   $scope.popover = function(movie){
     $scope.popModal.title = movie.title;
@@ -103,4 +94,86 @@ angular.module( 'moviematch.add', [] )
     }
   });
 
+  $scope.genres = [
+  {
+    name: 'action',
+    id: 28
+  },
+  {
+    name: 'adventure',
+    id: 12
+  },
+  {
+    name: 'animation',
+    id: 16
+  },
+  {
+    name: 'comedy',
+    id: 35
+  },
+  {
+    name: 'crime',
+    id: 80
+  },
+  {
+    name: 'documentary',
+    id: 99
+  },
+  {
+    name: 'drama',
+    id: 18
+  },
+  {
+    name: 'family',
+    id: 10751
+  },
+  {
+    name: 'fantasy',
+    id: 14
+  },
+  {
+    name: 'foreign',
+    id: 10769
+  },
+  {
+    name: 'history',
+    id: 36
+  },
+  {
+    name: 'horror',
+    id: 27
+  },
+  {
+    name: 'music',
+    id: 10402
+  },
+  {
+    name: 'mystery',
+    id: 9648
+  },
+  {
+    name: 'romance',
+    id: 10749
+  },
+  {
+    name: 'science fiction',
+    id: 878
+  },
+  {
+    name: 'TV movie',
+    id: 10770
+  },
+  {
+    name: 'thriller',
+    id: 53
+  },
+  {
+    name: 'war',
+    id: 10752
+  },
+  {
+    name: 'western',
+    id: 37
+  }
+  ];
 });

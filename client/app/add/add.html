@@ -33,39 +33,44 @@
         </div>
     </div>
         <div class="well" ng-show="genreSearch">
-          <button ng-repeat="genre in genres" class="btn btn-primary" ng-click="getGenreMovies(genre.id)">{{ genre.name }}</button>
-        </div>
+            <!-- START PANEL -->
+            <div class="genre cover-container">
+                  <button ng-repeat="genre in genres" class="cover-item btn btn-primary" ng-click="getGenreMovies(genre.id)">{{ genre.name }}</button>
+            </div>
+            <!--End Panel-->
 
 
-        <div class="row-fluid">
-            <div class="col-lg-12 col-md-10 ">
-                <div class="cover-container">
-                    <!-- START PANEL -->
-                    <div ng-repeat="movie in genreMovies">
-                      <img ng-repeat="movie in genreMovies" class="cover-item" ng-src="{{imgPath}}{{movie.poster_path}}" ng-click="popover(movie)"data-toggle="modal" data-target="#myModal">
 
-                        <!-- Bootstrap Popover Modal -->
-                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                          <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title lead" id="myModalLabel">{{ popModal.title }}</h4>
-                              </div>
-                              <div class="modal-body">
-                                <p class="modal-body">Average Rating: {{ popModal.rating }}</p>
-                                <img ng-src="{{imgPath}}{{popModal.poster_path}}">
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button ng-click="addToQueue()" type="button" class="btn btn-primary" data-dismiss="modal">Add movie</button>
+            <div class="row-fluid">
+                <div class="col-lg-12 col-md-10 ">
+                    <div class="cover-container">
+                        <!-- START PANEL -->
+                        <div ng-repeat="movie in genreMovies">
+                          <img ng-repeat="movie in genreMovies" class="cover-item" ng-src="{{imgPath}}{{movie.poster_path}}" ng-click="popover(movie)"data-toggle="modal" data-target="#myModal">
+
+                            <!-- Bootstrap Popover Modal -->
+                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title lead" id="myModalLabel">{{ popModal.title }}</h4>
+                                  </div>
+                                  <div class="modal-body">
+                                    <p class="modal-body">Average Rating: {{ popModal.rating }}</p>
+                                    <img ng-src="{{imgPath}}{{popModal.poster_path}}">
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button ng-click="addToQueue()" type="button" class="btn btn-primary" data-dismiss="modal">Add movie</button>
+                                  </div>
+                                </div>
                               </div>
                             </div>
-                          </div>
+                            <!--End Bootstrap Popover Modal-->
                         </div>
-                        <!--End Bootstrap Popover Modal-->
+                          <!-- END PANEL -->
                     </div>
-                      <!-- END PANEL -->
                 </div>
             </div>
         </div>

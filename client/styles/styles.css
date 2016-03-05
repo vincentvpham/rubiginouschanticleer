@@ -169,3 +169,15 @@ img.genreMovieImg {
 h4.modal-title {
   text-align: center;
 }
+
+button.cover-item {
+  height: 30px;
+}
+div.genre.cover-container {
+  height: 60px;
+}
+
+div.well {
+  background-color: #ffffff;
+  margin: 10px;
+}
